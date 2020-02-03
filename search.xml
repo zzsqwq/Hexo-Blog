@@ -63,14 +63,14 @@
 <blockquote>
 <p>\begin{matrix}<br>    1 &amp; 2 &amp; 3\<br>    4 &amp; 5 &amp; 6\<br>    7 &amp; 8 &amp; 9\<br>\end{matrix}</p>
 </blockquote>
-<p>$$<br>\begin{matrix}<br>    1 &amp; 2 &amp; 3\<br>    4 &amp; 5 &amp; 6\<br>    7 &amp; 8 &amp; 9\<br>\end{matrix}<br>$$</p>
+<p>$$<br>\begin{matrix}<br>    1 &amp; 2 &amp; 3\\<br>    4 &amp; 5 &amp; 6\\<br>    7 &amp; 8 &amp; 9\\<br>\end{matrix}<br>$$</p>
 <ul>
 <li>行列式: 与矩阵相似，加上行列式的名字以及左右分割线即可</li>
 </ul>
 <blockquote>
-<p>A=\left|<br>    \begin{matrix}<br>    1 &amp; 2 &amp; 3 \<br>    4 &amp; 5 &amp; 6 \<br>    7 &amp; 8 &amp; 9 \<br>    \end{matrix}<br>    \right|</p>
+<p>A=\left|<br>    \begin{matrix}<br>    1 &amp; 2 &amp; 3 \\<br>    4 &amp; 5 &amp; 6 \\<br>    7 &amp; 8 &amp; 9 \\<br>    \end{matrix}<br>    \right|</p>
 </blockquote>
-<p>$$<br>A=  \left|<br>    \begin{matrix}<br>    1 &amp; 2 &amp; 3 \<br>    4 &amp; 5 &amp; 6 \<br>    7 &amp; 8 &amp; 9 \<br>    \end{matrix}<br>    \right|<br>$$</p>
+<p>$$<br>A=  \left|<br>    \begin{matrix}<br>    1 &amp; 2 &amp; 3 \\<br>    4 &amp; 5 &amp; 6 \\<br>    7 &amp; 8 &amp; 9 \\<br>    \end{matrix}<br>    \right|<br>$$</p>
 <hr>
 <h3 id="分段函数和方程组"><a href="#分段函数和方程组" class="headerlink" title="分段函数和方程组"></a>分段函数和方程组</h3><ul>
 <li>分段函数：\begin{cases}····\end{cases}  每一个条件用 表达式和条件之间用 <strong>&amp;</strong> 连接</li>
@@ -78,16 +78,16 @@
 <blockquote>
 <p>f(x)=<br>    \begin{cases}<br>        x/2, &amp; {n&gt;2} \<br>        2x , &amp; {n=2} \<br>        3x , &amp; {n&lt;2} \<br>    \end{cases}</p>
 </blockquote>
-<p>$$<br>f(x)=<br>    \begin{cases}<br>        x/2, &amp; {n&gt;2}\<br>        2x , &amp; {n=2}\<br>        3x , &amp; {n&lt;2}\<br>    \end{cases}<br>$$</p>
+<p>$$<br>f(x)=<br>    \begin{cases}<br>        x/2, &amp; {n&gt;2}\\<br>        2x , &amp; {n=2}\\<br>        3x , &amp; {n&lt;2}\\<br>    \end{cases}<br>$$</p>
 <ul>
 <li>方程组: 写法如下，不是一个对称的，注意left后面为{ ，right后面为. 用\\换行</li>
 </ul>
-<blockquote>
-<p>\left{<br>    \begin{array}{}<br>        a_1x+b_1y+c_1z=d_1\<br>        a_2x+b_2y+c_2z=d_2\<br>        a_3x+b_3y+c_3z=d_3<br>    \end{array}<br>\right.</p>
-</blockquote>
-<p>$$<br>\left{<br>    \begin{array}{}<br>        a_1x+b_1y+c_1z=d_1\<br>        a_2x+b_2y+c_2z=d_2\<br>        a_3x+b_3y+c_3z=d_3<br>    \end{array}<br>\right.<br>$$</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">\left\&#123;</span><br><span class="line">	\begin&#123;array&#125;&#123;&#125;</span><br><span class="line">		a_1x+b_1y+c_1z&#x3D;d_1\\</span><br><span class="line">		a_2x+b_2y+c_2z&#x3D;d_2\\</span><br><span class="line">		a_3x+b_3y+c_3z&#x3D;d_3</span><br><span class="line">	\end&#123;array&#125;</span><br><span class="line">\right.</span><br></pre></td></tr></table></figure>
+
+
+<p>$$<br>\left\{<br>    \begin{array}{}<br>        a_1x+b_1y+c_1z=d_1\\<br>        a_2x+b_2y+c_2z=d_2\\<br>        a_3x+b_3y+c_3z=d_3<br>    \end{array}<br>\right.<br>$$</p>
 <hr>
-<p>先总结这么多，后面那些进阶的用到了再总结。</p>
+<p>上面的矩阵，行列式，分段函数和方程组有一个问题需要我们注意，因为反斜杠 <strong>\</strong> 需要转义，那么对于每次换行需要两个先总结这么多，后面那些进阶的用到了再总结。</p>
 <p>参考文献:</p>
 <ul>
 <li><a href="https://blog.csdn.net/happyday_d/article/details/83715440" target="_blank" rel="noopener">Typora中利用LaTeX 插入数学公式</a></li>
