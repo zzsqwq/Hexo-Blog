@@ -315,7 +315,7 @@
 
 <hr>
 <h3 id="C-Obtain-The-String"><a href="#C-Obtain-The-String" class="headerlink" title="C : Obtain The String"></a>C : <a href="https://codeforces.com/contest/1295/problem/C" target="_blank" rel="noopener">Obtain The String</a></h3><h4 id="题意-2"><a href="#题意-2" class="headerlink" title="题意"></a>题意</h4><p>​    给定字符串 <strong>s</strong> 和 <strong>t</strong> ，每次从 <strong>s</strong> 中选取子序列放入起始为空串的 <strong>z</strong> 后，问最少需要多少次操作使得 <strong>z=t</strong></p>
-<h4 id="思路-2"><a href="#思路-2" class="headerlink" title="思路"></a>思路</h4><p>​    看了小姜老师的博客解法说是贪心，想了好一会，好像确实是可以贪心的···? 设置两个指针从 <strong>s</strong> 和 <strong>t</strong> 串的头部开始扫，对于 <strong>t</strong> 串中的每个字母，循环扫 <strong>s</strong> 串在其中找与它相同的，最终的答案就是扫 <strong>s</strong> 串的次数。(小姜老师说这个实质上就是每次尽可能找尽可能多的后缀，仔细想想确实是这样。)不过这么一直暴力扫下去肯定不是最优的方法，想办法去优化。还是借鉴大佬的想法用一个lens<em>26的跳表，然后O(lent)扫一遍 *</em>t** 即可.</p>
+<h4 id="思路-2"><a href="#思路-2" class="headerlink" title="思路"></a>思路</h4><p>​    看了小姜老师的博客解法说是贪心，想了好一会，好像确实是可以贪心的···? 设置两个指针从 <strong>s</strong> 和 <strong>t</strong> 串的头部开始扫，对于 <strong>t</strong> 串中的每个字母，循环扫 <strong>s</strong> 串在其中找与它相同的，最终的答案就是扫 <strong>s</strong> 串的次数。(小姜老师说这个实质上就是每次尽可能找尽可能多的后缀，仔细想想确实是这样。)不过这么一直暴力扫下去肯定不是最优的方法，想办法去优化。还是借鉴大佬的想法用一个lens*26的跳表，然后O(lent)扫一遍 <strong>t</strong> 即可.</p>
 <blockquote>
 <p>跳表nxt的作用，用于寻找下一个所寻找字符在s中的位置。</p>
 <p>nxt[x][y]用于指向从x位置开始下一个y的位置+1 （next在C++属于保留字，注意不要踩坑）</p>
@@ -546,6 +546,56 @@
 
 
   
+
+  
+      
+<script type="text/x-mathjax-config">
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') {
+          next = next.nextSibling;
+        }
+        if (next && next.nodeName.toLowerCase() === 'br') {
+          next.parentNode.removeChild(next);
+        }
+      }
+    });
+  });
+
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
+      if (element.nodeName.toLowerCase() == 'li') {
+        element = element.parentNode;
+      }
+      element.classList.add('has-jax');
+    }
+  });
+</script>
+<script>
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML', () => {
+    MathJax.Hub.Typeset();
+  }, window.MathJax);
+</script>
+
+    
 
   
 
