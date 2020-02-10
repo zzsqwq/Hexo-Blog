@@ -4,6 +4,8 @@
     <title>Codeforces #618 (Div.2)</title>
     <url>/2020/02/10/Codeforces-618/</url>
     <content><![CDATA[<h2 id="A-Non-zero"><a href="#A-Non-zero" class="headerlink" title="A. Non-zero"></a>A. <a href="https://codeforces.com/contest/1300/problem/A" target="_blank" rel="noopener">Non-zero</a></h2><h4 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h4><p>​    给出一段含有 $n$ 个数的序列 $a$ ，可以对其中任何数加一，问最少操作多少次让每一个数和序列和都不为0。</p>
+<a id="more"></a>
+
 <hr>
 <h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>​    输入的时候如果输入的是 $0$ 就将答案加一，最后如果序列和为 $0$ 的话答案加一。</p>
 <hr>
