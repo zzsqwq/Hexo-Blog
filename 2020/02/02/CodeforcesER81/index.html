@@ -47,12 +47,12 @@
   };
 </script>
 
-  <meta name="description" content="A : Display The Number题意​    用一定数目的灯管，显示尽可能大的数">
+  <meta name="description" content="A : Display The Number题意​    &amp;nbsp; &amp;nbsp; &amp;nbsp; 用一定数目的灯管，显示尽可能大的数">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CodeforcesER81">
 <meta property="og:url" content="http://yoursite.com/2020/02/02/CodeforcesER81/index.html">
 <meta property="og:site_name" content="Zs&#39;s blog">
-<meta property="og:description" content="A : Display The Number题意​    用一定数目的灯管，显示尽可能大的数">
+<meta property="og:description" content="A : Display The Number题意​    &amp;nbsp; &amp;nbsp; &amp;nbsp; 用一定数目的灯管，显示尽可能大的数">
 <meta property="og:image" content="https://s2.ax1x.com/2020/02/02/1te6Re.md.png">
 <meta property="article:published_time" content="2020-02-02T12:28:00.000Z">
 <meta property="article:modified_time" content="2020-02-03T10:42:00.000Z">
@@ -274,7 +274,7 @@
                 <i class="fa fa-file-word-o"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>3.1k</span>
+              <span>3.2k</span>
             </span>
 
         </div>
@@ -286,17 +286,17 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h3 id="A-Display-The-Number"><a href="#A-Display-The-Number" class="headerlink" title="A : Display The Number"></a>A : <a href="https://codeforces.com/contest/1295/problem/A" target="_blank" rel="noopener">Display The Number</a></h3><h4 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h4><p>​    用一定数目的灯管，显示尽可能大的数</p>
+        <h3 id="A-Display-The-Number"><a href="#A-Display-The-Number" class="headerlink" title="A : Display The Number"></a>A : <a href="https://codeforces.com/contest/1295/problem/A" target="_blank" rel="noopener">Display The Number</a></h3><h4 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h4><p>​    &nbsp; &nbsp; &nbsp; 用一定数目的灯管，显示尽可能大的数</p>
 <p><img src="https://s2.ax1x.com/2020/02/02/1te6Re.md.png" alt="A"></p>
 <a id="more"></a>
 
-<h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>​    因为位数多的肯定更大，所以肯定用尽量少的灯管搭建单个数字更好，最少的两个分别是两个灯管显示的1，以及三个灯管显示的7，所以就是尽可能的用1，如果最后剩余正好三个就显示7。这就转化成了判断奇数还是偶数的题，奇数就显示7111····，偶数就是1111···。注意要把7放在前面（我就踩坑了）。</p>
+<h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>​    &nbsp; &nbsp; &nbsp; 因为位数多的肯定更大，所以肯定用尽量少的灯管搭建单个数字更好，最少的两个分别是两个灯管显示的1，以及三个灯管显示的7，所以就是尽可能的用1，如果最后剩余正好三个就显示7。这就转化成了判断奇数还是偶数的题，奇数就显示7111····，偶数就是1111···。注意要把7放在前面（我就踩坑了）。</p>
 <h4 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">int</span> t,n;</span><br><span class="line"><span class="keyword">int</span> cnt=<span class="number">0</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;t);</span><br><span class="line">	<span class="keyword">while</span>(t--)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</span><br><span class="line">		<span class="keyword">if</span>(n%<span class="number">2</span>==<span class="number">0</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">int</span> p=n/<span class="number">2</span>;</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=p;i++) <span class="built_in">printf</span>(<span class="string">"1"</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"7"</span>);</span><br><span class="line">			n-=<span class="number">3</span>;</span><br><span class="line">			<span class="keyword">int</span> p=n/<span class="number">2</span>;</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=p;i++) <span class="built_in">printf</span>(<span class="string">"1"</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
 
 <hr>
-<h3 id="B-Infinite-Prefixes"><a href="#B-Infinite-Prefixes" class="headerlink" title="B : Infinite Prefixes"></a>B : <a href="https://codeforces.com/contest/1295/problem/B" target="_blank" rel="noopener">Infinite Prefixes</a></h3><h4 id="题意-1"><a href="#题意-1" class="headerlink" title="题意"></a>题意</h4><p>​    给定一段01字符串 <strong>s</strong> 为循环节，得到无限循环的01字符串 <strong>t</strong>，求 <strong>t</strong> 中有多少前缀满足0个数-1个数等于期望值<strong>x</strong> （空前缀也算是一个前缀）</p>
+<h3 id="B-Infinite-Prefixes"><a href="#B-Infinite-Prefixes" class="headerlink" title="B : Infinite Prefixes"></a>B : <a href="https://codeforces.com/contest/1295/problem/B" target="_blank" rel="noopener">Infinite Prefixes</a></h3><h4 id="题意-1"><a href="#题意-1" class="headerlink" title="题意"></a>题意</h4><p>​    &nbsp; &nbsp; &nbsp; 给定一段01字符串 <strong>s</strong> 为循环节，得到无限循环的01字符串 <strong>t</strong>，求 <strong>t</strong> 中有多少前缀满足0个数-1个数等于期望值<strong>x</strong> （空前缀也算是一个前缀）</p>
 <blockquote>
 <p>前缀：例如”abcd”的前缀包括 “ “,”a”,”ab”,”abc”,”abcd”.</p>
 </blockquote>
@@ -317,8 +317,8 @@
 
 
 <hr>
-<h3 id="C-Obtain-The-String"><a href="#C-Obtain-The-String" class="headerlink" title="C : Obtain The String"></a>C : <a href="https://codeforces.com/contest/1295/problem/C" target="_blank" rel="noopener">Obtain The String</a></h3><h4 id="题意-2"><a href="#题意-2" class="headerlink" title="题意"></a>题意</h4><p>​    给定字符串 <strong>s</strong> 和 <strong>t</strong> ，每次从 <strong>s</strong> 中选取子序列放入起始为空串的 <strong>z</strong> 后，问最少需要多少次操作使得 <strong>z=t</strong></p>
-<h4 id="思路-2"><a href="#思路-2" class="headerlink" title="思路"></a>思路</h4><p>​    看了小姜老师的博客解法说是贪心，想了好一会，好像确实是可以贪心的···? 设置两个指针从 <strong>s</strong> 和 <strong>t</strong> 串的头部开始扫，对于 <strong>t</strong> 串中的每个字母，循环扫 <strong>s</strong> 串在其中找与它相同的，最终的答案就是扫 <strong>s</strong> 串的次数。(小姜老师说这个实质上就是每次尽可能找尽可能多的后缀，仔细想想确实是这样。)不过这么一直暴力扫下去肯定不是最优的方法，想办法去优化。还是借鉴大佬的想法用一个lens*26的跳表，然后O(lent)扫一遍 <strong>t</strong> 即可.</p>
+<h3 id="C-Obtain-The-String"><a href="#C-Obtain-The-String" class="headerlink" title="C : Obtain The String"></a>C : <a href="https://codeforces.com/contest/1295/problem/C" target="_blank" rel="noopener">Obtain The String</a></h3><h4 id="题意-2"><a href="#题意-2" class="headerlink" title="题意"></a>题意</h4><p>​    &nbsp; &nbsp; &nbsp; 给定字符串 <strong>s</strong> 和 <strong>t</strong> ，每次从 <strong>s</strong> 中选取子序列放入起始为空串的 <strong>z</strong> 后，问最少需要多少次操作使得 <strong>z=t</strong></p>
+<h4 id="思路-2"><a href="#思路-2" class="headerlink" title="思路"></a>思路</h4><p>​    &nbsp; &nbsp; &nbsp; 看了小姜老师的博客解法说是贪心，想了好一会，好像确实是可以贪心的···? 设置两个指针从 <strong>s</strong> 和 <strong>t</strong> 串的头部开始扫，对于 <strong>t</strong> 串中的每个字母，循环扫 <strong>s</strong> 串在其中找与它相同的，最终的答案就是扫 <strong>s</strong> 串的次数。(小姜老师说这个实质上就是每次尽可能找尽可能多的后缀，仔细想想确实是这样。)不过这么一直暴力扫下去肯定不是最优的方法，想办法去优化。还是借鉴大佬的想法用一个lens*26的跳表，然后O(lent)扫一遍 <strong>t</strong> 即可.</p>
 <blockquote>
 <p>跳表nxt的作用，用于寻找下一个所寻找字符在s中的位置。</p>
 <p>nxt[x][y]用于指向从x位置开始下一个y的位置+1 （next在C++属于保留字，注意不要踩坑）</p>
@@ -500,7 +500,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="站点总字数">39k</span>
+    <span title="站点总字数">40k</span>
 </div>
 
         
