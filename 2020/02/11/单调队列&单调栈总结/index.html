@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="baidu-site-verification" content="f6FiCpLvD5" />
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('http://yoursite.com').hostname,
+    root: '/',
+    scheme: 'Muse',
+    version: '7.7.1',
+    exturl: false,
+    sidebar: {"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":true,"style":null},
+    back2top: {"enable":true,"sidebar":"ture","scrollpercent":true},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    comments: {"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
+  };
+</script>
+
+  <meta name="description" content="前言​     &amp;nbsp; &amp;nbsp; &amp;nbsp; 最近感觉遇到了好多单调队列和单调栈的问题，但是因为以前没学好，所以遇见了就一脸懵逼，然后绝对下决心来学一下。。感觉遇到啥都不会，这可咋办呐。。补不完的漏洞。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="单调队列&amp;单调栈总结">
+<meta property="og:url" content="http://yoursite.com/2020/02/11/%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97&%E5%8D%95%E8%B0%83%E6%A0%88%E6%80%BB%E7%BB%93/index.html">
+<meta property="og:site_name" content="Zs&#39;s blog">
+<meta property="og:description" content="前言​     &amp;nbsp; &amp;nbsp; &amp;nbsp; 最近感觉遇到了好多单调队列和单调栈的问题，但是因为以前没学好，所以遇见了就一脸懵逼，然后绝对下决心来学一下。。感觉遇到啥都不会，这可咋办呐。。补不完的漏洞。">
+<meta property="article:published_time" content="2020-02-11T07:13:30.000Z">
+<meta property="article:modified_time" content="2020-02-11T12:52:43.892Z">
+<meta property="article:author" content="Zs">
+<meta property="article:tag" content="单调队列&amp;单调栈">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://yoursite.com/2020/02/11/%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97&%E5%8D%95%E8%B0%83%E6%A0%88%E6%80%BB%E7%BB%93/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true
+  };
+</script>
+
+  <title>单调队列&单调栈总结 | Zs's blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Zs's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="搜索..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/11/%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97&%E5%8D%95%E8%B0%83%E6%A0%88%E6%80%BB%E7%BB%93/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Zs">
+      <meta itemprop="description" content="我要月亮奔我而来">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Zs's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          单调队列&单调栈总结
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-02-11 15:13:30 / 修改时间：20:52:43" itemprop="dateCreated datePublished" datetime="2020-02-11T15:13:30+08:00">2020-02-11</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" itemprop="url" rel="index">
+                    <span itemprop="name">数据结构</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2020/02/11/%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97&%E5%8D%95%E8%B0%83%E6%A0%88%E6%80%BB%E7%BB%93/" class="post-meta-item leancloud_visitors" data-flag-title="单调队列&单调栈总结" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2020/02/11/%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97&%E5%8D%95%E8%B0%83%E6%A0%88%E6%80%BB%E7%BB%93/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/02/11/%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97&%E5%8D%95%E8%B0%83%E6%A0%88%E6%80%BB%E7%BB%93/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>7.4k</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>​     &nbsp; &nbsp; &nbsp; 最近感觉遇到了好多单调队列和单调栈的问题，但是因为以前没学好，所以遇见了就一脸懵逼，然后绝对下决心来学一下。。感觉遇到啥都不会，这可咋办呐。。补不完的漏洞。</p>
+<a id="more"></a>
+
+<hr>
+<h1 id="单调队列-Monotone-queue"><a href="#单调队列-Monotone-queue" class="headerlink" title="单调队列(Monotone queue)"></a>单调队列(Monotone queue)</h1><p>​    &nbsp; &nbsp; &nbsp; 单调队列，即单调递减或单调递增的<a href="https://baike.baidu.com/item/队列/718364" target="_blank" rel="noopener">队列</a>。使用频率不高，但在有些程序中会有非同寻常的作用。</p>
+<h2 id="理解"><a href="#理解" class="headerlink" title="理解"></a>理解</h2><p>​    &nbsp; &nbsp; &nbsp; 顾名思义，他就是一个单调的队列，那么我们可以规定他是单调递增的还是单调递减的，他和普通的队列有点区别，队列一般是尾进头出，而单调队列要实现的话要确保头和尾都可以出，尾可以进。如果要用STL库的话可以用里面的双端队列。<br>​    &nbsp; &nbsp; &nbsp; 跟普通队列相比他的进队需要确保一个条件就是要<strong>不破坏原有序列的单调性</strong>，好比我们有一个单调递增的单调队列，也就是从队首到队尾是单调递增的，那么有一段序列是 $[2,3,1,5,8,7,4,2]$ ，我们从左到右依次入队。</p>
+<table>
+<thead>
+<tr>
+<th>队列中元素</th>
+<th>关于元素进出的备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>2</td>
+<td>2入队</td>
+</tr>
+<tr>
+<td>2，3</td>
+<td>3比2大，可以满足递增性质，入队</td>
+</tr>
+<tr>
+<td>1</td>
+<td>因为1比2，3都小，要满足递增性质，先把2，3出队，再将1入队</td>
+</tr>
+<tr>
+<td>1，5</td>
+<td>5比1大，可以满足递增性质，入队</td>
+</tr>
+<tr>
+<td>1，5，8</td>
+<td>8比5大，可以满足递增性质，入队</td>
+</tr>
+<tr>
+<td>1，5，7</td>
+<td>7小于8，大于5，要满足递增性质，我们把8出队，然后将7入队</td>
+</tr>
+<tr>
+<td>1，4</td>
+<td>4小于5、7，但是大于1，因此7，5依次出队，4入队</td>
+</tr>
+<tr>
+<td>1，2</td>
+<td>2小于4，大于1，因此4出对，2入队</td>
+</tr>
+</tbody></table>
+<p>​    &nbsp; &nbsp; &nbsp; 根据上述例子不难看出，我们要入队的时候首先要确保队尾元素要比想要入队的元素小，然后才能入队，否则的话就一直循环让尾部元素出队，直到能够满足单调性为止。</p>
+<h2 id="单调队列的应用"><a href="#单调队列的应用" class="headerlink" title="单调队列的应用"></a>单调队列的应用</h2><ul>
+<li>求区间的最值问题。下面写的两个例题都是这个用处。</li>
+<li>优化dp，我现在能接触到的就是一个用单调队列优化多重背包的一个题，但是那个题我学了这个东西之后还是不理解为什么可以那么做。例题如下：<a href="https://www.luogu.com.cn/problem/P1776" target="_blank" rel="noopener">宝物筛选</a></li>
+</ul>
+<h2 id="单调队列的一些例题"><a href="#单调队列的一些例题" class="headerlink" title="单调队列的一些例题"></a>单调队列的一些例题</h2><h3 id="A-Sliding-Window"><a href="#A-Sliding-Window" class="headerlink" title="A. Sliding Window"></a>A. <a href="http://poj.org/problem?id=2823" target="_blank" rel="noopener">Sliding Window</a></h3><hr>
+<h4 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h4><p>​    &nbsp; &nbsp; &nbsp; 给出一个含有 $n$ 个整数的序列 $a$ ，给出滑动窗口长度 $k$ ，窗口从序列最左端滑动到序列最右端，问滑动过程中每个时刻窗口中最大值和最小值是多少。</p>
+<h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>​    &nbsp; &nbsp; &nbsp; 一道很经典的单调队列的模板题，用于解决定长区间的最大最小值。我们可以维护两个单调队列，一个是单调递增的，一个是单调递减的。因为两种情况类似，我们考虑一下求窗口中最大值的方案。</p>
+<p>​    &nbsp; &nbsp; &nbsp; 求最大值我们用的是单调递减的序列，这样就能够保证每次队首的就是答案，但是，这是为什么呢？我们来考虑一下，因为这是一个单调递减的序列，那么我们每次序列元素入队的时候，我们就去看当前队尾的元素是不是要比他大，如果比他还小，那么我们就直接将队尾元素出队，因为这时候要入队的元素（已经被窗口覆盖了）已经比他大了，那么在接下来的窗口中，肯定就没他什么事了，因为它一定不是最大的，那么如果一直将队尾元素出队到加入入队元素后还继续能保持队列的单调性了，但是这个元素还不是在队首，这就说明，队首的元素还是要比他大的（单调性易得）。</p>
+<p>​    &nbsp; &nbsp; &nbsp; 所以这时候队首元素就是这个窗口中最大的了吗？也还不能确定，因为我们还不能确保这个队首元素就在窗口中，因此我们需要看看这个元素的位置和当前入队元素的位置之差是不是要比窗口长度大了，如果大于窗口长度，那么就说明队首元素已经不在窗口了，我们就将队首元素出队，最后输出队首元素就能确保它既在窗口中，又是窗口中所有元素的最大值了！</p>
+<h4 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn=<span class="number">1000005</span>;</span><br><span class="line"><span class="keyword">int</span> n,k;</span><br><span class="line"><span class="keyword">int</span> head,tail,a[maxn];</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	<span class="keyword">int</span> pos,value;</span><br><span class="line">&#125;q[maxn];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">getmax</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	head=tail=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">while</span>(head!=tail&amp;&amp;i-q[head].pos&gt;=k) head++;</span><br><span class="line">		<span class="keyword">while</span>(head!=tail&amp;&amp;a[i]&lt;=q[tail<span class="number">-1</span>].value) tail--;</span><br><span class="line">		q[tail].value=a[i],q[tail++].pos=i;</span><br><span class="line">		<span class="keyword">if</span>(i&gt;=k) <span class="built_in">printf</span>(<span class="string">"%d "</span>,q[head].value);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">putchar</span>(<span class="string">'\n'</span>);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) q[i].value=q[i].pos=<span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">getmin</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	head=tail=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">while</span>(head!=tail&amp;&amp;i-q[head].pos&gt;=k) head++;</span><br><span class="line">		<span class="keyword">while</span>(head!=tail&amp;&amp;a[i]&gt;=q[tail<span class="number">-1</span>].value) tail--;</span><br><span class="line">		q[tail].value=a[i],q[tail++].pos=i;</span><br><span class="line">		<span class="keyword">if</span>(i&gt;=k) <span class="built_in">printf</span>(<span class="string">"%d "</span>,q[head].value);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;n,&amp;k);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">	&#123;</span><br><span class="line">	 	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;a[i]);</span><br><span class="line">	&#125;</span><br><span class="line">	getmax();</span><br><span class="line">	getmin();</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="B-Max-Sum-of-Max-K-sub-sequence"><a href="#B-Max-Sum-of-Max-K-sub-sequence" class="headerlink" title="B. Max Sum of Max-K-sub-sequence"></a>B. <a href="http://acm.hdu.edu.cn/showproblem.php?pid=3415" target="_blank" rel="noopener">Max Sum of Max-K-sub-sequence</a></h3><h4 id="题意-1"><a href="#题意-1" class="headerlink" title="题意"></a>题意</h4><p>​    &nbsp; &nbsp; &nbsp; 给定长度为 $n$ 的整数循环序列 $a$ ，也就是$a[1],a[2],\cdots,a[n],a[1]\cdots$ 这样的序列，问最大连续长度为 $k$ 的连续子区间的序列和最大为多少，并且输出这个区间的左右坐标。</p>
+<h4 id="思路-1"><a href="#思路-1" class="headerlink" title="思路"></a>思路</h4><p>​    &nbsp; &nbsp; &nbsp; 我们把这道题转换一下，我们先处理好前缀和，好比我们要求 $a[1],a[2],a[3]$ 的序列和，那么也就是 $sum[3]-sum[0]$ ，因此我们在求这个题的时候就可以循环遍历 $1\sim{n-k+1}$ ，求长度为 $k$ 的定长区间中前缀和数组的最小值即可。但是我们要注意前缀和数组要处理到 $n-k+1$ 。</p>
+<h4 id="代码实现-1"><a href="#代码实现-1" class="headerlink" title="代码实现"></a>代码实现</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> inf=<span class="number">1000000</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn=<span class="number">200005</span>;</span><br><span class="line"><span class="keyword">int</span> t;</span><br><span class="line"><span class="keyword">int</span> n,k,a[maxn],sum[maxn];</span><br><span class="line"><span class="keyword">int</span> head,tail;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	<span class="keyword">int</span> pos,value;</span><br><span class="line">&#125;q[maxn];</span><br><span class="line"><span class="keyword">int</span> ans,l,r;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"><span class="comment">//	freopen("test.in","r",stdin);</span></span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;t);</span><br><span class="line">	<span class="keyword">while</span>(t--)</span><br><span class="line">	&#123;</span><br><span class="line">		l=r=<span class="number">0</span>;</span><br><span class="line">		head=tail=<span class="number">0</span>;</span><br><span class="line">		ans=-inf;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;n,&amp;k);</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;a[i]);</span><br><span class="line">			sum[i]=sum[i<span class="number">-1</span>]+a[i];</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=n+<span class="number">1</span>;i&lt;=n+k<span class="number">-1</span>;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			sum[i]=sum[i<span class="number">-1</span>]+a[i-n];</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n+k<span class="number">-1</span>;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">while</span>(head!=tail&amp;&amp;i-q[head].pos&gt;k) head++;</span><br><span class="line">			<span class="keyword">while</span>(head!=tail&amp;&amp;sum[i<span class="number">-1</span>]&lt;=q[tail<span class="number">-1</span>].value) tail--;</span><br><span class="line">			q[tail].pos=i<span class="number">-1</span>,q[tail++].value=sum[i<span class="number">-1</span>];</span><br><span class="line"><span class="comment">//			if(i!=q[head].pos)</span></span><br><span class="line"><span class="comment">//			&#123; </span></span><br><span class="line">				<span class="keyword">int</span> p=sum[i]-q[head].value;</span><br><span class="line">				<span class="keyword">if</span>(p&gt;ans)</span><br><span class="line">				&#123;</span><br><span class="line">					ans=p;</span><br><span class="line">					<span class="keyword">int</span> k=q[head].pos+<span class="number">1</span>;</span><br><span class="line">					k&gt;n?l=k%n:l=k;</span><br><span class="line">					i&gt;n?r=i%n:r=i;</span><br><span class="line">				&#125;</span><br><span class="line"><span class="comment">//			&#125;</span></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%d %d %d\n"</span>,ans,l,r);</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n+k<span class="number">-1</span>;i++) q[i].pos=q[i].value=-inf;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="单调栈-Monotone-stack"><a href="#单调栈-Monotone-stack" class="headerlink" title="单调栈(Monotone stack)"></a>单调栈(Monotone stack)</h1><p>​    &nbsp; &nbsp; &nbsp; 单调增或单调减的栈，跟单调队列差不多，但是只用到它的一端。</p>
+<h2 id="理解-1"><a href="#理解-1" class="headerlink" title="理解"></a>理解</h2><p>​    &nbsp; &nbsp; &nbsp; 单调栈也是在普通栈的基础上加了单调性，一般是用从栈底到栈顶的单调性来命名，好比从栈底到栈顶是单调递增的，那么他就是单调增的栈。跟单调队列一样，他的入栈规则也是<strong>要不破坏单调性</strong>，因此一个单调递增的栈如果有元素要入栈，如果他比栈顶的元素还要大，就可以直接入栈，如果他比栈顶的元素小，那么就要将栈顶的元素一直出栈到比要入栈元素小为止。如果序列为 $[2,3,1,5,4,7]$，要加入单调递增栈中，过程如下。<strong>PS：注意从左到右对应栈底到栈顶。</strong></p>
+<table>
+<thead>
+<tr>
+<th>栈中的元素</th>
+<th>关于元素进出的备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>2</td>
+<td>元素2压入栈中</td>
+</tr>
+<tr>
+<td>2，3</td>
+<td>3大于2，压入栈中</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1小于3、2，因此全部弹出将1入栈</td>
+</tr>
+<tr>
+<td>1，5</td>
+<td>5大于1，压入栈中</td>
+</tr>
+<tr>
+<td>1，4</td>
+<td>4比5小，比1大，弹出5，压入4</td>
+</tr>
+<tr>
+<td>1，4，7</td>
+<td>7大于4，压入栈中</td>
+</tr>
+</tbody></table>
+<p>​    &nbsp; &nbsp; &nbsp; 根据上述描述不难看出，其实单调栈就是单调队列的半部分，他能完成的任务理论上单调队列都能够完成，但是有些时候不需要麻烦的去维护单调队列只需要维护单调栈即可完成。</p>
+<h2 id="单调栈的应用"><a href="#单调栈的应用" class="headerlink" title="单调栈的应用"></a>单调栈的应用</h2><ul>
+<li>确定一个元素的左边区间第一个比它大的元素，第一个比它小的元素</li>
+<li>确定右边区间第一个比他大or比他小的元素（根据单调性来看）</li>
+<li>确定这个元素是否是一定区间内的最值，或者确定以他为最值的区间长度</li>
+</ul>
+<h2 id="单调栈的一些例题"><a href="#单调栈的一些例题" class="headerlink" title="单调栈的一些例题"></a>单调栈的一些例题</h2><h3 id="A-单调栈模板"><a href="#A-单调栈模板" class="headerlink" title="A. 单调栈模板"></a>A. <a href="https://www.luogu.com.cn/problem/P5788" target="_blank" rel="noopener">单调栈模板</a></h3><h4 id="题意-2"><a href="#题意-2" class="headerlink" title="题意"></a>题意</h4><p>​    &nbsp; &nbsp; &nbsp; 给出含有 $n$ 个整数的序列 $a$ ，定义 $f(i)$ 为第 $i$ 个元素后第一个大于 $a_i$ 的下标，求 $f(1)\cdots f(n)$ </p>
+<h4 id="思路-2"><a href="#思路-2" class="headerlink" title="思路"></a>思路</h4><p>​    &nbsp; &nbsp; &nbsp; 直接就是模板，对应了上述应用里的第二个。</p>
+<h4 id="代码实现-2"><a href="#代码实现-2" class="headerlink" title="代码实现"></a>代码实现</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn=<span class="number">3000005</span>;</span><br><span class="line"><span class="keyword">int</span> n,a[maxn];</span><br><span class="line"><span class="keyword">int</span> <span class="built_in">stack</span>[maxn];</span><br><span class="line"><span class="keyword">int</span> top,ans[maxn];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;a[i]);</span><br><span class="line">	&#125;</span><br><span class="line">	a[<span class="number">0</span>]=<span class="number">1e9</span>+<span class="number">5</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">	&#123; </span><br><span class="line">		<span class="keyword">while</span>(top&gt;=<span class="number">0</span>&amp;&amp;a[i]&gt;a[<span class="built_in">stack</span>[top]])</span><br><span class="line">		&#123;</span><br><span class="line">			ans[<span class="built_in">stack</span>[top]] = i;</span><br><span class="line">			top--;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">stack</span>[++top]=i;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">while</span>(top)</span><br><span class="line">	&#123;</span><br><span class="line">		ans[<span class="built_in">stack</span>[top]]=<span class="number">0</span>;</span><br><span class="line">		top--;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%d "</span>,ans[i]);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="B-发射站"><a href="#B-发射站" class="headerlink" title="B. 发射站"></a>B. <a href="https://www.luogu.com.cn/problem/P1901" target="_blank" rel="noopener">发射站</a></h3><h4 id="题意-3"><a href="#题意-3" class="headerlink" title="题意"></a>题意</h4><p>​    &nbsp; &nbsp; &nbsp; 某地有 $N$ 个能量发射站排成一行，每个发射站 $i$ 都有不相同的高度 $H_i$，并能向两边（两端的发射站只能向一边）同时发射能量值为 $V_i$ 的能量，发出的能量只被两边<strong>最近的且比它高</strong>的发射站接收。计算出接受能量最多的发射站接受的能量为多少。</p>
+<h4 id="思路-3"><a href="#思路-3" class="headerlink" title="思路"></a>思路</h4><p>​    &nbsp; &nbsp; &nbsp; 维护一个单调递减栈，一个元素新加进来如果是大于栈顶元素的话，那么栈顶元素出栈，并给入栈元素加上能量值。如果不大于栈顶元素的话，就将栈顶元素加上发射能量，然后将元素入栈。</p>
+<h4 id="代码实现-3"><a href="#代码实现-3" class="headerlink" title="代码实现"></a>代码实现</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn=<span class="number">1000005</span>;</span><br><span class="line"><span class="keyword">int</span> n,h[maxn],v[maxn];</span><br><span class="line"><span class="keyword">int</span> <span class="built_in">stack</span>[maxn],top,ans;</span><br><span class="line"><span class="keyword">int</span> f[maxn];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;h[i],&amp;v[i]);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">while</span>(top&gt;=<span class="number">0</span>&amp;&amp;h[i]&gt;h[<span class="built_in">stack</span>[top]])</span><br><span class="line">		&#123;</span><br><span class="line">			f[i]+=v[<span class="built_in">stack</span>[top]];</span><br><span class="line">			top--;</span><br><span class="line">		&#125;</span><br><span class="line">		f[<span class="built_in">stack</span>[top]]+=v[i];</span><br><span class="line">		<span class="built_in">stack</span>[++top]=i;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) ans=<span class="built_in">max</span>(ans,f[i]);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d"</span>,ans);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="C-音乐会的等待"><a href="#C-音乐会的等待" class="headerlink" title="C. 音乐会的等待"></a>C. <a href="https://www.luogu.com.cn/problem/P1823" target="_blank" rel="noopener">音乐会的等待</a></h3><h4 id="题意-4"><a href="#题意-4" class="headerlink" title="题意"></a>题意</h4><p>​    &nbsp; &nbsp; &nbsp; 给出一段序列 $a$ 代表 $n$ 个人，在一个区间 $[l,r]$ 如果区间内没有大于 $min(a[i],a[r])$ 的那么两个人可以相互看到。问这个序列中有多少对人可以相互看到。</p>
+<h4 id="思路-4"><a href="#思路-4" class="headerlink" title="思路"></a>思路</h4><p>​    &nbsp; &nbsp; &nbsp; 我们可以维护一个单调递减栈，然后分情况讨论一下。</p>
+<ul>
+<li>如果要入栈元素大于当前元素，那么当前元素和入栈元素是可以相互看见的，因为这是找了左边区间第一个比它小的元素了，然后因为这是一个单调递减栈，所以我们可以一直出栈比入栈元素小的元素，可以发现这些都是可以互相看见的。而且最终的栈顶元素和要入栈元素也是可以看见的。</li>
+<li>如果入栈元素小于当前元素，他可以和栈顶元素看见，而不能和后面的人看见，因为栈顶元素挡住他了。</li>
+<li>如果入栈元素和当前元素高度相同，那么他们俩其实是等效的，如果有人比他们高，其实是可以直接看见两个，所以我们只需要将他们看成一个结构体，记录他们的数量和高度即可，每次统计的时候加上数量就行。</li>
+</ul>
+<h4 id="代码实现-4"><a href="#代码实现-4" class="headerlink" title="代码实现"></a>代码实现</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn=<span class="number">500005</span>;</span><br><span class="line"><span class="keyword">int</span> n;</span><br><span class="line"><span class="keyword">int</span> h[maxn];</span><br><span class="line">ll ans;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	ll cnt; <span class="comment">// num </span></span><br><span class="line">	ll p; <span class="comment">//height</span></span><br><span class="line">&#125;<span class="built_in">stack</span>[maxn];</span><br><span class="line"><span class="keyword">int</span> top;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"><span class="comment">//	freopen("test.in","r",stdin);</span></span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;h[i]);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		node temp;</span><br><span class="line">		temp.cnt=<span class="number">1</span>;</span><br><span class="line">		temp.p=h[i];</span><br><span class="line">		<span class="keyword">while</span>(top&gt;=<span class="number">0</span>&amp;&amp;h[i]&gt;<span class="built_in">stack</span>[top].p)</span><br><span class="line">		&#123;</span><br><span class="line">			ans+=<span class="built_in">stack</span>[top].cnt;</span><br><span class="line">			top--;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(h[i]==<span class="built_in">stack</span>[top].p)</span><br><span class="line">		&#123;</span><br><span class="line">			ans+=<span class="built_in">stack</span>[top].cnt;</span><br><span class="line">			temp.cnt+=<span class="built_in">stack</span>[top].cnt;</span><br><span class="line">			top--;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">stack</span>[++top].cnt=temp.cnt;</span><br><span class="line">		<span class="built_in">stack</span>[top].p=temp.p;</span><br><span class="line">		<span class="keyword">if</span>(top!=<span class="number">0</span>) ans+=<span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%lld"</span>,ans);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97-%E5%8D%95%E8%B0%83%E6%A0%88/" rel="tag"># 单调队列&单调栈</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/02/10/Codeforces-618/" rel="prev" title="Codeforces #618 (Div.2)">
+      <i class="fa fa-chevron-left"></i> Codeforces #618 (Div.2)
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#单调队列-Monotone-queue"><span class="nav-number">2.</span> <span class="nav-text">单调队列(Monotone queue)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#理解"><span class="nav-number">2.1.</span> <span class="nav-text">理解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#单调队列的应用"><span class="nav-number">2.2.</span> <span class="nav-text">单调队列的应用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#单调队列的一些例题"><span class="nav-number">2.3.</span> <span class="nav-text">单调队列的一些例题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#A-Sliding-Window"><span class="nav-number">2.3.1.</span> <span class="nav-text">A. Sliding Window</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题意"><span class="nav-number">2.3.1.1.</span> <span class="nav-text">题意</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#思路"><span class="nav-number">2.3.1.2.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#代码实现"><span class="nav-number">2.3.1.3.</span> <span class="nav-text">代码实现</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#B-Max-Sum-of-Max-K-sub-sequence"><span class="nav-number">2.3.2.</span> <span class="nav-text">B. Max Sum of Max-K-sub-sequence</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题意-1"><span class="nav-number">2.3.2.1.</span> <span class="nav-text">题意</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#思路-1"><span class="nav-number">2.3.2.2.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#代码实现-1"><span class="nav-number">2.3.2.3.</span> <span class="nav-text">代码实现</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#单调栈-Monotone-stack"><span class="nav-number">3.</span> <span class="nav-text">单调栈(Monotone stack)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#理解-1"><span class="nav-number">3.1.</span> <span class="nav-text">理解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#单调栈的应用"><span class="nav-number">3.2.</span> <span class="nav-text">单调栈的应用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#单调栈的一些例题"><span class="nav-number">3.3.</span> <span class="nav-text">单调栈的一些例题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#A-单调栈模板"><span class="nav-number">3.3.1.</span> <span class="nav-text">A. 单调栈模板</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题意-2"><span class="nav-number">3.3.1.1.</span> <span class="nav-text">题意</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#思路-2"><span class="nav-number">3.3.1.2.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#代码实现-2"><span class="nav-number">3.3.1.3.</span> <span class="nav-text">代码实现</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#B-发射站"><span class="nav-number">3.3.2.</span> <span class="nav-text">B. 发射站</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题意-3"><span class="nav-number">3.3.2.1.</span> <span class="nav-text">题意</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#思路-3"><span class="nav-number">3.3.2.2.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#代码实现-3"><span class="nav-number">3.3.2.3.</span> <span class="nav-text">代码实现</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#C-音乐会的等待"><span class="nav-number">3.3.3.</span> <span class="nav-text">C. 音乐会的等待</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题意-4"><span class="nav-number">3.3.3.1.</span> <span class="nav-text">题意</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#思路-4"><span class="nav-number">3.3.3.2.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#代码实现-4"><span class="nav-number">3.3.3.3.</span> <span class="nav-text">代码实现</span></a></li></ol></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Zs"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">Zs</p>
+  <div class="site-description" itemprop="description">我要月亮奔我而来</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">10</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/zzsqwq" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;zzsqwq" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:2459958352@qq.com" title="E-Mail → mailto:2459958352@qq.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://wpa.qq.com/msgrd?v=3&uin=2459958352&site=qq&menu=yes" title="QQ → http:&#x2F;&#x2F;wpa.qq.com&#x2F;msgrd?v&#x3D;3&amp;uin&#x3D;2459958352&amp;site&#x3D;qq&amp;menu&#x3D;yes" rel="noopener" target="_blank"><i class="fa fa-fw fa-qq"></i>QQ</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title">
+      <i class="fa fa-fw fa-link"></i>
+      Friends
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="http://jjhqwq.top/" title="http:&#x2F;&#x2F;jjhqwq.top" rel="noopener" target="_blank">JJHQAQ</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://phoenix-zh.cn/" title="http:&#x2F;&#x2F;phoenix-zh.cn&#x2F;" rel="noopener" target="_blank">phoenix-zh</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Zs</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    <span title="站点总字数">39k</span>
+</div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+<script type="text/x-mathjax-config">
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') {
+          next = next.nextSibling;
+        }
+        if (next && next.nodeName.toLowerCase() === 'br') {
+          next.parentNode.removeChild(next);
+        }
+      }
+    });
+  });
+
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
+      if (element.nodeName.toLowerCase() == 'li') {
+        element = element.parentNode;
+      }
+      element.classList.add('has-jax');
+    }
+  });
+</script>
+<script>
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML', () => {
+    MathJax.Hub.Typeset();
+  }, window.MathJax);
+</script>
+
+    
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el: '#valine-comments',
+      verify: false,
+      notify: false,
+      appId: 'a6dkHdYV1RplevIGxxoeKFD8-gzGzoHsz',
+      appKey: '9qrp8uHTJbPa70VspRUiFQML',
+      placeholder: "You can leave your feelings!",
+      avatar: 'mm',
+      meta: guest,
+      pageSize: '10' || 10,
+      visitor: true,
+      lang: '' || 'zh-cn',
+      path: location.pathname,
+      recordIP: false,
+      serverURLs: ''
+    });
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>
