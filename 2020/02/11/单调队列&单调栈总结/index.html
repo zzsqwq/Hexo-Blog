@@ -54,7 +54,7 @@
 <meta property="og:site_name" content="Zs&#39;s blog">
 <meta property="og:description" content="前言​     &amp;nbsp; &amp;nbsp; &amp;nbsp; 最近感觉遇到了好多单调队列和单调栈的问题，但是因为以前没学好，所以遇见了就一脸懵逼，然后绝对下决心来学一下。。感觉遇到啥都不会，这可咋办呐。。补不完的漏洞。">
 <meta property="article:published_time" content="2020-02-11T07:13:30.000Z">
-<meta property="article:modified_time" content="2020-02-11T12:52:43.892Z">
+<meta property="article:modified_time" content="2020-02-12T12:54:31.322Z">
 <meta property="article:author" content="Zs">
 <meta property="article:tag" content="单调队列&amp;单调栈">
 <meta name="twitter:card" content="summary">
@@ -223,10 +223,16 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2020-02-11 15:13:30 / 修改时间：20:52:43" itemprop="dateCreated datePublished" datetime="2020-02-11T15:13:30+08:00">2020-02-11</time>
+              <time title="创建时间：2020-02-11 15:13:30" itemprop="dateCreated datePublished" datetime="2020-02-11T15:13:30+08:00">2020-02-11</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-02-12 20:54:31" itemprop="dateModified" datetime="2020-02-12T20:54:31+08:00">2020-02-12</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
@@ -328,7 +334,7 @@
 </tr>
 <tr>
 <td>1，2</td>
-<td>2小于4，大于1，因此4出对，2入队</td>
+<td>2小于4，大于1，因此4出队，2入队</td>
 </tr>
 </tbody></table>
 <p>​    &nbsp; &nbsp; &nbsp; 根据上述例子不难看出，我们要入队的时候首先要确保队尾元素要比想要入队的元素小，然后才能入队，否则的话就一直循环让尾部元素出队，直到能够满足单调性为止。</p>
@@ -411,6 +417,18 @@
 <li>如果入栈元素和当前元素高度相同，那么他们俩其实是等效的，如果有人比他们高，其实是可以直接看见两个，所以我们只需要将他们看成一个结构体，记录他们的数量和高度即可，每次统计的时候加上数量就行。</li>
 </ul>
 <h4 id="代码实现-4"><a href="#代码实现-4" class="headerlink" title="代码实现"></a>代码实现</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn=<span class="number">500005</span>;</span><br><span class="line"><span class="keyword">int</span> n;</span><br><span class="line"><span class="keyword">int</span> h[maxn];</span><br><span class="line">ll ans;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	ll cnt; <span class="comment">// num </span></span><br><span class="line">	ll p; <span class="comment">//height</span></span><br><span class="line">&#125;<span class="built_in">stack</span>[maxn];</span><br><span class="line"><span class="keyword">int</span> top;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"><span class="comment">//	freopen("test.in","r",stdin);</span></span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;h[i]);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		node temp;</span><br><span class="line">		temp.cnt=<span class="number">1</span>;</span><br><span class="line">		temp.p=h[i];</span><br><span class="line">		<span class="keyword">while</span>(top&gt;=<span class="number">0</span>&amp;&amp;h[i]&gt;<span class="built_in">stack</span>[top].p)</span><br><span class="line">		&#123;</span><br><span class="line">			ans+=<span class="built_in">stack</span>[top].cnt;</span><br><span class="line">			top--;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(h[i]==<span class="built_in">stack</span>[top].p)</span><br><span class="line">		&#123;</span><br><span class="line">			ans+=<span class="built_in">stack</span>[top].cnt;</span><br><span class="line">			temp.cnt+=<span class="built_in">stack</span>[top].cnt;</span><br><span class="line">			top--;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">stack</span>[++top].cnt=temp.cnt;</span><br><span class="line">		<span class="built_in">stack</span>[top].p=temp.p;</span><br><span class="line">		<span class="keyword">if</span>(top!=<span class="number">0</span>) ans+=<span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%lld"</span>,ans);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><ul>
+<li><p><a href="https://endlesslethe.com/monotone-queue-and-stack-tutorial.html" target="_blank" rel="noopener">单调队列和单调栈详解</a></p>
+</li>
+<li><p><a href="https://blog.csdn.net/u013686535/article/details/76725379" target="_blank" rel="noopener">[SMOJ2116]诺诺的队列</a></p>
+</li>
+<li><p><a href="https://blog.csdn.net/dacc123/article/details/50545577" target="_blank" rel="noopener">一些关于单调队列和单调栈优化dp的实例</a></p>
+</li>
+</ul>
+
     </div>
 
     
@@ -431,7 +449,10 @@
     <a href="/2020/02/10/Codeforces-618/" rel="prev" title="Codeforces #618 (Div.2)">
       <i class="fa fa-chevron-left"></i> Codeforces #618 (Div.2)
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2020/02/12/dp%E7%BB%83%E4%B9%A0%E9%A2%98/" rel="next" title="dp习题练习">
+      dp习题练习 <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -492,7 +513,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#单调队列-Monotone-queue"><span class="nav-number">2.</span> <span class="nav-text">单调队列(Monotone queue)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#理解"><span class="nav-number">2.1.</span> <span class="nav-text">理解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#单调队列的应用"><span class="nav-number">2.2.</span> <span class="nav-text">单调队列的应用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#单调队列的一些例题"><span class="nav-number">2.3.</span> <span class="nav-text">单调队列的一些例题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#A-Sliding-Window"><span class="nav-number">2.3.1.</span> <span class="nav-text">A. Sliding Window</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题意"><span class="nav-number">2.3.1.1.</span> <span class="nav-text">题意</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#思路"><span class="nav-number">2.3.1.2.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#代码实现"><span class="nav-number">2.3.1.3.</span> <span class="nav-text">代码实现</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#B-Max-Sum-of-Max-K-sub-sequence"><span class="nav-number">2.3.2.</span> <span class="nav-text">B. Max Sum of Max-K-sub-sequence</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题意-1"><span class="nav-number">2.3.2.1.</span> <span class="nav-text">题意</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#思路-1"><span class="nav-number">2.3.2.2.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#代码实现-1"><span class="nav-number">2.3.2.3.</span> <span class="nav-text">代码实现</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#单调栈-Monotone-stack"><span class="nav-number">3.</span> <span class="nav-text">单调栈(Monotone stack)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#理解-1"><span class="nav-number">3.1.</span> <span class="nav-text">理解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#单调栈的应用"><span class="nav-number">3.2.</span> <span class="nav-text">单调栈的应用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#单调栈的一些例题"><span class="nav-number">3.3.</span> <span class="nav-text">单调栈的一些例题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#A-单调栈模板"><span class="nav-number">3.3.1.</span> <span class="nav-text">A. 单调栈模板</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题意-2"><span class="nav-number">3.3.1.1.</span> <span class="nav-text">题意</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#思路-2"><span class="nav-number">3.3.1.2.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#代码实现-2"><span class="nav-number">3.3.1.3.</span> <span class="nav-text">代码实现</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#B-发射站"><span class="nav-number">3.3.2.</span> <span class="nav-text">B. 发射站</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题意-3"><span class="nav-number">3.3.2.1.</span> <span class="nav-text">题意</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#思路-3"><span class="nav-number">3.3.2.2.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#代码实现-3"><span class="nav-number">3.3.2.3.</span> <span class="nav-text">代码实现</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#C-音乐会的等待"><span class="nav-number">3.3.3.</span> <span class="nav-text">C. 音乐会的等待</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题意-4"><span class="nav-number">3.3.3.1.</span> <span class="nav-text">题意</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#思路-4"><span class="nav-number">3.3.3.2.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#代码实现-4"><span class="nav-number">3.3.3.3.</span> <span class="nav-text">代码实现</span></a></li></ol></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#单调队列-Monotone-queue"><span class="nav-number">2.</span> <span class="nav-text">单调队列(Monotone queue)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#理解"><span class="nav-number">2.1.</span> <span class="nav-text">理解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#单调队列的应用"><span class="nav-number">2.2.</span> <span class="nav-text">单调队列的应用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#单调队列的一些例题"><span class="nav-number">2.3.</span> <span class="nav-text">单调队列的一些例题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#A-Sliding-Window"><span class="nav-number">2.3.1.</span> <span class="nav-text">A. Sliding Window</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题意"><span class="nav-number">2.3.1.1.</span> <span class="nav-text">题意</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#思路"><span class="nav-number">2.3.1.2.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#代码实现"><span class="nav-number">2.3.1.3.</span> <span class="nav-text">代码实现</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#B-Max-Sum-of-Max-K-sub-sequence"><span class="nav-number">2.3.2.</span> <span class="nav-text">B. Max Sum of Max-K-sub-sequence</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题意-1"><span class="nav-number">2.3.2.1.</span> <span class="nav-text">题意</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#思路-1"><span class="nav-number">2.3.2.2.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#代码实现-1"><span class="nav-number">2.3.2.3.</span> <span class="nav-text">代码实现</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#单调栈-Monotone-stack"><span class="nav-number">3.</span> <span class="nav-text">单调栈(Monotone stack)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#理解-1"><span class="nav-number">3.1.</span> <span class="nav-text">理解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#单调栈的应用"><span class="nav-number">3.2.</span> <span class="nav-text">单调栈的应用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#单调栈的一些例题"><span class="nav-number">3.3.</span> <span class="nav-text">单调栈的一些例题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#A-单调栈模板"><span class="nav-number">3.3.1.</span> <span class="nav-text">A. 单调栈模板</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题意-2"><span class="nav-number">3.3.1.1.</span> <span class="nav-text">题意</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#思路-2"><span class="nav-number">3.3.1.2.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#代码实现-2"><span class="nav-number">3.3.1.3.</span> <span class="nav-text">代码实现</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#B-发射站"><span class="nav-number">3.3.2.</span> <span class="nav-text">B. 发射站</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题意-3"><span class="nav-number">3.3.2.1.</span> <span class="nav-text">题意</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#思路-3"><span class="nav-number">3.3.2.2.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#代码实现-3"><span class="nav-number">3.3.2.3.</span> <span class="nav-text">代码实现</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#C-音乐会的等待"><span class="nav-number">3.3.3.</span> <span class="nav-text">C. 音乐会的等待</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题意-4"><span class="nav-number">3.3.3.1.</span> <span class="nav-text">题意</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#思路-4"><span class="nav-number">3.3.3.2.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#代码实现-4"><span class="nav-number">3.3.3.3.</span> <span class="nav-text">代码实现</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考链接"><span class="nav-number">4.</span> <span class="nav-text">参考链接</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -508,14 +529,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">10</span>
+          <span class="site-state-item-count">11</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-count">7</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
@@ -584,12 +605,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="站点总字数">40k</span>
+    <span title="站点总字数">46k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">1:07</span>
+    <span title="站点阅读时长">1:17</span>
 </div>
 
         
