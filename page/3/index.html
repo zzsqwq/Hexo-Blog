@@ -1,0 +1,1735 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('http://yoursite.com').hostname,
+    root: '/',
+    scheme: 'Muse',
+    version: '7.7.1',
+    exturl: false,
+    sidebar: {"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":true,"style":null},
+    back2top: {"enable":true,"sidebar":"ture","scrollpercent":true},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    comments: {"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
+  };
+</script> 
+
+
+  <meta name="description" content="我要月亮奔我而来">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Zs&#39;s blog">
+<meta property="og:url" content="http://yoursite.com/page/3/index.html">
+<meta property="og:site_name" content="Zs&#39;s blog">
+<meta property="og:description" content="我要月亮奔我而来">
+<meta property="article:author" content="Zs">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://yoursite.com/page/3/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: true,
+    isPost: false
+  };
+</script>
+
+  <title>Zs's blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Zs's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="搜索..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/10/%E5%AF%92%E5%81%87%E5%88%B7%E9%A2%98/Codeforces-618/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Zs">
+      <meta itemprop="description" content="我要月亮奔我而来">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Zs's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/02/10/%E5%AF%92%E5%81%87%E5%88%B7%E9%A2%98/Codeforces-618/" class="post-title-link" itemprop="url">Codeforces #618 (Div.2)</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-02-10 10:41:36" itemprop="dateCreated datePublished" datetime="2020-02-10T10:41:36+08:00">2020-02-10</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-02-11 21:09:31" itemprop="dateModified" datetime="2020-02-11T21:09:31+08:00">2020-02-11</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ACM/" itemprop="url" rel="index">
+                    <span itemprop="name">ACM</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2020/02/10/%E5%AF%92%E5%81%87%E5%88%B7%E9%A2%98/Codeforces-618/" class="post-meta-item leancloud_visitors" data-flag-title="Codeforces #618 (Div.2)" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2020/02/10/%E5%AF%92%E5%81%87%E5%88%B7%E9%A2%98/Codeforces-618/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/02/10/%E5%AF%92%E5%81%87%E5%88%B7%E9%A2%98/Codeforces-618/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>4.4k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>7 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="A-Non-zero"><a href="#A-Non-zero" class="headerlink" title="A. Non-zero"></a>A. <a href="https://codeforces.com/contest/1300/problem/A">Non-zero</a></h2><h3 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h3><p>​    &nbsp; &nbsp; &nbsp; 给出一段含有 $n$ 个数的序列 $a$ ，可以对其中任何数加一，问最少操作多少次让每一个数和序列和都不为0。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/02/10/%E5%AF%92%E5%81%87%E5%88%B7%E9%A2%98/Codeforces-618/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/09/%E8%83%8C%E5%8C%85%E8%BF%9B%E9%98%B6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Zs">
+      <meta itemprop="description" content="我要月亮奔我而来">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Zs's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/02/09/%E8%83%8C%E5%8C%85%E8%BF%9B%E9%98%B6/" class="post-title-link" itemprop="url">背包进阶</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-02-09 17:23:59" itemprop="dateCreated datePublished" datetime="2020-02-09T17:23:59+08:00">2020-02-09</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-02-11 21:10:58" itemprop="dateModified" datetime="2020-02-11T21:10:58+08:00">2020-02-11</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%83%8C%E5%8C%85/" itemprop="url" rel="index">
+                    <span itemprop="name">背包</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2020/02/09/%E8%83%8C%E5%8C%85%E8%BF%9B%E9%98%B6/" class="post-meta-item leancloud_visitors" data-flag-title="背包进阶" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2020/02/09/%E8%83%8C%E5%8C%85%E8%BF%9B%E9%98%B6/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/02/09/%E8%83%8C%E5%8C%85%E8%BF%9B%E9%98%B6/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>4.6k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>8 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="1-分组背包"><a href="#1-分组背包" class="headerlink" title="1. 分组背包"></a>1. <a href="https://www.luogu.com.cn/problem/P1757">分组背包</a></h3><hr>
+<h4 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h4><p>​    &nbsp; &nbsp; &nbsp; 在01背包基础上，将其中的物体分成 $k$ 组，每组内的物品相互冲突，即只能取其中一个，问最大价值。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/02/09/%E8%83%8C%E5%8C%85%E8%BF%9B%E9%98%B6/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/09/%E5%AF%92%E5%81%87%E5%88%B7%E9%A2%98/%E8%83%8C%E5%8C%85%E8%BF%9B%E9%98%B6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Zs">
+      <meta itemprop="description" content="我要月亮奔我而来">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Zs's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/02/09/%E5%AF%92%E5%81%87%E5%88%B7%E9%A2%98/%E8%83%8C%E5%8C%85%E8%BF%9B%E9%98%B6/" class="post-title-link" itemprop="url">背包进阶</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-02-09 17:23:59" itemprop="dateCreated datePublished" datetime="2020-02-09T17:23:59+08:00">2020-02-09</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-02-11 21:10:58" itemprop="dateModified" datetime="2020-02-11T21:10:58+08:00">2020-02-11</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%83%8C%E5%8C%85/" itemprop="url" rel="index">
+                    <span itemprop="name">背包</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2020/02/09/%E5%AF%92%E5%81%87%E5%88%B7%E9%A2%98/%E8%83%8C%E5%8C%85%E8%BF%9B%E9%98%B6/" class="post-meta-item leancloud_visitors" data-flag-title="背包进阶" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2020/02/09/%E5%AF%92%E5%81%87%E5%88%B7%E9%A2%98/%E8%83%8C%E5%8C%85%E8%BF%9B%E9%98%B6/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/02/09/%E5%AF%92%E5%81%87%E5%88%B7%E9%A2%98/%E8%83%8C%E5%8C%85%E8%BF%9B%E9%98%B6/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>4.6k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>8 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="1-分组背包"><a href="#1-分组背包" class="headerlink" title="1. 分组背包"></a>1. <a href="https://www.luogu.com.cn/problem/P1757">分组背包</a></h3><hr>
+<h4 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h4><p>​    &nbsp; &nbsp; &nbsp; 在01背包基础上，将其中的物体分成 $k$ 组，每组内的物品相互冲突，即只能取其中一个，问最大价值。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/02/09/%E5%AF%92%E5%81%87%E5%88%B7%E9%A2%98/%E8%83%8C%E5%8C%85%E8%BF%9B%E9%98%B6/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/08/%E4%B8%80%E4%BA%9B%E5%85%B3%E4%BA%8E%E8%83%8C%E5%8C%85%E7%9A%84%E9%A2%98/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Zs">
+      <meta itemprop="description" content="我要月亮奔我而来">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Zs's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/02/08/%E4%B8%80%E4%BA%9B%E5%85%B3%E4%BA%8E%E8%83%8C%E5%8C%85%E7%9A%84%E9%A2%98/" class="post-title-link" itemprop="url">一些关于背包的题</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-02-08 23:12:33" itemprop="dateCreated datePublished" datetime="2020-02-08T23:12:33+08:00">2020-02-08</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-02-11 21:12:43" itemprop="dateModified" datetime="2020-02-11T21:12:43+08:00">2020-02-11</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%83%8C%E5%8C%85/" itemprop="url" rel="index">
+                    <span itemprop="name">背包</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2020/02/08/%E4%B8%80%E4%BA%9B%E5%85%B3%E4%BA%8E%E8%83%8C%E5%8C%85%E7%9A%84%E9%A2%98/" class="post-meta-item leancloud_visitors" data-flag-title="一些关于背包的题" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2020/02/08/%E4%B8%80%E4%BA%9B%E5%85%B3%E4%BA%8E%E8%83%8C%E5%8C%85%E7%9A%84%E9%A2%98/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/02/08/%E4%B8%80%E4%BA%9B%E5%85%B3%E4%BA%8E%E8%83%8C%E5%8C%85%E7%9A%84%E9%A2%98/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>3.1k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>5 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>​    &nbsp; &nbsp; &nbsp; 今天跟着背包九讲把背包再学习一下，dd_engi大佬的背包九讲Github链接: <a href="https://github.com/tianyicui/pack">背包九讲</a></p>
+<hr>
+<h3 id="1-采药-01背包"><a href="#1-采药-01背包" class="headerlink" title="1. 采药(01背包)"></a>1. <a href="https://www.luogu.com.cn/problem/P1048">采药(01背包)</a></h3><hr>
+<h4 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h4><p>​    &nbsp; &nbsp; &nbsp; 有 $n$ 个价值为 $w_i$ ，体积为 $v_i$ 的物品，装入体积为 $V$ 的背包中，问能获得的最大为多少。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/02/08/%E4%B8%80%E4%BA%9B%E5%85%B3%E4%BA%8E%E8%83%8C%E5%8C%85%E7%9A%84%E9%A2%98/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/08/%E5%AF%92%E5%81%87%E5%88%B7%E9%A2%98/%E4%B8%80%E4%BA%9B%E5%85%B3%E4%BA%8E%E8%83%8C%E5%8C%85%E7%9A%84%E9%A2%98/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Zs">
+      <meta itemprop="description" content="我要月亮奔我而来">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Zs's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/02/08/%E5%AF%92%E5%81%87%E5%88%B7%E9%A2%98/%E4%B8%80%E4%BA%9B%E5%85%B3%E4%BA%8E%E8%83%8C%E5%8C%85%E7%9A%84%E9%A2%98/" class="post-title-link" itemprop="url">一些关于背包的题</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-02-08 23:12:33" itemprop="dateCreated datePublished" datetime="2020-02-08T23:12:33+08:00">2020-02-08</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-02-11 21:12:43" itemprop="dateModified" datetime="2020-02-11T21:12:43+08:00">2020-02-11</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%83%8C%E5%8C%85/" itemprop="url" rel="index">
+                    <span itemprop="name">背包</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2020/02/08/%E5%AF%92%E5%81%87%E5%88%B7%E9%A2%98/%E4%B8%80%E4%BA%9B%E5%85%B3%E4%BA%8E%E8%83%8C%E5%8C%85%E7%9A%84%E9%A2%98/" class="post-meta-item leancloud_visitors" data-flag-title="一些关于背包的题" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2020/02/08/%E5%AF%92%E5%81%87%E5%88%B7%E9%A2%98/%E4%B8%80%E4%BA%9B%E5%85%B3%E4%BA%8E%E8%83%8C%E5%8C%85%E7%9A%84%E9%A2%98/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/02/08/%E5%AF%92%E5%81%87%E5%88%B7%E9%A2%98/%E4%B8%80%E4%BA%9B%E5%85%B3%E4%BA%8E%E8%83%8C%E5%8C%85%E7%9A%84%E9%A2%98/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>3.1k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>5 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>​    &nbsp; &nbsp; &nbsp; 今天跟着背包九讲把背包再学习一下，dd_engi大佬的背包九讲Github链接: <a href="https://github.com/tianyicui/pack">背包九讲</a></p>
+<hr>
+<h3 id="1-采药-01背包"><a href="#1-采药-01背包" class="headerlink" title="1. 采药(01背包)"></a>1. <a href="https://www.luogu.com.cn/problem/P1048">采药(01背包)</a></h3><hr>
+<h4 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h4><p>​    &nbsp; &nbsp; &nbsp; 有 $n$ 个价值为 $w_i$ ，体积为 $v_i$ 的物品，装入体积为 $V$ 的背包中，问能获得的最大为多少。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/02/08/%E5%AF%92%E5%81%87%E5%88%B7%E9%A2%98/%E4%B8%80%E4%BA%9B%E5%85%B3%E4%BA%8E%E8%83%8C%E5%8C%85%E7%9A%84%E9%A2%98/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/07/%E5%9F%BA%E7%A1%80%E7%BA%BF%E6%80%A7dp%E4%BE%8B%E9%A2%98-2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Zs">
+      <meta itemprop="description" content="我要月亮奔我而来">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Zs's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/02/07/%E5%9F%BA%E7%A1%80%E7%BA%BF%E6%80%A7dp%E4%BE%8B%E9%A2%98-2/" class="post-title-link" itemprop="url">基础线性dp例题 #2</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-02-07 12:41:23" itemprop="dateCreated datePublished" datetime="2020-02-07T12:41:23+08:00">2020-02-07</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-02-12 20:59:58" itemprop="dateModified" datetime="2020-02-12T20:59:58+08:00">2020-02-12</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%9F%BA%E7%A1%80dp/" itemprop="url" rel="index">
+                    <span itemprop="name">基础dp</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2020/02/07/%E5%9F%BA%E7%A1%80%E7%BA%BF%E6%80%A7dp%E4%BE%8B%E9%A2%98-2/" class="post-meta-item leancloud_visitors" data-flag-title="基础线性dp例题 #2" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2020/02/07/%E5%9F%BA%E7%A1%80%E7%BA%BF%E6%80%A7dp%E4%BE%8B%E9%A2%98-2/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/02/07/%E5%9F%BA%E7%A1%80%E7%BA%BF%E6%80%A7dp%E4%BE%8B%E9%A2%98-2/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>4.5k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>8 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="1-石子归并"><a href="#1-石子归并" class="headerlink" title="1. 石子归并"></a>1. <a href="https://www.51nod.com/Challenge/Problem.html#problemId=1021">石子归并</a></h3><hr>
+<h4 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h4><p>​     &nbsp; &nbsp; &nbsp; $N$ 堆石子摆成一条线。现要将石子有次序地合并成一堆。规定每次只能选相邻的2堆石子合并成新的一堆，并将新的一堆石子数记为该次合并的代价。计算将 $N$ 堆石子合并成一堆的最小代价。</p>
+<hr>
+<h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>​    &nbsp; &nbsp; &nbsp; 很经典的区间dp例题，我们可以用 $dp[i][j]$ 来表示合并 $i\sim j$ 所需的最小代价，通过枚举中间的断点，来通过方程 $dp[i][j]=min(dp[i][j],dp[i][k]+dp[k+1][j]+cost[i][j])$  ，其中 $cost[i][j]$ 表示从 $i\sim j$ 的石子总数，通过前缀和很容易计算。在进行状态转移时需要前面状态已知，因为是枚举中间断点，所以断开区间的长度一定要小于原区间，因此在转移之前需要确保比他短的区间都已经达到了最小代价，因此我们可以通过枚举区间长度从 $2\sim N$ 来实现。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/02/07/%E5%9F%BA%E7%A1%80%E7%BA%BF%E6%80%A7dp%E4%BE%8B%E9%A2%98-2/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/07/%E5%AF%92%E5%81%87%E5%88%B7%E9%A2%98/%E5%9F%BA%E7%A1%80%E7%BA%BF%E6%80%A7dp%E4%BE%8B%E9%A2%98-2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Zs">
+      <meta itemprop="description" content="我要月亮奔我而来">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Zs's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/02/07/%E5%AF%92%E5%81%87%E5%88%B7%E9%A2%98/%E5%9F%BA%E7%A1%80%E7%BA%BF%E6%80%A7dp%E4%BE%8B%E9%A2%98-2/" class="post-title-link" itemprop="url">基础线性dp例题 #2</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-02-07 12:41:23" itemprop="dateCreated datePublished" datetime="2020-02-07T12:41:23+08:00">2020-02-07</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-02-12 20:59:58" itemprop="dateModified" datetime="2020-02-12T20:59:58+08:00">2020-02-12</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%9F%BA%E7%A1%80dp/" itemprop="url" rel="index">
+                    <span itemprop="name">基础dp</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2020/02/07/%E5%AF%92%E5%81%87%E5%88%B7%E9%A2%98/%E5%9F%BA%E7%A1%80%E7%BA%BF%E6%80%A7dp%E4%BE%8B%E9%A2%98-2/" class="post-meta-item leancloud_visitors" data-flag-title="基础线性dp例题 #2" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2020/02/07/%E5%AF%92%E5%81%87%E5%88%B7%E9%A2%98/%E5%9F%BA%E7%A1%80%E7%BA%BF%E6%80%A7dp%E4%BE%8B%E9%A2%98-2/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/02/07/%E5%AF%92%E5%81%87%E5%88%B7%E9%A2%98/%E5%9F%BA%E7%A1%80%E7%BA%BF%E6%80%A7dp%E4%BE%8B%E9%A2%98-2/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>4.5k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>8 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="1-石子归并"><a href="#1-石子归并" class="headerlink" title="1. 石子归并"></a>1. <a href="https://www.51nod.com/Challenge/Problem.html#problemId=1021">石子归并</a></h3><hr>
+<h4 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h4><p>​     &nbsp; &nbsp; &nbsp; $N$ 堆石子摆成一条线。现要将石子有次序地合并成一堆。规定每次只能选相邻的2堆石子合并成新的一堆，并将新的一堆石子数记为该次合并的代价。计算将 $N$ 堆石子合并成一堆的最小代价。</p>
+<hr>
+<h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>​    &nbsp; &nbsp; &nbsp; 很经典的区间dp例题，我们可以用 $dp[i][j]$ 来表示合并 $i\sim j$ 所需的最小代价，通过枚举中间的断点，来通过方程 $dp[i][j]=min(dp[i][j],dp[i][k]+dp[k+1][j]+cost[i][j])$  ，其中 $cost[i][j]$ 表示从 $i\sim j$ 的石子总数，通过前缀和很容易计算。在进行状态转移时需要前面状态已知，因为是枚举中间断点，所以断开区间的长度一定要小于原区间，因此在转移之前需要确保比他短的区间都已经达到了最小代价，因此我们可以通过枚举区间长度从 $2\sim N$ 来实现。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/02/07/%E5%AF%92%E5%81%87%E5%88%B7%E9%A2%98/%E5%9F%BA%E7%A1%80%E7%BA%BF%E6%80%A7dp%E4%BE%8B%E9%A2%98-2/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/06/%E5%9F%BA%E7%A1%80%E7%BA%BF%E6%80%A7dp%E4%BE%8B%E9%A2%98/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Zs">
+      <meta itemprop="description" content="我要月亮奔我而来">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Zs's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/02/06/%E5%9F%BA%E7%A1%80%E7%BA%BF%E6%80%A7dp%E4%BE%8B%E9%A2%98/" class="post-title-link" itemprop="url">基础线性dp例题</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-02-06 22:10:35" itemprop="dateCreated datePublished" datetime="2020-02-06T22:10:35+08:00">2020-02-06</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-02-11 21:11:25" itemprop="dateModified" datetime="2020-02-11T21:11:25+08:00">2020-02-11</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%9F%BA%E7%A1%80dp/" itemprop="url" rel="index">
+                    <span itemprop="name">基础dp</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2020/02/06/%E5%9F%BA%E7%A1%80%E7%BA%BF%E6%80%A7dp%E4%BE%8B%E9%A2%98/" class="post-meta-item leancloud_visitors" data-flag-title="基础线性dp例题" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2020/02/06/%E5%9F%BA%E7%A1%80%E7%BA%BF%E6%80%A7dp%E4%BE%8B%E9%A2%98/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/02/06/%E5%9F%BA%E7%A1%80%E7%BA%BF%E6%80%A7dp%E4%BE%8B%E9%A2%98/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>2.4k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>4 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><hr>
+<p>​    &nbsp; &nbsp; &nbsp; 某位大佬曾经说过，dp不会没问题，想不到状态转移方程没问题，多做题就会了。所以，我打算多刷点dp题。那么，先从基础刷起吧。</p>
+<h3 id="1-P1091-合唱队形"><a href="#1-P1091-合唱队形" class="headerlink" title="1. P1091 合唱队形"></a>1. <a href="https://www.luogu.com.cn/problem/P1091">P1091 合唱队形</a></h3><hr>
+<h4 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h4><p>​    &nbsp; &nbsp; &nbsp; 已知序列 $a$ 有 $n$ 个数，通过取出其中一些数可以使他满足严格的先增再减序列，问最少取出几个。</p>
+<hr>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/02/06/%E5%9F%BA%E7%A1%80%E7%BA%BF%E6%80%A7dp%E4%BE%8B%E9%A2%98/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/06/%E5%AF%92%E5%81%87%E5%88%B7%E9%A2%98/%E5%9F%BA%E7%A1%80%E7%BA%BF%E6%80%A7dp%E4%BE%8B%E9%A2%98/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Zs">
+      <meta itemprop="description" content="我要月亮奔我而来">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Zs's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/02/06/%E5%AF%92%E5%81%87%E5%88%B7%E9%A2%98/%E5%9F%BA%E7%A1%80%E7%BA%BF%E6%80%A7dp%E4%BE%8B%E9%A2%98/" class="post-title-link" itemprop="url">基础线性dp例题</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-02-06 22:10:35" itemprop="dateCreated datePublished" datetime="2020-02-06T22:10:35+08:00">2020-02-06</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-02-11 21:11:25" itemprop="dateModified" datetime="2020-02-11T21:11:25+08:00">2020-02-11</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%9F%BA%E7%A1%80dp/" itemprop="url" rel="index">
+                    <span itemprop="name">基础dp</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2020/02/06/%E5%AF%92%E5%81%87%E5%88%B7%E9%A2%98/%E5%9F%BA%E7%A1%80%E7%BA%BF%E6%80%A7dp%E4%BE%8B%E9%A2%98/" class="post-meta-item leancloud_visitors" data-flag-title="基础线性dp例题" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2020/02/06/%E5%AF%92%E5%81%87%E5%88%B7%E9%A2%98/%E5%9F%BA%E7%A1%80%E7%BA%BF%E6%80%A7dp%E4%BE%8B%E9%A2%98/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/02/06/%E5%AF%92%E5%81%87%E5%88%B7%E9%A2%98/%E5%9F%BA%E7%A1%80%E7%BA%BF%E6%80%A7dp%E4%BE%8B%E9%A2%98/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>2.4k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>4 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><hr>
+<p>​    &nbsp; &nbsp; &nbsp; 某位大佬曾经说过，dp不会没问题，想不到状态转移方程没问题，多做题就会了。所以，我打算多刷点dp题。那么，先从基础刷起吧。</p>
+<h3 id="1-P1091-合唱队形"><a href="#1-P1091-合唱队形" class="headerlink" title="1. P1091 合唱队形"></a>1. <a href="https://www.luogu.com.cn/problem/P1091">P1091 合唱队形</a></h3><hr>
+<h4 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h4><p>​    &nbsp; &nbsp; &nbsp; 已知序列 $a$ 有 $n$ 个数，通过取出其中一些数可以使他满足严格的先增再减序列，问最少取出几个。</p>
+<hr>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/02/06/%E5%AF%92%E5%81%87%E5%88%B7%E9%A2%98/%E5%9F%BA%E7%A1%80%E7%BA%BF%E6%80%A7dp%E4%BE%8B%E9%A2%98/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/05/Codeforces-617/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Zs">
+      <meta itemprop="description" content="我要月亮奔我而来">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Zs's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/02/05/Codeforces-617/" class="post-title-link" itemprop="url">Codeforces#617(Div.3)</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-02-05 20:24:07" itemprop="dateCreated datePublished" datetime="2020-02-05T20:24:07+08:00">2020-02-05</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-02-11 21:08:54" itemprop="dateModified" datetime="2020-02-11T21:08:54+08:00">2020-02-11</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ACM/" itemprop="url" rel="index">
+                    <span itemprop="name">ACM</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2020/02/05/Codeforces-617/" class="post-meta-item leancloud_visitors" data-flag-title="Codeforces#617(Div.3)" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2020/02/05/Codeforces-617/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/02/05/Codeforces-617/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>3.8k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>6 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="A-Array-with-Odd-Sum"><a href="#A-Array-with-Odd-Sum" class="headerlink" title="A. Array with Odd Sum"></a>A. <a href="https://codeforces.com/contest/1296/problem/A">Array with Odd Sum</a></h3><hr>
+<h4 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h4><p>​    &nbsp; &nbsp; &nbsp; 给出包含 <strong>n</strong> 个正整数的序列 <strong>a</strong> ，你可以把任何一个元素 $a_i$ ，赋值给另一个元素 $a_j$ ($i\neq j$) ，问通过任意此操作能否将序列 <strong>a</strong> 的和变为奇数。可以输出 <strong>YES</strong> ,不可以输入 <strong>NO</strong>.</p>
+<hr>
+<h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>​    &nbsp; &nbsp; &nbsp; 首先当起始和为奇数的时候，就直接可输出 <strong>YES</strong> 了，如果是偶数的话，我们可以发现，如果序列元素中同时包含奇数和偶数，那么就是可以的，否则不可以。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/02/05/Codeforces-617/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+  </div>
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Zs"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">Zs</p>
+  <div class="site-description" itemprop="description">我要月亮奔我而来</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">37</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/zzsqwq" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;zzsqwq" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:2459958352@qq.com" title="E-Mail → mailto:2459958352@qq.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://wpa.qq.com/msgrd?v=3&uin=2459958352&site=qq&menu=yes" title="QQ → http:&#x2F;&#x2F;wpa.qq.com&#x2F;msgrd?v&#x3D;3&amp;uin&#x3D;2459958352&amp;site&#x3D;qq&amp;menu&#x3D;yes" rel="noopener" target="_blank"><i class="fa fa-fw fa-qq"></i>QQ</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title">
+      <i class="fa fa-fw fa-link"></i>
+      Friends
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="http://jjhqwq.top/" title="http:&#x2F;&#x2F;jjhqwq.top" rel="noopener" target="_blank">JJHQAQ</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://phoenix-zh.cn/" title="http:&#x2F;&#x2F;phoenix-zh.cn&#x2F;" rel="noopener" target="_blank">phoenix-zh</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Zs</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    <span title="站点总字数">151k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">4:12</span>
+</div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+<script>
+if (document.querySelectorAll('pre.mermaid').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js', () => {
+    mermaid.initialize({
+      theme: 'forest',
+      logLevel: 3,
+      flowchart: { curve: 'linear' },
+      gantt: { axisFormat: '%m/%d/%Y' },
+      sequence: { actorMargin: 50 }
+    });
+  }, window.mermaid);
+}
+</script>
+
+
+  
+
+  
+      
+<script type="text/x-mathjax-config">
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') {
+          next = next.nextSibling;
+        }
+        if (next && next.nodeName.toLowerCase() === 'br') {
+          next.parentNode.removeChild(next);
+        }
+      }
+    });
+  });
+
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
+      if (element.nodeName.toLowerCase() == 'li') {
+        element = element.parentNode;
+      }
+      element.classList.add('has-jax');
+    }
+  });
+</script>
+<script>
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML', () => {
+    MathJax.Hub.Typeset();
+  }, window.MathJax);
+</script>
+
+    
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el: '#valine-comments',
+      verify: false,
+      notify: false,
+      appId: 'a6dkHdYV1RplevIGxxoeKFD8-gzGzoHsz',
+      appKey: '9qrp8uHTJbPa70VspRUiFQML',
+      placeholder: "Please leave your email address above to ensure I can contact you!",
+      avatar: 'identicon',
+      meta: guest,
+      pageSize: '10' || 10,
+      visitor: true,
+      lang: '' || 'zh-cn',
+      path: location.pathname,
+      recordIP: true,
+      serverURLs: ''
+    });
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>

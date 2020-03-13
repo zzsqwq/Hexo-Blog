@@ -293,7 +293,7 @@
       
         <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><hr>
 <p>​    &nbsp; &nbsp; &nbsp; 某位大佬曾经说过，dp不会没问题，想不到状态转移方程没问题，多做题就会了。所以，我打算多刷点dp题。那么，先从基础刷起吧。</p>
-<h3 id="1-P1091-合唱队形"><a href="#1-P1091-合唱队形" class="headerlink" title="1. P1091 合唱队形"></a>1. <a href="https://www.luogu.com.cn/problem/P1091" target="_blank" rel="noopener">P1091 合唱队形</a></h3><hr>
+<h3 id="1-P1091-合唱队形"><a href="#1-P1091-合唱队形" class="headerlink" title="1. P1091 合唱队形"></a>1. <a href="https://www.luogu.com.cn/problem/P1091">P1091 合唱队形</a></h3><hr>
 <h4 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h4><p>​    &nbsp; &nbsp; &nbsp; 已知序列 $a$ 有 $n$ 个数，通过取出其中一些数可以使他满足严格的先增再减序列，问最少取出几个。</p>
 <hr>
 <a id="more"></a> 
@@ -303,7 +303,7 @@
 <h4 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn=<span class="number">105</span>;</span><br><span class="line"><span class="keyword">int</span> n;</span><br><span class="line"><span class="keyword">int</span> a[maxn],g[maxn],l[maxn];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;a[i]);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;i;j++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(a[i]&gt;a[j]) g[i]=<span class="built_in">max</span>(g[i],g[j]+<span class="number">1</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=n;i&gt;=<span class="number">1</span>;i--)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=n+<span class="number">1</span>;j&gt;i;j--)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(a[i]&gt;a[j]) l[i]=<span class="built_in">max</span>(l[i],l[j]+<span class="number">1</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">int</span> maxout=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		maxout=<span class="built_in">max</span>(maxout,g[i]+l[i]<span class="number">-1</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d"</span>,n-maxout);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <hr>
-<h3 id="2-P1280-尼克的任务"><a href="#2-P1280-尼克的任务" class="headerlink" title="2. P1280 尼克的任务"></a>2. <a href="https://www.luogu.com.cn/problem/P1280" target="_blank" rel="noopener">P1280 尼克的任务</a></h3><hr>
+<h3 id="2-P1280-尼克的任务"><a href="#2-P1280-尼克的任务" class="headerlink" title="2. P1280 尼克的任务"></a>2. <a href="https://www.luogu.com.cn/problem/P1280">P1280 尼克的任务</a></h3><hr>
 <h4 id="题意-1"><a href="#题意-1" class="headerlink" title="题意"></a>题意</h4><p>​    &nbsp; &nbsp; &nbsp; 尼克的一个工作日为 $n$ 分钟，从第一分钟开始到第 $n$ 分钟结束。当尼克到达单位后他就开始干活。如果在同一时刻有多个任务需要完成，尼克可以任选其中的一个来做，而其余的则由他的同事完成，反之如果只有一个任务，则该任务必需由尼克去完成，假如某些任务开始时刻尼克正在工作，则这些任务也由尼克的同事完成。如果某任务于第 $p$ 分钟开始，持续时间为 $t$ 分钟，则该任务将在第 $p+t-1$ 分钟结束。（实在不会总结题意，就直接复制过来了）</p>
 <hr>
 <h4 id="思路-1"><a href="#思路-1" class="headerlink" title="思路"></a>思路</h4><p>​    &nbsp; &nbsp; &nbsp; 我们可以设 $f[i]$ 为时间从 $i\sim n$ 所能获得最长空闲时间，最终 $f[1]$ 对应的就是答案。假设在这个 $i$ 分钟有 $k[i]$ 个任务可以，那么我们可以分以下情况转移</p>
@@ -336,11 +336,11 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2020/02/05/Codeforces-617/" rel="prev" title="Codeforces#617(Div.3)">
-      <i class="fa fa-chevron-left"></i> Codeforces#617(Div.3)
+    <a href="/2020/02/06/%E5%AF%92%E5%81%87%E5%88%B7%E9%A2%98/%E5%9F%BA%E7%A1%80%E7%BA%BF%E6%80%A7dp%E4%BE%8B%E9%A2%98/" rel="prev" title="基础线性dp例题">
+      <i class="fa fa-chevron-left"></i> 基础线性dp例题
     </a></div>
       <div class="post-nav-item">
-    <a href="/2020/02/07/%E5%9F%BA%E7%A1%80%E7%BA%BF%E6%80%A7dp%E4%BE%8B%E9%A2%98-2/" rel="next" title="基础线性dp例题 #2">
+    <a href="/2020/02/07/%E5%AF%92%E5%81%87%E5%88%B7%E9%A2%98/%E5%9F%BA%E7%A1%80%E7%BA%BF%E6%80%A7dp%E4%BE%8B%E9%A2%98-2/" rel="next" title="基础线性dp例题 #2">
       基础线性dp例题 #2 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
@@ -419,20 +419,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">18</span>
+          <span class="site-state-item-count">37</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-count">9</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-count">8</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -495,12 +495,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="站点总字数">75k</span>
+    <span title="站点总字数">151k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">2:05</span>
+    <span title="站点阅读时长">4:12</span>
 </div>
 
         
@@ -581,6 +581,19 @@
 
 
 
+<script>
+if (document.querySelectorAll('pre.mermaid').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js', () => {
+    mermaid.initialize({
+      theme: 'forest',
+      logLevel: 3,
+      flowchart: { curve: 'linear' },
+      gantt: { axisFormat: '%m/%d/%Y' },
+      sequence: { actorMargin: 50 }
+    });
+  }, window.mermaid);
+}
+</script>
 
 
   

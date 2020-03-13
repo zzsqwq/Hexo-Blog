@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('http://yoursite.com').hostname,
+    root: '/',
+    scheme: 'Muse',
+    version: '7.7.1',
+    exturl: false,
+    sidebar: {"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":true,"style":null},
+    back2top: {"enable":true,"sidebar":"ture","scrollpercent":true},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    comments: {"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
+  };
+</script> 
+
+
+  <meta name="description" content="1. 石子归并 题意​     &amp;nbsp; &amp;nbsp; &amp;nbsp; $N$ 堆石子摆成一条线。现要将石子有次序地合并成一堆。规定每次只能选相邻的2堆石子合并成新的一堆，并将新的一堆石子数记为该次合并的代价。计算将 $N$ 堆石子合并成一堆的最小代价。  思路​    &amp;nbsp; &amp;nbsp; &amp;nbsp; 很经典的区间dp例题，我们可以用 $dp[i][j]$ 来表示合并 $i\sim j">
+<meta property="og:type" content="article">
+<meta property="og:title" content="基础线性dp例题 #2">
+<meta property="og:url" content="http://yoursite.com/2020/02/07/%E5%AF%92%E5%81%87%E5%88%B7%E9%A2%98/%E5%9F%BA%E7%A1%80%E7%BA%BF%E6%80%A7dp%E4%BE%8B%E9%A2%98-2/index.html">
+<meta property="og:site_name" content="Zs&#39;s blog">
+<meta property="og:description" content="1. 石子归并 题意​     &amp;nbsp; &amp;nbsp; &amp;nbsp; $N$ 堆石子摆成一条线。现要将石子有次序地合并成一堆。规定每次只能选相邻的2堆石子合并成新的一堆，并将新的一堆石子数记为该次合并的代价。计算将 $N$ 堆石子合并成一堆的最小代价。  思路​    &amp;nbsp; &amp;nbsp; &amp;nbsp; 很经典的区间dp例题，我们可以用 $dp[i][j]$ 来表示合并 $i\sim j">
+<meta property="article:published_time" content="2020-02-07T04:41:23.000Z">
+<meta property="article:modified_time" content="2020-02-12T12:59:58.991Z">
+<meta property="article:author" content="Zs">
+<meta property="article:tag" content="dp">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://yoursite.com/2020/02/07/%E5%AF%92%E5%81%87%E5%88%B7%E9%A2%98/%E5%9F%BA%E7%A1%80%E7%BA%BF%E6%80%A7dp%E4%BE%8B%E9%A2%98-2/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true
+  };
+</script>
+
+  <title>基础线性dp例题 #2 | Zs's blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Zs's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="搜索..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/07/%E5%AF%92%E5%81%87%E5%88%B7%E9%A2%98/%E5%9F%BA%E7%A1%80%E7%BA%BF%E6%80%A7dp%E4%BE%8B%E9%A2%98-2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Zs">
+      <meta itemprop="description" content="我要月亮奔我而来">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Zs's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          基础线性dp例题 #2
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-02-07 12:41:23" itemprop="dateCreated datePublished" datetime="2020-02-07T12:41:23+08:00">2020-02-07</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-02-12 20:59:58" itemprop="dateModified" datetime="2020-02-12T20:59:58+08:00">2020-02-12</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%9F%BA%E7%A1%80dp/" itemprop="url" rel="index">
+                    <span itemprop="name">基础dp</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2020/02/07/%E5%AF%92%E5%81%87%E5%88%B7%E9%A2%98/%E5%9F%BA%E7%A1%80%E7%BA%BF%E6%80%A7dp%E4%BE%8B%E9%A2%98-2/" class="post-meta-item leancloud_visitors" data-flag-title="基础线性dp例题 #2" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2020/02/07/%E5%AF%92%E5%81%87%E5%88%B7%E9%A2%98/%E5%9F%BA%E7%A1%80%E7%BA%BF%E6%80%A7dp%E4%BE%8B%E9%A2%98-2/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/02/07/%E5%AF%92%E5%81%87%E5%88%B7%E9%A2%98/%E5%9F%BA%E7%A1%80%E7%BA%BF%E6%80%A7dp%E4%BE%8B%E9%A2%98-2/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>4.5k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>8 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h3 id="1-石子归并"><a href="#1-石子归并" class="headerlink" title="1. 石子归并"></a>1. <a href="https://www.51nod.com/Challenge/Problem.html#problemId=1021">石子归并</a></h3><hr>
+<h4 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h4><p>​     &nbsp; &nbsp; &nbsp; $N$ 堆石子摆成一条线。现要将石子有次序地合并成一堆。规定每次只能选相邻的2堆石子合并成新的一堆，并将新的一堆石子数记为该次合并的代价。计算将 $N$ 堆石子合并成一堆的最小代价。</p>
+<hr>
+<h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>​    &nbsp; &nbsp; &nbsp; 很经典的区间dp例题，我们可以用 $dp[i][j]$ 来表示合并 $i\sim j$ 所需的最小代价，通过枚举中间的断点，来通过方程 $dp[i][j]=min(dp[i][j],dp[i][k]+dp[k+1][j]+cost[i][j])$  ，其中 $cost[i][j]$ 表示从 $i\sim j$ 的石子总数，通过前缀和很容易计算。在进行状态转移时需要前面状态已知，因为是枚举中间断点，所以断开区间的长度一定要小于原区间，因此在转移之前需要确保比他短的区间都已经达到了最小代价，因此我们可以通过枚举区间长度从 $2\sim N$ 来实现。</p>
+<a id="more"></a>
+
+<hr>
+<h4 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> inf=<span class="number">1000005</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn=<span class="number">105</span>;</span><br><span class="line"><span class="keyword">int</span> n;</span><br><span class="line"><span class="keyword">int</span> sum[maxn],a[maxn];</span><br><span class="line"><span class="keyword">int</span> dp[maxn][maxn];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;a[i]);</span><br><span class="line">		sum[i]=sum[i<span class="number">-1</span>]+a[i];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) dp[i][i]=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> p=<span class="number">2</span>;p&lt;=n;p++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n-p+<span class="number">1</span>;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">int</span> j=i+p<span class="number">-1</span>;</span><br><span class="line">			dp[i][j]=inf;</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> k=i;k&lt;j;k++)</span><br><span class="line">			&#123;</span><br><span class="line">				dp[i][j]=<span class="built_in">min</span>(dp[i][j],dp[i][k]+dp[k+<span class="number">1</span>][j]+sum[j]-sum[i<span class="number">-1</span>]);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d"</span>,dp[<span class="number">1</span>][n]);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="2-P1880-NOI1995-石子合并"><a href="#2-P1880-NOI1995-石子合并" class="headerlink" title="2. P1880 [NOI1995]石子合并"></a>2. <a href="https://www.luogu.com.cn/problem/P1880">P1880 [NOI1995]石子合并</a></h3><hr>
+<h4 id="题意-1"><a href="#题意-1" class="headerlink" title="题意"></a>题意</h4><p>​    &nbsp; &nbsp; &nbsp; $N$ 堆石子摆成一个环。现要将石子有次序地合并成一堆。规定每次只能选相邻的2堆石子合并成新的一堆，并将新的一堆石子数记为该次合并的代价。计算将 $N$ 堆石子合并成一堆的最小代价和最大代价。</p>
+<hr>
+<h4 id="思路-1"><a href="#思路-1" class="headerlink" title="思路"></a>思路</h4><p>​    &nbsp; &nbsp; &nbsp; 这个题和上个题只有两个地方不同，一个是从线到环，一个是同时求最大和最小代价。害，其实这样也没变什么东西，也是跟上面一样，枚举区间长度和切割点。我们可以把一个环想象成一个链，如果这个环是由 N 个元素构成，那么这个链就由 N+N 个元素构成，这么这样就能确保你每次枚举区间的时候能取到合法的值，好比你要可以合并最后一个和第一个，那么就是对应的  $dp[n][n]+dp[n+1][n+1]+cost[n][n+1]$  。不过这样最后寻找答案的时候肯定不只是 $dp[i][n]$ 了，你要从 $dp[1][n]\sim dp[n][n*2]$ 中寻找最优的答案。同时求最大和最小代价就直接开两个数组记录就可以了。</p>
+<hr>
+<h4 id="代码实现-1"><a href="#代码实现-1" class="headerlink" title="代码实现"></a>代码实现</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> inf=<span class="number">1000005</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn=<span class="number">105</span>;</span><br><span class="line"><span class="keyword">int</span> n;</span><br><span class="line"><span class="keyword">int</span> sum[maxn&lt;&lt;<span class="number">1</span>],a[maxn&lt;&lt;<span class="number">1</span>];</span><br><span class="line"><span class="keyword">int</span> ansmax,ansmin=<span class="number">12345678</span>;</span><br><span class="line"><span class="keyword">int</span> dp[maxn&lt;&lt;<span class="number">1</span>][maxn&lt;&lt;<span class="number">1</span>],f[maxn&lt;&lt;<span class="number">1</span>][maxn&lt;&lt;<span class="number">1</span>]; <span class="comment">//later is max , fromer is min </span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;a[i]);</span><br><span class="line">		a[i+n]=a[i];</span><br><span class="line">		sum[i]=sum[i<span class="number">-1</span>]+a[i];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=n+<span class="number">1</span>;i&lt;=<span class="number">2</span>*n;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		sum[i]=sum[i<span class="number">-1</span>]+a[i];</span><br><span class="line">	 &#125; </span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n*<span class="number">2</span>;i++) dp[i][i]=f[i][i]=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> p=<span class="number">2</span>;p&lt;=n;p++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=<span class="number">2</span>*n-p+<span class="number">1</span>;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">int</span> j=i+p<span class="number">-1</span>;</span><br><span class="line">			dp[i][j]=inf;</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> k=i;k&lt;j;k++)</span><br><span class="line">			&#123;</span><br><span class="line">				dp[i][j]=<span class="built_in">min</span>(dp[i][j],dp[i][k]+dp[k+<span class="number">1</span>][j]+sum[j]-sum[i<span class="number">-1</span>]);</span><br><span class="line">				f[i][j]=<span class="built_in">max</span>(f[i][j],f[i][k]+f[k+<span class="number">1</span>][j]+sum[j]-sum[i<span class="number">-1</span>]);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) ansmax=<span class="built_in">max</span>(ansmax,f[i][i+n<span class="number">-1</span>]);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) ansmin=<span class="built_in">min</span>(ansmin,dp[i][i+n<span class="number">-1</span>]);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d\n%d"</span>,ansmin,ansmax);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="3-P1140-相似基因"><a href="#3-P1140-相似基因" class="headerlink" title="3. P1140 相似基因"></a>3. <a href="https://www.luogu.com.cn/problemnew/solution/P1140">P1140 相似基因</a></h3><hr>
+<h4 id="题意-2"><a href="#题意-2" class="headerlink" title="题意"></a>题意</h4><p>​    &nbsp; &nbsp; &nbsp; 有 $A : T :C : G $ 四种碱基，他们之间可以两两配对，特殊的，一个碱基也可以和空碱基配对，但是空碱基和空碱基配对是不被允许的，当不同的碱基间两两配对时，会具有一定的相似度，问给定两段序列 $s$，$t$ 能获得的最大相似度是多少。</p>
+<ul>
+<li>碱基配对时相似度的定义如下</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="center"></th>
+<th align="center">A</th>
+<th align="center">C</th>
+<th align="center">G</th>
+<th align="center">T</th>
+<th align="center">空</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">A</td>
+<td align="center">5</td>
+<td align="center">-1</td>
+<td align="center">-2</td>
+<td align="center">-1</td>
+<td align="center">-3</td>
+</tr>
+<tr>
+<td align="center">C</td>
+<td align="center">-1</td>
+<td align="center">5</td>
+<td align="center">-3</td>
+<td align="center">-2</td>
+<td align="center">-4</td>
+</tr>
+<tr>
+<td align="center">G</td>
+<td align="center">-2</td>
+<td align="center">-3</td>
+<td align="center">5</td>
+<td align="center">-2</td>
+<td align="center">-2</td>
+</tr>
+<tr>
+<td align="center">T</td>
+<td align="center">-1</td>
+<td align="center">-2</td>
+<td align="center">-2</td>
+<td align="center">5</td>
+<td align="center">-1</td>
+</tr>
+<tr>
+<td align="center">空</td>
+<td align="center">-3</td>
+<td align="center">-4</td>
+<td align="center">-2</td>
+<td align="center">-1</td>
+<td align="center">非法</td>
+</tr>
+</tbody></table>
+<hr>
+<h4 id="思路-2"><a href="#思路-2" class="headerlink" title="思路"></a>思路</h4><p>​    &nbsp; &nbsp; &nbsp; 首先用一个二维数组来存储对应的相似值表。因为对应的两段序列，我感觉这种题一般都是用 $dp[i][j]$ 来表示第一段序列从 $1\sim i$ 对应第二段序列 $1\sim j$ 所能获得的最大相似度，那么思考一下状态转移。</p>
+<ul>
+<li><p>首先可以是碱基对空碱基，这时候 $s$ 要匹配碱基，$t$ 中匹配空碱基，这样的话就从应该从 $dp[i-1][j] $转移过来，对应的转移方程为  $dp[i][j]=max(dp[i][j],dp[i-1][j]+map[s[i]][blank])$</p>
+</li>
+<li><p>也可以是空碱基对碱基，对应的转移方程为$dp[i][j]=max(dp[i][j],dp[i][j-1]+map[blank][t[j]])$</p>
+</li>
+<li><p>也可以是碱基对碱基，对应的转移方程为$dp[i][j]=max(dp[i][j],dp[i-1][j-1]+map[s[i]][t[j]])$</p>
+</li>
+</ul>
+<p>​    &nbsp; &nbsp; &nbsp;  害，想到这里我又突然懵逼了，我在想是否能确保两个序列所有的碱基都被用到，仔细想想确实是可以的，因为状态定义的就是用了前 $i$ 个碱基和前 $j$ 个碱基所获得的最大相似度。最后我们就处理一下边界就可以了，边界我们可以发现是 $dp[i][0]$ 和 $dp[0][i]$ ，这就是可以对应着空碱基和相应 $s[i]$ 和 $t[i]$ 的碱基，因此只需要用循环依次转移一遍就可以了。</p>
+<hr>
+<h4 id="代码实现-2"><a href="#代码实现-2" class="headerlink" title="代码实现"></a>代码实现</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> inf=<span class="number">1000005</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn=<span class="number">105</span>;</span><br><span class="line"><span class="keyword">int</span> n,m;</span><br><span class="line"><span class="keyword">int</span> a[maxn],b[maxn];</span><br><span class="line"><span class="keyword">char</span> s[maxn],c[maxn];</span><br><span class="line"><span class="keyword">int</span> dp[maxn][maxn];</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> <span class="built_in">map</span>[<span class="number">5</span>][<span class="number">5</span>]=&#123;&#123;<span class="number">5</span>,<span class="number">-1</span>,<span class="number">-2</span>,<span class="number">-1</span>,<span class="number">-3</span>&#125;,</span><br><span class="line">					 &#123;<span class="number">-1</span>,<span class="number">5</span>,<span class="number">-3</span>,<span class="number">-2</span>,<span class="number">-4</span>&#125;,</span><br><span class="line">					 &#123;<span class="number">-2</span>,<span class="number">-3</span>,<span class="number">5</span>,<span class="number">-2</span>,<span class="number">-2</span>&#125;,</span><br><span class="line">					 &#123;<span class="number">-1</span>,<span class="number">-2</span>,<span class="number">-2</span>,<span class="number">5</span>,<span class="number">-1</span>&#125;,</span><br><span class="line">					 &#123;<span class="number">-3</span>,<span class="number">-4</span>,<span class="number">-2</span>,<span class="number">-1</span>,<span class="number">0</span>&#125;&#125;; <span class="comment">//A 0 C 1 G 2 T 3 blank 4</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d%s%d%s"</span>,&amp;n,s+<span class="number">1</span>,&amp;m,c+<span class="number">1</span>);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(s[i]==<span class="string">'A'</span>) a[i]=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">if</span>(s[i]==<span class="string">'C'</span>) a[i]=<span class="number">1</span>;</span><br><span class="line">		<span class="keyword">if</span>(s[i]==<span class="string">'G'</span>) a[i]=<span class="number">2</span>;</span><br><span class="line">		<span class="keyword">if</span>(s[i]==<span class="string">'T'</span>) a[i]=<span class="number">3</span>;</span><br><span class="line">	&#125; </span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(c[i]==<span class="string">'A'</span>) b[i]=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">if</span>(c[i]==<span class="string">'C'</span>) b[i]=<span class="number">1</span>;</span><br><span class="line">		<span class="keyword">if</span>(c[i]==<span class="string">'G'</span>) b[i]=<span class="number">2</span>;</span><br><span class="line">		<span class="keyword">if</span>(c[i]==<span class="string">'T'</span>) b[i]=<span class="number">3</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) dp[i][<span class="number">0</span>]=dp[i<span class="number">-1</span>][<span class="number">0</span>]+<span class="built_in">map</span>[a[i]][<span class="number">4</span>];</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++) dp[<span class="number">0</span>][i]=dp[<span class="number">0</span>][i<span class="number">-1</span>]+<span class="built_in">map</span>[<span class="number">4</span>][b[i]];</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=m;j++)</span><br><span class="line">		&#123;</span><br><span class="line">			dp[i][j]=-inf;</span><br><span class="line">			dp[i][j]=<span class="built_in">max</span>(dp[i][j],dp[i][j<span class="number">-1</span>]+<span class="built_in">map</span>[<span class="number">4</span>][b[j]]);</span><br><span class="line">			dp[i][j]=<span class="built_in">max</span>(dp[i][j],dp[i<span class="number">-1</span>][j]+<span class="built_in">map</span>[a[i]][<span class="number">4</span>]);</span><br><span class="line">			dp[i][j]=<span class="built_in">max</span>(dp[i][j],dp[i<span class="number">-1</span>][j<span class="number">-1</span>]+<span class="built_in">map</span>[a[i]][b[j]]);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d"</span>,dp[n][m]);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/dp/" rel="tag"># dp</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/02/06/%E5%9F%BA%E7%A1%80%E7%BA%BF%E6%80%A7dp%E4%BE%8B%E9%A2%98/" rel="prev" title="基础线性dp例题">
+      <i class="fa fa-chevron-left"></i> 基础线性dp例题
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/02/07/%E5%9F%BA%E7%A1%80%E7%BA%BF%E6%80%A7dp%E4%BE%8B%E9%A2%98-2/" rel="next" title="基础线性dp例题 #2">
+      基础线性dp例题 #2 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-石子归并"><span class="nav-number">1.</span> <span class="nav-text">1. 石子归并</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题意"><span class="nav-number">1.1.</span> <span class="nav-text">题意</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#思路"><span class="nav-number">1.2.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#代码实现"><span class="nav-number">1.3.</span> <span class="nav-text">代码实现</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-P1880-NOI1995-石子合并"><span class="nav-number">2.</span> <span class="nav-text">2. P1880 [NOI1995]石子合并</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题意-1"><span class="nav-number">2.1.</span> <span class="nav-text">题意</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#思路-1"><span class="nav-number">2.2.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#代码实现-1"><span class="nav-number">2.3.</span> <span class="nav-text">代码实现</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-P1140-相似基因"><span class="nav-number">3.</span> <span class="nav-text">3. P1140 相似基因</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题意-2"><span class="nav-number">3.1.</span> <span class="nav-text">题意</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#思路-2"><span class="nav-number">3.2.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#代码实现-2"><span class="nav-number">3.3.</span> <span class="nav-text">代码实现</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Zs"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">Zs</p>
+  <div class="site-description" itemprop="description">我要月亮奔我而来</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">37</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/zzsqwq" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;zzsqwq" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:2459958352@qq.com" title="E-Mail → mailto:2459958352@qq.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://wpa.qq.com/msgrd?v=3&uin=2459958352&site=qq&menu=yes" title="QQ → http:&#x2F;&#x2F;wpa.qq.com&#x2F;msgrd?v&#x3D;3&amp;uin&#x3D;2459958352&amp;site&#x3D;qq&amp;menu&#x3D;yes" rel="noopener" target="_blank"><i class="fa fa-fw fa-qq"></i>QQ</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title">
+      <i class="fa fa-fw fa-link"></i>
+      Friends
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="http://jjhqwq.top/" title="http:&#x2F;&#x2F;jjhqwq.top" rel="noopener" target="_blank">JJHQAQ</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://phoenix-zh.cn/" title="http:&#x2F;&#x2F;phoenix-zh.cn&#x2F;" rel="noopener" target="_blank">phoenix-zh</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Zs</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    <span title="站点总字数">151k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">4:12</span>
+</div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+<script>
+if (document.querySelectorAll('pre.mermaid').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js', () => {
+    mermaid.initialize({
+      theme: 'forest',
+      logLevel: 3,
+      flowchart: { curve: 'linear' },
+      gantt: { axisFormat: '%m/%d/%Y' },
+      sequence: { actorMargin: 50 }
+    });
+  }, window.mermaid);
+}
+</script>
+
+
+  
+
+  
+      
+<script type="text/x-mathjax-config">
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') {
+          next = next.nextSibling;
+        }
+        if (next && next.nodeName.toLowerCase() === 'br') {
+          next.parentNode.removeChild(next);
+        }
+      }
+    });
+  });
+
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
+      if (element.nodeName.toLowerCase() == 'li') {
+        element = element.parentNode;
+      }
+      element.classList.add('has-jax');
+    }
+  });
+</script>
+<script>
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML', () => {
+    MathJax.Hub.Typeset();
+  }, window.MathJax);
+</script>
+
+    
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el: '#valine-comments',
+      verify: false,
+      notify: false,
+      appId: 'a6dkHdYV1RplevIGxxoeKFD8-gzGzoHsz',
+      appKey: '9qrp8uHTJbPa70VspRUiFQML',
+      placeholder: "Please leave your email address above to ensure I can contact you!",
+      avatar: 'identicon',
+      meta: guest,
+      pageSize: '10' || 10,
+      visitor: true,
+      lang: '' || 'zh-cn',
+      path: location.pathname,
+      recordIP: true,
+      serverURLs: ''
+    });
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>

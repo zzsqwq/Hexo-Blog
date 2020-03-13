@@ -293,7 +293,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h3 id="A-Display-The-Number"><a href="#A-Display-The-Number" class="headerlink" title="A : Display The Number"></a>A : <a href="https://codeforces.com/contest/1295/problem/A" target="_blank" rel="noopener">Display The Number</a></h3><h4 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h4><p>​    &nbsp; &nbsp; &nbsp; 用一定数目的灯管，显示尽可能大的数</p>
+        <h3 id="A-Display-The-Number"><a href="#A-Display-The-Number" class="headerlink" title="A : Display The Number"></a>A : <a href="https://codeforces.com/contest/1295/problem/A">Display The Number</a></h3><h4 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h4><p>​    &nbsp; &nbsp; &nbsp; 用一定数目的灯管，显示尽可能大的数</p>
 <p><img src="https://s2.ax1x.com/2020/02/02/1te6Re.md.png" alt="A"></p>
 <a id="more"></a>
 
@@ -303,7 +303,7 @@
 
 
 <hr>
-<h3 id="B-Infinite-Prefixes"><a href="#B-Infinite-Prefixes" class="headerlink" title="B : Infinite Prefixes"></a>B : <a href="https://codeforces.com/contest/1295/problem/B" target="_blank" rel="noopener">Infinite Prefixes</a></h3><h4 id="题意-1"><a href="#题意-1" class="headerlink" title="题意"></a>题意</h4><p>​    &nbsp; &nbsp; &nbsp; 给定一段01字符串 <strong>s</strong> 为循环节，得到无限循环的01字符串 <strong>t</strong>，求 <strong>t</strong> 中有多少前缀满足0个数-1个数等于期望值<strong>x</strong> （空前缀也算是一个前缀）</p>
+<h3 id="B-Infinite-Prefixes"><a href="#B-Infinite-Prefixes" class="headerlink" title="B : Infinite Prefixes"></a>B : <a href="https://codeforces.com/contest/1295/problem/B">Infinite Prefixes</a></h3><h4 id="题意-1"><a href="#题意-1" class="headerlink" title="题意"></a>题意</h4><p>​    &nbsp; &nbsp; &nbsp; 给定一段01字符串 <strong>s</strong> 为循环节，得到无限循环的01字符串 <strong>t</strong>，求 <strong>t</strong> 中有多少前缀满足0个数-1个数等于期望值<strong>x</strong> （空前缀也算是一个前缀）</p>
 <blockquote>
 <p>前缀：例如”abcd”的前缀包括 “ “,”a”,”ab”,”abc”,”abcd”.</p>
 </blockquote>
@@ -324,7 +324,7 @@
 
 
 <hr>
-<h3 id="C-Obtain-The-String"><a href="#C-Obtain-The-String" class="headerlink" title="C : Obtain The String"></a>C : <a href="https://codeforces.com/contest/1295/problem/C" target="_blank" rel="noopener">Obtain The String</a></h3><h4 id="题意-2"><a href="#题意-2" class="headerlink" title="题意"></a>题意</h4><p>​    &nbsp; &nbsp; &nbsp; 给定字符串 <strong>s</strong> 和 <strong>t</strong> ，每次从 <strong>s</strong> 中选取子序列放入起始为空串的 <strong>z</strong> 后，问最少需要多少次操作使得 <strong>z=t</strong></p>
+<h3 id="C-Obtain-The-String"><a href="#C-Obtain-The-String" class="headerlink" title="C : Obtain The String"></a>C : <a href="https://codeforces.com/contest/1295/problem/C">Obtain The String</a></h3><h4 id="题意-2"><a href="#题意-2" class="headerlink" title="题意"></a>题意</h4><p>​    &nbsp; &nbsp; &nbsp; 给定字符串 <strong>s</strong> 和 <strong>t</strong> ，每次从 <strong>s</strong> 中选取子序列放入起始为空串的 <strong>z</strong> 后，问最少需要多少次操作使得 <strong>z=t</strong></p>
 <h4 id="思路-2"><a href="#思路-2" class="headerlink" title="思路"></a>思路</h4><p>​    &nbsp; &nbsp; &nbsp; 看了小姜老师的博客解法说是贪心，想了好一会，好像确实是可以贪心的···? 设置两个指针从 <strong>s</strong> 和 <strong>t</strong> 串的头部开始扫，对于 <strong>t</strong> 串中的每个字母，循环扫 <strong>s</strong> 串在其中找与它相同的，最终的答案就是扫 <strong>s</strong> 串的次数。(小姜老师说这个实质上就是每次尽可能找尽可能多的后缀，仔细想想确实是这样。)不过这么一直暴力扫下去肯定不是最优的方法，想办法去优化。还是借鉴大佬的想法用一个lens*26的跳表，然后O(lent)扫一遍 <strong>t</strong> 即可.</p>
 <blockquote>
 <p>跳表nxt的作用，用于寻找下一个所寻找字符在s中的位置。</p>
@@ -350,9 +350,12 @@
 
         
     <div class="post-nav">
-      <div class="post-nav-item"></div>
       <div class="post-nav-item">
-    <a href="/2020/02/03/LaTeX%E7%9A%84%E4%B8%80%E4%BA%9B%E6%80%BB%E7%BB%93/" rel="next" title="LaTeX的一些总结">
+    <a href="/2020/02/02/%E5%AF%92%E5%81%87%E5%88%B7%E9%A2%98/CodeforcesER81/" rel="prev" title="CodeforcesER">
+      <i class="fa fa-chevron-left"></i> CodeforcesER
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/02/03/%E5%AF%92%E5%81%87%E5%88%B7%E9%A2%98/LaTeX%E7%9A%84%E4%B8%80%E4%BA%9B%E6%80%BB%E7%BB%93/" rel="next" title="LaTeX的一些总结">
       LaTeX的一些总结 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
@@ -431,20 +434,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">18</span>
+          <span class="site-state-item-count">37</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-count">9</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-count">8</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -507,12 +510,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="站点总字数">75k</span>
+    <span title="站点总字数">151k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">2:05</span>
+    <span title="站点阅读时长">4:12</span>
 </div>
 
         
@@ -593,6 +596,19 @@
 
 
 
+<script>
+if (document.querySelectorAll('pre.mermaid').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js', () => {
+    mermaid.initialize({
+      theme: 'forest',
+      logLevel: 3,
+      flowchart: { curve: 'linear' },
+      gantt: { axisFormat: '%m/%d/%Y' },
+      sequence: { actorMargin: 50 }
+    });
+  }, window.mermaid);
+}
+</script>
 
 
   

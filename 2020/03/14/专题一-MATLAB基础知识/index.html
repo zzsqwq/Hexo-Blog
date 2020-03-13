@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('http://yoursite.com').hostname,
+    root: '/',
+    scheme: 'Muse',
+    version: '7.7.1',
+    exturl: false,
+    sidebar: {"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":true,"style":null},
+    back2top: {"enable":true,"sidebar":"ture","scrollpercent":true},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    comments: {"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
+  };
+</script> 
+
+
+  <meta name="description" content="专题1：MATLAB基础知识1.1 MATLAB系统环境MATLAB操作界面的组成 MATLAB主窗口 命令行窗口 命令行窗口含有 &gt;&gt; 命令提示符，表示MATLAB处于准备状态，可以接受并执行命令，按下回车键后MATLAB会执行输入命令，并在后面显示执行结果 如果指令过长可以分行输入，在一行末尾写 ... 并按下回车键，在下个命令行继续输入，...称为续行符。   当前文件夹窗口 在">
+<meta property="og:type" content="article">
+<meta property="og:title" content="专题一:MATLAB基础知识">
+<meta property="og:url" content="http://yoursite.com/2020/03/14/%E4%B8%93%E9%A2%98%E4%B8%80-MATLAB%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/index.html">
+<meta property="og:site_name" content="Zs&#39;s blog">
+<meta property="og:description" content="专题1：MATLAB基础知识1.1 MATLAB系统环境MATLAB操作界面的组成 MATLAB主窗口 命令行窗口 命令行窗口含有 &gt;&gt; 命令提示符，表示MATLAB处于准备状态，可以接受并执行命令，按下回车键后MATLAB会执行输入命令，并在后面显示执行结果 如果指令过长可以分行输入，在一行末尾写 ... 并按下回车键，在下个命令行继续输入，...称为续行符。   当前文件夹窗口 在">
+<meta property="og:image" content="http://yoursite.com/images/search.png">
+<meta property="og:image" content="http://yoursite.com/images/prime.png">
+<meta property="article:published_time" content="2020-03-13T16:04:48.000Z">
+<meta property="article:modified_time" content="2020-03-13T17:15:20.243Z">
+<meta property="article:author" content="Zs">
+<meta property="article:tag" content="MATLAB">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/images/search.png">
+
+<link rel="canonical" href="http://yoursite.com/2020/03/14/%E4%B8%93%E9%A2%98%E4%B8%80-MATLAB%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true
+  };
+</script>
+
+  <title>专题一:MATLAB基础知识 | Zs's blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Zs's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="搜索..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/14/%E4%B8%93%E9%A2%98%E4%B8%80-MATLAB%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Zs">
+      <meta itemprop="description" content="我要月亮奔我而来">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Zs's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          专题一:MATLAB基础知识
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-03-14 00:04:48 / 修改时间：01:15:20" itemprop="dateCreated datePublished" datetime="2020-03-14T00:04:48+08:00">2020-03-14</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/MATLAB%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index">
+                    <span itemprop="name">MATLAB学习</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2020/03/14/%E4%B8%93%E9%A2%98%E4%B8%80-MATLAB%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" class="post-meta-item leancloud_visitors" data-flag-title="专题一:MATLAB基础知识" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2020/03/14/%E4%B8%93%E9%A2%98%E4%B8%80-MATLAB%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/03/14/%E4%B8%93%E9%A2%98%E4%B8%80-MATLAB%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>1k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>2 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="专题1：MATLAB基础知识"><a href="#专题1：MATLAB基础知识" class="headerlink" title="专题1：MATLAB基础知识"></a>专题1：MATLAB基础知识</h1><h2 id="1-1-MATLAB系统环境"><a href="#1-1-MATLAB系统环境" class="headerlink" title="1.1 MATLAB系统环境"></a>1.1 MATLAB系统环境</h2><h3 id="MATLAB操作界面的组成"><a href="#MATLAB操作界面的组成" class="headerlink" title="MATLAB操作界面的组成"></a>MATLAB操作界面的组成</h3><ol>
+<li><strong>MATLAB主窗口</strong></li>
+<li><strong>命令行窗口</strong><ul>
+<li>命令行窗口含有 <code>&gt;&gt;</code> 命令提示符，表示MATLAB处于准备状态，可以接受并执行命令，按下回车键后MATLAB会执行输入命令，并在后面显示执行结果</li>
+<li>如果指令过长可以分行输入，在一行末尾写 <code>...</code> 并按下回车键，在下个命令行继续输入，<code>...</code>称为续行符。</li>
+</ul>
+</li>
+<li><strong>当前文件夹窗口</strong><ul>
+<li>在MATLAB编程过程中生成的文件自动存放在当前文件夹，我们可以通过cd命令(例如我们要进入E盘下的work文件夹，可以<code>cd e:\work</code>)或者选择文件工具栏中的文件夹来设置当前文件夹。</li>
+</ul>
+</li>
+<li><strong>工作区窗口</strong><ul>
+<li>可用于变量的显示和操作，可显示你当前创建的变量。并且可对其保存，修改，删除。</li>
+</ul>
+</li>
+</ol>
+<h3 id="MATLAB的搜索路径"><a href="#MATLAB的搜索路径" class="headerlink" title="MATLAB的搜索路径"></a>MATLAB的搜索路径</h3><ul>
+<li><strong>检索命令对象的顺序如下</strong></li>
+</ul>
+<p><img src="/images/search.png" alt="search"></p>
+<ul>
+<li><strong>设置文件搜索路径</strong><ul>
+<li>用path命令设置文件搜索路径。例如： path{path,`e:\work`}</li>
+<li>用对话框设置文件搜索路径。在MATLAB主窗口的主页中设置。</li>
+</ul>
+</li>
+</ul>
+<h2 id="1-2-MATLAB数值数据"><a href="#1-2-MATLAB数值数据" class="headerlink" title="1.2 MATLAB数值数据"></a>1.2 MATLAB数值数据</h2><h3 id="数值数据类型的分类"><a href="#数值数据类型的分类" class="headerlink" title="数值数据类型的分类"></a>数值数据类型的分类</h3><ul>
+<li><p><strong>整型</strong></p>
+<ul>
+<li>无符号整数：含有8，16，32，64四种</li>
+<li>带符号整数：含有8，16，32，64四种</li>
+</ul>
+<p>范围和C语言一样,通过<code>类型(数据)</code> 来进行强转。</p>
+</li>
+<li><p><strong>浮点型</strong></p>
+<ul>
+<li>单精度：占四字节</li>
+<li>双精度：占八字节，数值数据默认为双精度</li>
+</ul>
+<p>通过single和double函数进行强转。</p>
+</li>
+<li><p><strong>复型</strong></p>
+<p>复型数据包括实部和虚部两部分，都默认为浮点型，虚数单位用<strong>i</strong>或<strong>j</strong>来表示。</p>
+<p>通过read和imag函数来求复型数据的实部和虚部。</p>
+</li>
+</ul>
+<h3 id="数值数据的输出格式"><a href="#数值数据的输出格式" class="headerlink" title="数值数据的输出格式"></a>数值数据的输出格式</h3><ul>
+<li>format命令的格式，使用方法 <code>format 格式符</code>，不带格式符的format会恢复默认格式。<strong>ps：format只影响数据的输出，不影响数据的存储和计算。</strong></li>
+</ul>
+<h3 id="常用数学函数"><a href="#常用数学函数" class="headerlink" title="常用数学函数"></a>常用数学函数</h3><ol>
+<li><p><strong>函数的调用格式为</strong>： <strong>函数名(函数自变量的值)</strong></p>
+<ul>
+<li>函数自变量规定为矩阵变量，也可以为标量（为矩阵的特例）。</li>
+<li>函数在运算时将函数逐项作用在每个元素上，最后运算出来是一个与自变量同类型矩阵。</li>
+</ul>
+</li>
+<li><p><strong>常用函数的应用</strong></p>
+<ul>
+<li>三角函数有两种，例如sin和sind两种，前面是弧度制，后面是角度制，其余cos等类似。</li>
+<li>abs函数可以求实数的绝对值、复数的模、字符串的ASCII码值。</li>
+<li>用于取整的函数有fix，floor，ceil，round。分别为靠0取整，向下取整，向上取整，四舍五入取整。</li>
+<li>判断是否为素数的函数isprime，是素数返回1，不是返回0。</li>
+</ul>
+<p><img src="/images/prime.png" alt="prime"></p>
+</li>
+</ol>
+<h2 id="1-3-变量及其操作"><a href="#1-3-变量及其操作" class="headerlink" title="1.3 变量及其操作"></a>1.3 变量及其操作</h2><h2 id="1-4-MATLAB矩阵的表示"><a href="#1-4-MATLAB矩阵的表示" class="headerlink" title="1.4 MATLAB矩阵的表示"></a>1.4 MATLAB矩阵的表示</h2><h2 id="1-5-矩阵元素的引用"><a href="#1-5-矩阵元素的引用" class="headerlink" title="1.5 矩阵元素的引用"></a>1.5 矩阵元素的引用</h2><h2 id="1-6-MATLAB基本运算"><a href="#1-6-MATLAB基本运算" class="headerlink" title="1.6  MATLAB基本运算"></a>1.6  MATLAB基本运算</h2><h2 id="1-7-字符串处理"><a href="#1-7-字符串处理" class="headerlink" title="1.7 字符串处理"></a>1.7 字符串处理</h2>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/MATLAB/" rel="tag"># MATLAB</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/02/20/%E6%A0%91%E5%BD%A2dp%E4%BE%8B%E9%A2%98/" rel="prev" title="树形dp例题">
+      <i class="fa fa-chevron-left"></i> 树形dp例题
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#专题1：MATLAB基础知识"><span class="nav-number">1.</span> <span class="nav-text">专题1：MATLAB基础知识</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-MATLAB系统环境"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 MATLAB系统环境</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#MATLAB操作界面的组成"><span class="nav-number">1.1.1.</span> <span class="nav-text">MATLAB操作界面的组成</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MATLAB的搜索路径"><span class="nav-number">1.1.2.</span> <span class="nav-text">MATLAB的搜索路径</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-MATLAB数值数据"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 MATLAB数值数据</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#数值数据类型的分类"><span class="nav-number">1.2.1.</span> <span class="nav-text">数值数据类型的分类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数值数据的输出格式"><span class="nav-number">1.2.2.</span> <span class="nav-text">数值数据的输出格式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常用数学函数"><span class="nav-number">1.2.3.</span> <span class="nav-text">常用数学函数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-3-变量及其操作"><span class="nav-number">1.3.</span> <span class="nav-text">1.3 变量及其操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-4-MATLAB矩阵的表示"><span class="nav-number">1.4.</span> <span class="nav-text">1.4 MATLAB矩阵的表示</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-5-矩阵元素的引用"><span class="nav-number">1.5.</span> <span class="nav-text">1.5 矩阵元素的引用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-6-MATLAB基本运算"><span class="nav-number">1.6.</span> <span class="nav-text">1.6  MATLAB基本运算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-7-字符串处理"><span class="nav-number">1.7.</span> <span class="nav-text">1.7 字符串处理</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Zs"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">Zs</p>
+  <div class="site-description" itemprop="description">我要月亮奔我而来</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">37</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/zzsqwq" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;zzsqwq" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:2459958352@qq.com" title="E-Mail → mailto:2459958352@qq.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://wpa.qq.com/msgrd?v=3&uin=2459958352&site=qq&menu=yes" title="QQ → http:&#x2F;&#x2F;wpa.qq.com&#x2F;msgrd?v&#x3D;3&amp;uin&#x3D;2459958352&amp;site&#x3D;qq&amp;menu&#x3D;yes" rel="noopener" target="_blank"><i class="fa fa-fw fa-qq"></i>QQ</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title">
+      <i class="fa fa-fw fa-link"></i>
+      Friends
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="http://jjhqwq.top/" title="http:&#x2F;&#x2F;jjhqwq.top" rel="noopener" target="_blank">JJHQAQ</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://phoenix-zh.cn/" title="http:&#x2F;&#x2F;phoenix-zh.cn&#x2F;" rel="noopener" target="_blank">phoenix-zh</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Zs</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    <span title="站点总字数">151k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">4:12</span>
+</div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+<script>
+if (document.querySelectorAll('pre.mermaid').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js', () => {
+    mermaid.initialize({
+      theme: 'forest',
+      logLevel: 3,
+      flowchart: { curve: 'linear' },
+      gantt: { axisFormat: '%m/%d/%Y' },
+      sequence: { actorMargin: 50 }
+    });
+  }, window.mermaid);
+}
+</script>
+
+
+  
+
+  
+      
+<script type="text/x-mathjax-config">
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') {
+          next = next.nextSibling;
+        }
+        if (next && next.nodeName.toLowerCase() === 'br') {
+          next.parentNode.removeChild(next);
+        }
+      }
+    });
+  });
+
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
+      if (element.nodeName.toLowerCase() == 'li') {
+        element = element.parentNode;
+      }
+      element.classList.add('has-jax');
+    }
+  });
+</script>
+<script>
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML', () => {
+    MathJax.Hub.Typeset();
+  }, window.MathJax);
+</script>
+
+    
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el: '#valine-comments',
+      verify: false,
+      notify: false,
+      appId: 'a6dkHdYV1RplevIGxxoeKFD8-gzGzoHsz',
+      appKey: '9qrp8uHTJbPa70VspRUiFQML',
+      placeholder: "Please leave your email address above to ensure I can contact you!",
+      avatar: 'identicon',
+      meta: guest,
+      pageSize: '10' || 10,
+      visitor: true,
+      lang: '' || 'zh-cn',
+      path: location.pathname,
+      recordIP: true,
+      serverURLs: ''
+    });
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>
