@@ -3,7 +3,7 @@
   <entry>
     <title>专题一:MATLAB基础知识</title>
     <url>/2020/03/14/%E4%B8%93%E9%A2%98%E4%B8%80-MATLAB%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</url>
-    <content><![CDATA[<h1 id="专题1：MATLAB基础知识"><a href="#专题1：MATLAB基础知识" class="headerlink" title="专题1：MATLAB基础知识"></a>专题1：MATLAB基础知识</h1><h2 id="1-1-MATLAB系统环境"><a href="#1-1-MATLAB系统环境" class="headerlink" title="1.1 MATLAB系统环境"></a>1.1 MATLAB系统环境</h2><h3 id="MATLAB操作界面的组成"><a href="#MATLAB操作界面的组成" class="headerlink" title="MATLAB操作界面的组成"></a>MATLAB操作界面的组成</h3><ol>
+    <content><![CDATA[<h2 id="1-1-MATLAB系统环境"><a href="#1-1-MATLAB系统环境" class="headerlink" title="1.1 MATLAB系统环境"></a>1.1 MATLAB系统环境</h2><h3 id="MATLAB操作界面的组成"><a href="#MATLAB操作界面的组成" class="headerlink" title="MATLAB操作界面的组成"></a>MATLAB操作界面的组成</h3><ol>
 <li><strong>MATLAB主窗口</strong></li>
 <li><strong>命令行窗口</strong><ul>
 <li>命令行窗口含有 <code>&gt;&gt;</code> 命令提示符，表示MATLAB处于准备状态，可以接受并执行命令，按下回车键后MATLAB会执行输入命令，并在后面显示执行结果</li>
@@ -19,6 +19,8 @@
 </ul>
 </li>
 </ol>
+<a id="more"></a>
+
 <h3 id="MATLAB的搜索路径"><a href="#MATLAB的搜索路径" class="headerlink" title="MATLAB的搜索路径"></a>MATLAB的搜索路径</h3><ul>
 <li><strong>检索命令对象的顺序如下</strong></li>
 </ul>
@@ -30,6 +32,7 @@
 </ul>
 </li>
 </ul>
+<hr>
 <h2 id="1-2-MATLAB数值数据"><a href="#1-2-MATLAB数值数据" class="headerlink" title="1.2 MATLAB数值数据"></a>1.2 MATLAB数值数据</h2><h3 id="数值数据类型的分类"><a href="#数值数据类型的分类" class="headerlink" title="数值数据类型的分类"></a>数值数据类型的分类</h3><ul>
 <li><p><strong>整型</strong></p>
 <ul>
@@ -62,15 +65,210 @@
 </li>
 <li><p><strong>常用函数的应用</strong></p>
 <ul>
-<li>三角函数有两种，例如sin和sind两种，前面是弧度制，后面是角度制，其余cos等类似。</li>
+<li>三角函数有两类，例如sin和sind两种，前面是弧度制，后面是角度制，其余cos等类似。</li>
 <li>abs函数可以求实数的绝对值、复数的模、字符串的ASCII码值。</li>
 <li>用于取整的函数有fix，floor，ceil，round。分别为靠0取整，向下取整，向上取整，四舍五入取整。</li>
 <li>判断是否为素数的函数isprime，是素数返回1，不是返回0。</li>
 </ul>
-<p><img src="/images/prime.png" alt="prime"></p>
+<figure class="highlight matlab"><table><tr><td class="code"><pre><span class="line">&gt;&gt; x=[<span class="number">1</span>:<span class="number">100</span>];</span><br><span class="line">&gt;&gt; k=<span class="built_in">isprime</span>(x);</span><br><span class="line">&gt;&gt; k1=<span class="built_in">find</span>(k);</span><br><span class="line">&gt;&gt; p=x(k1)</span><br><span class="line"></span><br><span class="line">p =</span><br><span class="line"></span><br><span class="line">  <span class="number">1</span> 至 <span class="number">16</span> 列</span><br><span class="line"></span><br><span class="line">     <span class="number">2</span>     <span class="number">3</span>     <span class="number">5</span>     <span class="number">7</span>    <span class="number">11</span>    <span class="number">13</span>    <span class="number">17</span>    <span class="number">19</span>    <span class="number">23</span>    <span class="number">29</span>    <span class="number">31</span>    <span class="number">37</span>    <span class="number">41</span>    <span class="number">43</span>    <span class="number">47</span>    <span class="number">53</span></span><br><span class="line"></span><br><span class="line">  <span class="number">17</span> 至 <span class="number">25</span> 列</span><br><span class="line"></span><br><span class="line">    <span class="number">59</span>    <span class="number">61</span>    <span class="number">67</span>    <span class="number">71</span>    <span class="number">73</span>    <span class="number">79</span>    <span class="number">83</span>    <span class="number">89</span>    <span class="number">97</span></span><br></pre></td></tr></table></figure>
+
+
+
 </li>
 </ol>
-<h2 id="1-3-变量及其操作"><a href="#1-3-变量及其操作" class="headerlink" title="1.3 变量及其操作"></a>1.3 变量及其操作</h2><h2 id="1-4-MATLAB矩阵的表示"><a href="#1-4-MATLAB矩阵的表示" class="headerlink" title="1.4 MATLAB矩阵的表示"></a>1.4 MATLAB矩阵的表示</h2><h2 id="1-5-矩阵元素的引用"><a href="#1-5-矩阵元素的引用" class="headerlink" title="1.5 矩阵元素的引用"></a>1.5 矩阵元素的引用</h2><h2 id="1-6-MATLAB基本运算"><a href="#1-6-MATLAB基本运算" class="headerlink" title="1.6  MATLAB基本运算"></a>1.6  MATLAB基本运算</h2><h2 id="1-7-字符串处理"><a href="#1-7-字符串处理" class="headerlink" title="1.7 字符串处理"></a>1.7 字符串处理</h2>]]></content>
+<hr>
+<h2 id="1-3-变量及其操作"><a href="#1-3-变量及其操作" class="headerlink" title="1.3 变量及其操作"></a>1.3 变量及其操作</h2><h3 id="变量与赋值语句"><a href="#变量与赋值语句" class="headerlink" title="变量与赋值语句"></a>变量与赋值语句</h3><ul>
+<li>变量本质是一个内存单元的抽象，变量名以字母开头，后接数字、字母或下划线，最多63个字符。</li>
+<li>变量名区分字母大小写(case sensitive)，<strong>标准函数名以及命令名必须用小写字母</strong>。</li>
+<li>赋值语句有两种格式<ul>
+<li>变量 = 表达式</li>
+<li>表达式的值赋值MATLAB预定义变量ans</li>
+</ul>
+</li>
+<li>如果赋值后不加分号，会显示变量的结果，如果加了分号，则不显示。</li>
+</ul>
+<h3 id="预定义变量"><a href="#预定义变量" class="headerlink" title="预定义变量"></a>预定义变量</h3><p>预定义变量是系统自身定义的变量</p>
+<ul>
+<li><strong>ans</strong> 是默认赋值变量，命令行表达式值默认赋值给 <strong>ans</strong></li>
+<li><strong>i</strong> 和 <strong>j</strong> 代表虚数单位</li>
+<li><strong>pi</strong> 表示圆周率</li>
+<li><strong>NaN</strong> 代表非数</li>
+</ul>
+<h3 id="变量的管理"><a href="#变量的管理" class="headerlink" title="变量的管理"></a>变量的管理</h3><ol>
+<li><strong>变量的删除和修改</strong></li>
+</ol>
+<ul>
+<li>在工作区进行变量的删除和修改<ul>
+<li>通过 <strong>who</strong> 和 <strong>whose</strong> 命令来查看变量清单，前者只显示名称，后者显示各种信息</li>
+</ul>
+</li>
+</ul>
+<ol start="2">
+<li><strong>内存变量文件</strong></li>
+</ol>
+<ul>
+<li>用于保存MATLAB工作区变量的文件交内存变量文件，扩展名为.mat，也叫MAT文件，是一种二进制文件。<ul>
+<li>save命令：创建内存变量文件，load命令：载入内存变量文件</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="1-4-MATLAB矩阵的表示"><a href="#1-4-MATLAB矩阵的表示" class="headerlink" title="1.4 MATLAB矩阵的表示"></a>1.4 MATLAB矩阵的表示</h2><h3 id="矩阵的建立"><a href="#矩阵的建立" class="headerlink" title="矩阵的建立"></a>矩阵的建立</h3><ul>
+<li><p><strong>直接输入法建立矩阵</strong></p>
+<p>将矩阵的元素用中括号<code>[]</code> 括起来，按行输入元素，同一行元素用逗号或者空格分隔，用分号换行。</p>
+</li>
+<li><p><strong>利用已有矩阵建立更大矩阵</strong></p>
+<p>个人感觉类似于分块矩阵，例子如下：</p>
+<figure class="highlight matlab"><table><tr><td class="code"><pre><span class="line">&gt;&gt; A=[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>;<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>;<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>];</span><br><span class="line">&gt;&gt; B=[<span class="number">-1</span>,<span class="number">-2</span>,<span class="number">-3</span>;<span class="number">-4</span>,<span class="number">-5</span>,<span class="number">-6</span>;<span class="number">-7</span>,<span class="number">-8</span>,<span class="number">-9</span>];</span><br><span class="line">&gt;&gt; C=[A,B;B,A]</span><br><span class="line"></span><br><span class="line">C =</span><br><span class="line"></span><br><span class="line">     <span class="number">1</span>     <span class="number">2</span>     <span class="number">3</span>    <span class="number">-1</span>    <span class="number">-2</span>    <span class="number">-3</span></span><br><span class="line">     <span class="number">4</span>     <span class="number">5</span>     <span class="number">6</span>    <span class="number">-4</span>    <span class="number">-5</span>    <span class="number">-6</span></span><br><span class="line">     <span class="number">7</span>     <span class="number">8</span>     <span class="number">9</span>    <span class="number">-7</span>    <span class="number">-8</span>    <span class="number">-9</span></span><br><span class="line">    <span class="number">-1</span>    <span class="number">-2</span>    <span class="number">-3</span>     <span class="number">1</span>     <span class="number">2</span>     <span class="number">3</span></span><br><span class="line">    <span class="number">-4</span>    <span class="number">-5</span>    <span class="number">-6</span>     <span class="number">4</span>     <span class="number">5</span>     <span class="number">6</span></span><br><span class="line">    <span class="number">-7</span>    <span class="number">-8</span>    <span class="number">-9</span>     <span class="number">7</span>     <span class="number">8</span>     <span class="number">9</span></span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ul>
+<ul>
+<li><p><strong>用两个实矩阵矩阵通过矩阵的运算可以建立复数矩阵</strong>，<strong>要确保两个矩阵同类型</strong></p>
+<figure class="highlight matlab"><table><tr><td class="code"><pre><span class="line">&gt;&gt; B=[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>;<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>];</span><br><span class="line">&gt;&gt; C=[<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];</span><br><span class="line">&gt;&gt; D=B+<span class="built_in">i</span>*C</span><br><span class="line"></span><br><span class="line">D =</span><br><span class="line"></span><br><span class="line">   <span class="number">1.0000</span> + <span class="number">7.0000</span><span class="built_in">i</span>   <span class="number">2.0000</span> + <span class="number">8.0000</span><span class="built_in">i</span>   <span class="number">3.0000</span> + <span class="number">9.0000</span><span class="built_in">i</span></span><br><span class="line">   <span class="number">4.0000</span> + <span class="number">1.0000</span><span class="built_in">i</span>   <span class="number">5.0000</span> + <span class="number">2.0000</span><span class="built_in">i</span>   <span class="number">6.0000</span> + <span class="number">3.0000</span><span class="built_in">i</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="冒号表达式"><a href="#冒号表达式" class="headerlink" title="冒号表达式"></a>冒号表达式</h3><ul>
+<li><p><strong>通过冒号表达式可以产生行向量</strong></p>
+<p>一般格式为<code>e1:e2:e3</code> 分别是初始值，步长，终止值。可以省略e2，省略时步长为默认为1。</p>
+</li>
+</ul>
+<figure class="highlight matlab"><table><tr><td class="code"><pre><span class="line">&gt;&gt; t=<span class="number">0</span>:<span class="number">1</span>:<span class="number">5</span></span><br><span class="line">t=</span><br><span class="line">	<span class="number">0</span>	<span class="number">1</span>	<span class="number">2</span>	<span class="number">3</span>	<span class="number">4</span>	<span class="number">5</span></span><br><span class="line">&gt;&gt; s=<span class="number">0</span>:<span class="number">5</span></span><br><span class="line">s</span><br><span class="line">	<span class="number">0</span>	<span class="number">1</span>	<span class="number">2</span>	<span class="number">3</span>	<span class="number">4</span>	<span class="number">5</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p><strong>通过linspace函数产生行向量</strong></p>
+<p>linspace(a,b,n) 代表首元素为a，末尾元素为b，产生n个元素，相应的，步长为(b-a)/(n-1)。当n可以省略，省略时默认n为100。</p>
+</li>
+</ul>
+<figure class="highlight matlab"><table><tr><td class="code"><pre><span class="line">&gt;&gt; x=<span class="built_in">linspace</span>(<span class="number">0</span>,<span class="built_in">pi</span>,<span class="number">5</span>)</span><br><span class="line">x=</span><br><span class="line">	<span class="number">0</span>    <span class="number">0.7854</span>    <span class="number">1.5708</span>    <span class="number">2.3562</span>    <span class="number">3.1416</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="结构矩阵和单元矩阵"><a href="#结构矩阵和单元矩阵" class="headerlink" title="结构矩阵和单元矩阵"></a>结构矩阵和单元矩阵</h3><ul>
+<li><p><strong>结构矩阵</strong></p>
+<p>类似于C语言的结构体，把很多个数据写成一个结构体，矩阵里的每个元素个元素都是结构体变量。给对应元素赋值格式为 <strong>结构体元素.成员名=表达式</strong></p>
+</li>
+<li><p><strong>单元矩阵</strong></p>
+<p>矩阵里的每个元素的类型可以不同，通过直接输入法建立，所有元素用大括号<code>{}</code>而不是中括号<code>[]</code></p>
+</li>
+</ul>
+<hr>
+<h2 id="1-5-矩阵元素的引用"><a href="#1-5-矩阵元素的引用" class="headerlink" title="1.5 矩阵元素的引用"></a>1.5 矩阵元素的引用</h2><h3 id="矩阵元素的引用方式"><a href="#矩阵元素的引用方式" class="headerlink" title="矩阵元素的引用方式"></a>矩阵元素的引用方式</h3><ol>
+<li>通过下标来引用矩阵，例如A(3,2)表示A矩阵第三列第二个元素。如果我们引用的元素超出矩阵范围，那么会默认扩充矩阵至满足要求，拓展元素默认为0。</li>
+</ol>
+<figure class="highlight matlab"><table><tr><td class="code"><pre><span class="line">&gt;&gt; A=[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>;<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>];</span><br><span class="line">&gt;&gt; A(<span class="number">4</span>,<span class="number">5</span>)=<span class="number">10</span></span><br><span class="line">A=</span><br><span class="line">	<span class="number">1</span>	<span class="number">2</span>	<span class="number">3</span>	<span class="number">0</span>	<span class="number">0</span></span><br><span class="line">	<span class="number">4</span>	<span class="number">5</span>	<span class="number">6</span>	<span class="number">0</span>	<span class="number">0</span></span><br><span class="line">	<span class="number">0</span>	<span class="number">0</span>	<span class="number">0</span>	<span class="number">0</span>	<span class="number">0</span></span><br><span class="line">	<span class="number">0</span>	<span class="number">0</span>	<span class="number">0</span>	<span class="number">0</span>	<span class="number">10</span></span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li><p>通过序号来引用，<strong>注意矩阵元素按列存储</strong>，依次存放第一列，第二列···最后一列。</p>
+</li>
+<li><p>矩阵元素的序号和下标可以通过 <code>sub2ind</code> 和 <code>ind2sub</code> 两个函数完成相互转化</p>
+<ul>
+<li><strong>sub2ind</strong> 函数：将矩阵中指定元素的行列下标转换成存储的序号，格式为<code>D=sub2ind(S,I,J)</code>，三个参数依次为<strong>行数和列数组成的二维向量(可以通过size函数获取)</strong>，<strong>转换矩阵元素的行下标</strong>，<strong>转换矩阵元素的列下标</strong>。如果I，J为矩阵的话，那么就说明要将对应的一个下标矩阵求对应序号。注意结合下例来进行理解，我们注意到A(1,1)的序号为1，A(2,1)的序号为2，那么就是给定下标矩阵的顺序来生产的这个序号矩阵，类型相同。</li>
+</ul>
+<figure class="highlight matlab"><table><tr><td class="code"><pre><span class="line">&gt;&gt; A=[<span class="number">1</span>:<span class="number">3</span>;<span class="number">4</span>:<span class="number">6</span>]</span><br><span class="line">A=</span><br><span class="line">	<span class="number">1</span>	<span class="number">2</span>	<span class="number">3</span></span><br><span class="line">	<span class="number">4</span>	<span class="number">5</span>	<span class="number">6</span></span><br><span class="line">&gt;&gt; D=<span class="built_in">sub2ind</span>(<span class="built_in">size</span>(A),[<span class="number">1</span>,<span class="number">2</span>;<span class="number">2</span>,<span class="number">2</span>],[<span class="number">1</span>,<span class="number">1</span>;<span class="number">3</span>,<span class="number">2</span>])</span><br><span class="line">D=</span><br><span class="line">	<span class="number">1</span>	<span class="number">2</span></span><br><span class="line">	<span class="number">6</span>	<span class="number">4</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>ind2sub</strong> 函数：将矩阵元素的序号转换成下标，格式为 <code>[I,J]=ind2sub(S,D)</code> ，S,D分别为<strong>行数和列数组成的二维向量(可以通过size函数获取)</strong>，<strong>要获取下标的元素的序号(可以是一个向量，标志要获取多个元素的下标)</strong> ，那么前方的 I和J就是对应的行下标和列下标，类似于一个 <strong>sub2ind</strong> 函数的逆用。</li>
+</ul>
+<figure class="highlight matlab"><table><tr><td class="code"><pre><span class="line">&gt;&gt; [I,J]=<span class="built_in">ind2sub</span>([<span class="number">3</span>,<span class="number">3</span>],[<span class="number">1</span>,<span class="number">3</span>,<span class="number">5</span>])</span><br><span class="line">I=</span><br><span class="line">	<span class="number">1</span>	<span class="number">3</span>	<span class="number">2</span></span><br><span class="line">J=</span><br><span class="line">	<span class="number">1</span>	<span class="number">1</span>	<span class="number">2</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h3 id="利用冒号表达式获得子矩阵"><a href="#利用冒号表达式获得子矩阵" class="headerlink" title="利用冒号表达式获得子矩阵"></a>利用冒号表达式获得子矩阵</h3><ul>
+<li>我们可以用冒号表达式作为矩阵的行或列下标，也可以用单个<code>:</code>来当行或列下标，这代表取遍全部行或列。<strong>end运算符：</strong> 表示某一维的末尾元素下标。</li>
+</ul>
+<figure class="highlight matlab"><table><tr><td class="code"><pre><span class="line">A(<span class="built_in">i</span>,:)	表示第<span class="built_in">i</span>行的全部元素</span><br><span class="line">A(:,<span class="built_in">j</span>)	表示第<span class="built_in">j</span>行的全部元素</span><br><span class="line">A(<span class="built_in">i</span>:<span class="built_in">i</span>+m,<span class="built_in">j</span>:<span class="built_in">j</span>+m)	表示第<span class="built_in">i</span>~<span class="built_in">i</span>+m行和<span class="built_in">j</span>~<span class="built_in">j</span>+m列全部元素</span><br><span class="line">A(<span class="built_in">i</span>:<span class="built_in">i</span>+m,:)	表示第<span class="built_in">i</span>~<span class="built_in">i</span>+m行全部元素</span><br><span class="line">A(<span class="number">1</span>:<span class="number">3</span>;<span class="number">1</span>:<span class="keyword">end</span>) 这代表取<span class="number">1</span>~<span class="number">3</span>行和<span class="number">1</span>~最后一列元素</span><br></pre></td></tr></table></figure>
+
+<h3 id="利用空矩阵删除矩阵元素"><a href="#利用空矩阵删除矩阵元素" class="headerlink" title="利用空矩阵删除矩阵元素"></a>利用空矩阵删除矩阵元素</h3><ul>
+<li>空矩阵就是不含任何元素的矩阵，例如<code>x=[]</code> 就建立了一个空矩阵x。</li>
+</ul>
+<figure class="highlight matlab"><table><tr><td class="code"><pre><span class="line">&gt;&gt; C=[<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line">C =</span><br><span class="line"></span><br><span class="line">     <span class="number">4</span>     <span class="number">5</span>     <span class="number">6</span></span><br><span class="line">     <span class="number">1</span>     <span class="number">2</span>     <span class="number">3</span></span><br><span class="line">&gt;&gt; C(:,<span class="number">1</span>:<span class="number">2</span>)=[]</span><br><span class="line">C =</span><br><span class="line"></span><br><span class="line">     <span class="number">6</span></span><br><span class="line">     <span class="number">3</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="改变矩阵的形状"><a href="#改变矩阵的形状" class="headerlink" title="改变矩阵的形状"></a>改变矩阵的形状</h3><ul>
+<li>通过reshape函数可以在矩阵元素个数不变的情况下改变矩阵形状，例如 <code>reshape(A,m,n)</code> 就是将A矩阵变成m行n列的矩阵，<strong>不改变矩阵元素的存储顺序，也就是依次按列存储，对应序号相同。</strong></li>
+</ul>
+<h3 id="特殊的约定"><a href="#特殊的约定" class="headerlink" title="特殊的约定"></a>特殊的约定</h3><ul>
+<li>通过指令<code>A(:)</code> 可以将所有元素堆叠成一个列向量，不改变存储顺序。</li>
+</ul>
+<hr>
+<h2 id="1-6-MATLAB基本运算"><a href="#1-6-MATLAB基本运算" class="headerlink" title="1.6  MATLAB基本运算"></a>1.6  MATLAB基本运算</h2><h3 id="算数运算"><a href="#算数运算" class="headerlink" title="算数运算"></a>算数运算</h3><ol>
+<li><p>基本算术运算：<strong>+(加)，-(减)，*(乘)，/(右除)，\(左除)，^(乘方)</strong></p>
+<ul>
+<li><strong>MATLAB的算数运算在矩阵意义下进行</strong>，单个数据运算是矩阵的特例。</li>
+<li><strong>加减运算</strong><ul>
+<li>两矩阵同型，对应元素相加减。<strong>不同型，发生错误。</strong></li>
+<li><strong>一个标量可以和矩阵进行运算，这时把标量对全体矩阵元素进行操作。</strong></li>
+</ul>
+</li>
+<li><strong>乘法运算</strong><ul>
+<li>很明显必须满足矩阵乘的条件，也就是当<code>A*B</code>时必须满足A的行数等于B的列数，此时称A，B矩阵是可乘的，或称两矩阵维数和大小相容。<strong>不相容就会发生错误</strong> </li>
+</ul>
+</li>
+<li><strong>除法运算</strong><ul>
+<li>如果A是<strong>非奇异矩阵(A的行列式不为0) *<em>,则B/A等效于B\</em>inv(A)，A\B等效为inv(A)*B。</strong>inv(A)是指A的逆阵** 。</li>
+</ul>
+</li>
+<li><strong>乘法运算</strong><ul>
+<li>A矩阵的x次方可以表示成<strong>A^x</strong> ，要求A为<strong>方阵</strong>，x为<strong>标量</strong>。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>点运算</strong></p>
+<ul>
+<li><strong>点运算符</strong>：在相应算术运算符前面加.，有点乘，点右除，点左除，点乘方。</li>
+<li><strong>点运算</strong>：两个同型矩阵对应元素进行相关运算。</li>
+</ul>
+<figure class="highlight matlab"><table><tr><td class="code"><pre><span class="line">&gt;&gt; A=[<span class="number">1</span>,<span class="number">2</span>;<span class="number">3</span>,<span class="number">4</span>];</span><br><span class="line">&gt;&gt; A^<span class="number">2</span>  </span><br><span class="line"><span class="built_in">ans</span> =</span><br><span class="line"></span><br><span class="line">     <span class="number">7</span>    <span class="number">10</span></span><br><span class="line">    <span class="number">15</span>    <span class="number">22</span></span><br><span class="line"></span><br><span class="line">&gt;&gt; A.^<span class="number">2</span></span><br><span class="line"><span class="built_in">ans</span> =</span><br><span class="line"></span><br><span class="line">     <span class="number">1</span>     <span class="number">4</span></span><br><span class="line">     <span class="number">9</span>    <span class="number">16</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h3 id="关系运算"><a href="#关系运算" class="headerlink" title="关系运算"></a>关系运算</h3><ul>
+<li><strong>关系运算符： &lt; ，&lt;=，&gt;，&gt;=，==(等于)，~=(不等于)</strong> </li>
+<li>两个比较量为<strong>标量</strong>，直接比较两个数大小，如果成立表达式值为1，否则为0。</li>
+<li>如果两个矩阵是<strong>同型矩阵</strong>，对每两个对应元素进行比较，形成一个由0，1构成的同型矩阵。</li>
+<li>如果一个是<strong>标量</strong>一个是<strong>矩阵</strong>，则用标量和每个矩阵元素比较，形成一个同型矩阵。</li>
+</ul>
+<h3 id="逻辑运算"><a href="#逻辑运算" class="headerlink" title="逻辑运算"></a>逻辑运算</h3><ul>
+<li>逻辑运算符： &amp;(与)，|(或)，~(非)。各自对应的运算法则和C语言类似，不再赘述。</li>
+<li>标量，矩阵之间进行运算，对应规则和关系运算类似，不再赘述。</li>
+</ul>
+<h3 id="运算符的优先级"><a href="#运算符的优先级" class="headerlink" title="运算符的优先级"></a>运算符的优先级</h3><p>​    算术运算优先级最高，逻辑运算优先级最低，但是逻辑非运算是单目运算符，优先级比双目运算符高。</p>
+<hr>
+<h2 id="1-7-字符串处理"><a href="#1-7-字符串处理" class="headerlink" title="1.7 字符串处理"></a>1.7 字符串处理</h2><h3 id="字符串的表达"><a href="#字符串的表达" class="headerlink" title="字符串的表达"></a>字符串的表达</h3><ul>
+<li>用单引号括起来的字符序列就是字符串，MATLAB把他当成一个行向量。若字符串中含有单引号，则单引号字符要用两个单引号表示。</li>
+<li>可以建立多行字符串，建立字符矩阵<strong>（注意每一行的字符串长度要相等）</strong>。和数值矩阵无异。</li>
+</ul>
+<h3 id="字符串的操作"><a href="#字符串的操作" class="headerlink" title="字符串的操作"></a>字符串的操作</h3><ul>
+<li><p><strong>字符串的执行</strong></p>
+<ul>
+<li>通过<code>eval(s)</code> 函数可以执行字符串 <strong>s</strong> 对应的命令行命令。</li>
+</ul>
+</li>
+<li><p><strong>字串与数值之间的转换</strong></p>
+<ul>
+<li><strong>abs</strong> 和 <strong>double</strong> 函数都可以获取字符串矩阵对应的<strong>ASCII码</strong>矩阵。</li>
+<li><strong>char</strong> 函数可以把<strong>ASCII码</strong>矩阵转换成字符串矩阵。</li>
+</ul>
+</li>
+<li><p><strong>字符串的比较</strong></p>
+<ul>
+<li><strong>关系运算符比较</strong>：两个等长字符串比较，两两对应字符比较，成立为1，不成立为0，得到是一个含0，1的行向量。</li>
+<li><strong>字符串比较函数比较</strong><ul>
+<li>strcmp(s1,s2)：比较s1和s2是否相等，返回值为一个标量，相等为0，不等为1。后缀加i表示比较时忽略大小写。</li>
+<li>strncmp(s1,s2,n)：比较s1和s2前n个字符是否相等，返回值为一个标量。相等为0，不等为1。后缀加i表示比较时忽略大小写。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>字符串的查找和替换</strong></p>
+<ul>
+<li>findstr(s1,s2)：返回短字符串在长字符串中的开始位置。如果出现多次，则返回一个行向量。</li>
+<li>strrep(s1,s2,s3)：将s1中所有子字符串s2替换为s3。</li>
+</ul>
+</li>
+</ul>
+]]></content>
       <categories>
         <category>MATLAB学习</category>
       </categories>
