@@ -20,8 +20,11 @@
 <li>通过 $\mu+\sigma x$  来得到均值为 $\mu$ ，方差为 $\sigma{^2}$ 的随机数据。<strong>(高中数学知识，证明可百度)</strong></li>
 </ul>
 </li>
-<li><p>对于上述函数的调用格式，我们都有如下规定，<code>zeros(m)</code>为产生 $m\times m$ 的零矩阵，<code>zeros(m,n)</code>为产生类型为 $m\times n$ 的零矩阵， <code>zeros(size(A))</code> 为产生和 <strong>A</strong> 同类型的零矩阵，其余函数和此类似。</p>
-</li>
+</ul>
+<a id="more"></a>
+
+<ul>
+<li>对于上述函数的调用格式，我们都有如下规定，<code>zeros(m)</code>为产生 $m\times m$ 的零矩阵，<code>zeros(m,n)</code>为产生类型为 $m\times n$ 的零矩阵， <code>zeros(size(A))</code> 为产生和 <strong>A</strong> 同类型的零矩阵，其余函数和此类似。</li>
 </ul>
 <h3 id="用于专门学科的特殊矩阵"><a href="#用于专门学科的特殊矩阵" class="headerlink" title="用于专门学科的特殊矩阵"></a>用于专门学科的特殊矩阵</h3><ol>
 <li><p><strong>魔方/幻方矩阵 (Magic Square)</strong></p>
@@ -75,7 +78,7 @@
 </ul>
 <h3 id="三角阵"><a href="#三角阵" class="headerlink" title="三角阵"></a>三角阵</h3><ul>
 <li>矩阵对角线以上元素全为0为上三角矩阵，以下全为0为下三角矩阵。</li>
-<li>上，下三角矩阵 <strong>(上 up，下 low) *<em>，关于下三角的只需要把 *</em>triu</strong> 换为 <strong>tril</strong><ul>
+<li>上，下三角矩阵 <strong>(上 up，下 low)</strong>，关于下三角的只需要把 <strong>triu</strong> 换为 <strong>tril</strong><ul>
 <li><strong>triu(A):</strong> 提取矩阵A的主对角线及以上的元素。</li>
 <li><strong>triu(A,k):</strong> 提取矩阵A的第k条对角线及以上的元素。</li>
 </ul>
@@ -109,11 +112,22 @@
 </li>
 <li><p>向量的范数</p>
 <ul>
-<li>向量 1-范数 : 为向量元素的绝对值之和。 即$||V||<em>1=\sum\limits^n</em>{i=1}|v_i|$ 。通过 <strong>norm(V)或者norm(V,2)计算向量V的2-范数。</strong> </li>
-<li>向量 2-范数 : 为向量元素绝对值的平方和的平方根。 $||V||<em>2=\sqrt{\sum\limits^n</em>{i=1}|v_i|^2}$ ，通过<strong>norm(V,1)计算V的1-范数</strong>  </li>
-<li>向量 ∞-范数 : 所有向量元素绝对值中的最大值。 $||V||<em>{\infty}=\mathop{max}\limits</em>{0&lt;=i&lt;=n}{|v_i|}$ ，通过<strong>norm(V,inf)计算向量V的∞-范数</strong> </li>
+<li>向量 1-范数 : 为向量元素的绝对值之和。通过 <strong>norm(V,1)计算V的1-范数</strong>  </li>
 </ul>
+<p>$$<br>||V||{_1}=\sum\limits^n_{i=1}|v_i|<br>$$</p>
 </li>
+</ul>
+<ul>
+<li><p>向量 2-范数 : 为向量元素绝对值的平方和的平方根。通过<strong>norm(V)或者norm(V,2)计算向量V的2-范数</strong></p>
+<p>$$<br>||V||_2=\sqrt{\sum\limits^n_{i=1}|v_i|^2}<br>$$</p>
+</li>
+</ul>
+<ul>
+<li><p>向量 ∞-范数 : 所有向量元素绝对值中的最大值。通过<strong>norm(V,inf)计算向量V的∞-范数</strong></p>
+<p>$$<br>||V||_{\infty}=\mathop{max}\limits_{0&lt;=i&lt;=n}{|v_i|}<br>$$</p>
+</li>
+</ul>
+<ul>
 <li><p>矩阵的范数<strong>（对不起我实在不想写latex了，直接截图了）</strong></p>
 <ul>
 <li>矩阵的范数求法和向量的一样一样滴</li>
