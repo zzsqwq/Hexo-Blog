@@ -55,7 +55,7 @@
 <meta property="og:description" content="1.1 MATLAB系统环境MATLAB操作界面的组成 MATLAB主窗口 命令行窗口 命令行窗口含有 &gt;&gt; 命令提示符，表示MATLAB处于准备状态，可以接受并执行命令，按下回车键后MATLAB会执行输入命令，并在后面显示执行结果 如果指令过长可以分行输入，在一行末尾写 ... 并按下回车键，在下个命令行继续输入，...称为续行符。   当前文件夹窗口 在MATLAB编程过程中生成的">
 <meta property="og:image" content="http://yoursite.com/images/search.png">
 <meta property="article:published_time" content="2020-03-13T16:04:48.000Z">
-<meta property="article:modified_time" content="2020-03-14T17:00:04.580Z">
+<meta property="article:modified_time" content="2020-03-16T13:37:26.399Z">
 <meta property="article:author" content="Zs">
 <meta property="article:tag" content="MATLAB">
 <meta name="twitter:card" content="summary">
@@ -233,7 +233,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-03-15 01:00:04" itemprop="dateModified" datetime="2020-03-15T01:00:04+08:00">2020-03-15</time>
+                <time title="修改时间：2020-03-16 21:37:26" itemprop="dateModified" datetime="2020-03-16T21:37:26+08:00">2020-03-16</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -274,7 +274,7 @@
                 <i class="fa fa-file-word-o"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>4.8k</span>
+              <span>5k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -339,8 +339,17 @@
 <p>通过single和double函数进行强转。</p>
 </li>
 <li><p><strong>复型</strong></p>
-<p>复型数据包括实部和虚部两部分，都默认为浮点型，虚数单位用<strong>i</strong>或<strong>j</strong>来表示。</p>
-<p>通过read和imag函数来求复型数据的实部和虚部。</p>
+<ul>
+<li><p>复型数据包括实部和虚部两部分，都默认为浮点型，虚数单位用<strong>i</strong>或<strong>j</strong>来表示。</p>
+</li>
+<li><p>通过read和imag函数来求复型数据的实部和虚部。</p>
+</li>
+</ul>
+</li>
+<li><p><strong>字符型</strong></p>
+<ul>
+<li><strong>字符在内部作为数字存储，而不会采用浮点格式存储。</strong></li>
+</ul>
 </li>
 </ul>
 <h3 id="数值数据的输出格式"><a href="#数值数据的输出格式" class="headerlink" title="数值数据的输出格式"></a>数值数据的输出格式</h3><ul>
@@ -410,11 +419,7 @@
 <li><p><strong>利用已有矩阵建立更大矩阵</strong></p>
 <p>个人感觉类似于分块矩阵，例子如下：</p>
 <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt; A=[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>;<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>;<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>];</span><br><span class="line">&gt;&gt; B=[<span class="number">-1</span>,<span class="number">-2</span>,<span class="number">-3</span>;<span class="number">-4</span>,<span class="number">-5</span>,<span class="number">-6</span>;<span class="number">-7</span>,<span class="number">-8</span>,<span class="number">-9</span>];</span><br><span class="line">&gt;&gt; C=[A,B;B,A]</span><br><span class="line"></span><br><span class="line">C =</span><br><span class="line"></span><br><span class="line">     <span class="number">1</span>     <span class="number">2</span>     <span class="number">3</span>    <span class="number">-1</span>    <span class="number">-2</span>    <span class="number">-3</span></span><br><span class="line">     <span class="number">4</span>     <span class="number">5</span>     <span class="number">6</span>    <span class="number">-4</span>    <span class="number">-5</span>    <span class="number">-6</span></span><br><span class="line">     <span class="number">7</span>     <span class="number">8</span>     <span class="number">9</span>    <span class="number">-7</span>    <span class="number">-8</span>    <span class="number">-9</span></span><br><span class="line">    <span class="number">-1</span>    <span class="number">-2</span>    <span class="number">-3</span>     <span class="number">1</span>     <span class="number">2</span>     <span class="number">3</span></span><br><span class="line">    <span class="number">-4</span>    <span class="number">-5</span>    <span class="number">-6</span>     <span class="number">4</span>     <span class="number">5</span>     <span class="number">6</span></span><br><span class="line">    <span class="number">-7</span>    <span class="number">-8</span>    <span class="number">-9</span>     <span class="number">7</span>     <span class="number">8</span>     <span class="number">9</span></span><br></pre></td></tr></table></figure>
-
-
 </li>
-</ul>
-<ul>
 <li><p><strong>用两个实矩阵矩阵通过矩阵的运算可以建立复数矩阵</strong>，<strong>要确保两个矩阵同类型</strong></p>
 <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt; B=[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>;<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>];</span><br><span class="line">&gt;&gt; C=[<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];</span><br><span class="line">&gt;&gt; D=B+<span class="built_in">i</span>*C</span><br><span class="line"></span><br><span class="line">D =</span><br><span class="line"></span><br><span class="line">   <span class="number">1.0000</span> + <span class="number">7.0000</span><span class="built_in">i</span>   <span class="number">2.0000</span> + <span class="number">8.0000</span><span class="built_in">i</span>   <span class="number">3.0000</span> + <span class="number">9.0000</span><span class="built_in">i</span></span><br><span class="line">   <span class="number">4.0000</span> + <span class="number">1.0000</span><span class="built_in">i</span>   <span class="number">5.0000</span> + <span class="number">2.0000</span><span class="built_in">i</span>   <span class="number">6.0000</span> + <span class="number">3.0000</span><span class="built_in">i</span></span><br></pre></td></tr></table></figure>
 
@@ -436,7 +441,12 @@
 
 <h3 id="结构矩阵和单元矩阵"><a href="#结构矩阵和单元矩阵" class="headerlink" title="结构矩阵和单元矩阵"></a>结构矩阵和单元矩阵</h3><ul>
 <li><p><strong>结构矩阵</strong></p>
-<p>类似于C语言的结构体，把很多个数据写成一个结构体，矩阵里的每个元素个元素都是结构体变量。给对应元素赋值格式为 <strong>结构体元素.成员名=表达式</strong></p>
+<ul>
+<li><p>类似于C语言的结构体，把很多个数据写成一个结构体，矩阵里的每个元素个元素都是结构体变量。给对应元素赋值格式为 <strong>结构体元素.成员名=表达式</strong> 。我们应该注意到，当一个结构体内没有我们赋值的成员，那么他会自动扩充矩阵来满足你的要求。</p>
+</li>
+<li><p>我们可以通过 <code>s=struct(&#39;name&#39;,{\&#39;next\&#39;,\&#39;what\&#39;,},\&#39;sex\&#39;,{\&#39;male\&#39;,\&#39;unknow\&#39;})</code> 来创建一个包含 <strong>name</strong> 和 <strong>sex</strong> 两个成员的结构体。</p>
+</li>
+</ul>
 </li>
 <li><p><strong>单元矩阵</strong></p>
 <p>矩阵里的每个元素的类型可以不同，通过直接输入法建立，所有元素用大括号<code>{}</code>而不是中括号<code>[]</code></p>
@@ -555,6 +565,11 @@
 <ul>
 <li>findstr(s1,s2)：返回短字符串在长字符串中的开始位置。如果出现多次，则返回一个行向量。</li>
 <li>strrep(s1,s2,s3)：将s1中所有子字符串s2替换为s3。</li>
+</ul>
+</li>
+<li><p><strong>数值转换为字符</strong></p>
+<ul>
+<li>通过 <strong>num2str</strong> 或 <strong>int2str</strong> 等函数可以将数字转换为字符</li>
 </ul>
 </li>
 </ul>
@@ -735,12 +750,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="站点总字数">157k</span>
+    <span title="站点总字数">158k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">4:22</span>
+    <span title="站点阅读时长">4:23</span>
 </div>
 
         

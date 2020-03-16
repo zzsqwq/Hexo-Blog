@@ -11,9 +11,8 @@
 <li><p><strong>eye函数</strong>： 产生对角线为1的矩阵，当矩阵为方针时，为单位矩阵。</p>
 </li>
 <li><p><strong>rand函数</strong>： 产生 <strong>(0,1)</strong> 区间均匀分布的随机矩阵。</p>
-<ul>
-<li>通过 <code>fix(a+(b-a+1)*rand(x))</code> 可产生[a,b]区间上均匀分布的随机整数。</li>
-</ul>
+</li>
+<li><p>通过 <code>fix(a+(b-a+1)*rand(x))</code> 可产生[a,b]区间上均匀分布的随机整数。</p>
 </li>
 <li><p><strong>randn函数</strong>： n为normal的意思，产生均值为0，方差为1的标准正态分布随机矩阵。</p>
 <ul>
@@ -96,6 +95,9 @@
 </ul>
 <h3 id="矩阵的求逆"><a href="#矩阵的求逆" class="headerlink" title="矩阵的求逆"></a>矩阵的求逆</h3><ul>
 <li><strong>inv(A):</strong> 求A的逆阵。 </li>
+</ul>
+<h3 id="矩阵的阶梯状"><a href="#矩阵的阶梯状" class="headerlink" title="矩阵的阶梯状"></a>矩阵的阶梯状</h3><ul>
+<li><strong>rref(A):</strong>  将矩阵A化为阶梯状（具体不再解释，不懂可百度）</li>
 </ul>
 <hr>
 <h2 id="2-3-矩阵求值"><a href="#2-3-矩阵求值" class="headerlink" title="2.3 矩阵求值"></a>2.3 矩阵求值</h2><h3 id="方阵的行列式"><a href="#方阵的行列式" class="headerlink" title="方阵的行列式"></a>方阵的行列式</h3><ul>
@@ -231,8 +233,17 @@
 <p>通过single和double函数进行强转。</p>
 </li>
 <li><p><strong>复型</strong></p>
-<p>复型数据包括实部和虚部两部分，都默认为浮点型，虚数单位用<strong>i</strong>或<strong>j</strong>来表示。</p>
-<p>通过read和imag函数来求复型数据的实部和虚部。</p>
+<ul>
+<li><p>复型数据包括实部和虚部两部分，都默认为浮点型，虚数单位用<strong>i</strong>或<strong>j</strong>来表示。</p>
+</li>
+<li><p>通过read和imag函数来求复型数据的实部和虚部。</p>
+</li>
+</ul>
+</li>
+<li><p><strong>字符型</strong></p>
+<ul>
+<li><strong>字符在内部作为数字存储，而不会采用浮点格式存储。</strong></li>
+</ul>
 </li>
 </ul>
 <h3 id="数值数据的输出格式"><a href="#数值数据的输出格式" class="headerlink" title="数值数据的输出格式"></a>数值数据的输出格式</h3><ul>
@@ -302,11 +313,7 @@
 <li><p><strong>利用已有矩阵建立更大矩阵</strong></p>
 <p>个人感觉类似于分块矩阵，例子如下：</p>
 <figure class="highlight matlab"><table><tr><td class="code"><pre><span class="line">&gt;&gt; A=[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>;<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>;<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>];</span><br><span class="line">&gt;&gt; B=[<span class="number">-1</span>,<span class="number">-2</span>,<span class="number">-3</span>;<span class="number">-4</span>,<span class="number">-5</span>,<span class="number">-6</span>;<span class="number">-7</span>,<span class="number">-8</span>,<span class="number">-9</span>];</span><br><span class="line">&gt;&gt; C=[A,B;B,A]</span><br><span class="line"></span><br><span class="line">C =</span><br><span class="line"></span><br><span class="line">     <span class="number">1</span>     <span class="number">2</span>     <span class="number">3</span>    <span class="number">-1</span>    <span class="number">-2</span>    <span class="number">-3</span></span><br><span class="line">     <span class="number">4</span>     <span class="number">5</span>     <span class="number">6</span>    <span class="number">-4</span>    <span class="number">-5</span>    <span class="number">-6</span></span><br><span class="line">     <span class="number">7</span>     <span class="number">8</span>     <span class="number">9</span>    <span class="number">-7</span>    <span class="number">-8</span>    <span class="number">-9</span></span><br><span class="line">    <span class="number">-1</span>    <span class="number">-2</span>    <span class="number">-3</span>     <span class="number">1</span>     <span class="number">2</span>     <span class="number">3</span></span><br><span class="line">    <span class="number">-4</span>    <span class="number">-5</span>    <span class="number">-6</span>     <span class="number">4</span>     <span class="number">5</span>     <span class="number">6</span></span><br><span class="line">    <span class="number">-7</span>    <span class="number">-8</span>    <span class="number">-9</span>     <span class="number">7</span>     <span class="number">8</span>     <span class="number">9</span></span><br></pre></td></tr></table></figure>
-
-
 </li>
-</ul>
-<ul>
 <li><p><strong>用两个实矩阵矩阵通过矩阵的运算可以建立复数矩阵</strong>，<strong>要确保两个矩阵同类型</strong></p>
 <figure class="highlight matlab"><table><tr><td class="code"><pre><span class="line">&gt;&gt; B=[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>;<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>];</span><br><span class="line">&gt;&gt; C=[<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];</span><br><span class="line">&gt;&gt; D=B+<span class="built_in">i</span>*C</span><br><span class="line"></span><br><span class="line">D =</span><br><span class="line"></span><br><span class="line">   <span class="number">1.0000</span> + <span class="number">7.0000</span><span class="built_in">i</span>   <span class="number">2.0000</span> + <span class="number">8.0000</span><span class="built_in">i</span>   <span class="number">3.0000</span> + <span class="number">9.0000</span><span class="built_in">i</span></span><br><span class="line">   <span class="number">4.0000</span> + <span class="number">1.0000</span><span class="built_in">i</span>   <span class="number">5.0000</span> + <span class="number">2.0000</span><span class="built_in">i</span>   <span class="number">6.0000</span> + <span class="number">3.0000</span><span class="built_in">i</span></span><br></pre></td></tr></table></figure>
 
@@ -328,7 +335,12 @@
 
 <h3 id="结构矩阵和单元矩阵"><a href="#结构矩阵和单元矩阵" class="headerlink" title="结构矩阵和单元矩阵"></a>结构矩阵和单元矩阵</h3><ul>
 <li><p><strong>结构矩阵</strong></p>
-<p>类似于C语言的结构体，把很多个数据写成一个结构体，矩阵里的每个元素个元素都是结构体变量。给对应元素赋值格式为 <strong>结构体元素.成员名=表达式</strong></p>
+<ul>
+<li><p>类似于C语言的结构体，把很多个数据写成一个结构体，矩阵里的每个元素个元素都是结构体变量。给对应元素赋值格式为 <strong>结构体元素.成员名=表达式</strong> 。我们应该注意到，当一个结构体内没有我们赋值的成员，那么他会自动扩充矩阵来满足你的要求。</p>
+</li>
+<li><p>我们可以通过 <code>s=struct(&#39;name&#39;,{\&#39;next\&#39;,\&#39;what\&#39;,},\&#39;sex\&#39;,{\&#39;male\&#39;,\&#39;unknow\&#39;})</code> 来创建一个包含 <strong>name</strong> 和 <strong>sex</strong> 两个成员的结构体。</p>
+</li>
+</ul>
 </li>
 <li><p><strong>单元矩阵</strong></p>
 <p>矩阵里的每个元素的类型可以不同，通过直接输入法建立，所有元素用大括号<code>{}</code>而不是中括号<code>[]</code></p>
@@ -447,6 +459,11 @@
 <ul>
 <li>findstr(s1,s2)：返回短字符串在长字符串中的开始位置。如果出现多次，则返回一个行向量。</li>
 <li>strrep(s1,s2,s3)：将s1中所有子字符串s2替换为s3。</li>
+</ul>
+</li>
+<li><p><strong>数值转换为字符</strong></p>
+<ul>
+<li>通过 <strong>num2str</strong> 或 <strong>int2str</strong> 等函数可以将数字转换为字符</li>
 </ul>
 </li>
 </ul>
