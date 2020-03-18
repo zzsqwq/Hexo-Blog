@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('http://yoursite.com').hostname,
+    root: '/',
+    scheme: 'Muse',
+    version: '7.7.1',
+    exturl: false,
+    sidebar: {"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":true,"style":null},
+    back2top: {"enable":true,"sidebar":"ture","scrollpercent":true},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    comments: {"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
+  };
+</script> 
+
+
+  <meta name="description" content="3.1 顺序结构程序程序设计的基本步骤 程序 在matlab中程序文件扩展名为.m ，因此程序文件又叫 M文件。 程序文件分两种 脚本文件：是可以在命令行窗口直接执行的文件，也叫命令文件。 函数文件：定义一个函数，以函数调用方式来调用，不能单独执行。    文件的建立 可以在主页点击新建脚本，即可创建脚本文件，并且打开MATLAB编辑器。 在命令行窗口写 edit test 即可在当前文件下创建">
+<meta property="og:type" content="article">
+<meta property="og:title" content="专题三:MATLAB程序流程控制">
+<meta property="og:url" content="http://yoursite.com/2020/03/18/%E4%B8%93%E9%A2%98%E4%B8%89-MATLAB%E7%A8%8B%E5%BA%8F%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6/index.html">
+<meta property="og:site_name" content="Zs&#39;s blog">
+<meta property="og:description" content="3.1 顺序结构程序程序设计的基本步骤 程序 在matlab中程序文件扩展名为.m ，因此程序文件又叫 M文件。 程序文件分两种 脚本文件：是可以在命令行窗口直接执行的文件，也叫命令文件。 函数文件：定义一个函数，以函数调用方式来调用，不能单独执行。    文件的建立 可以在主页点击新建脚本，即可创建脚本文件，并且打开MATLAB编辑器。 在命令行窗口写 edit test 即可在当前文件下创建">
+<meta property="og:image" content="http://yoursite.com/images/step.png">
+<meta property="article:published_time" content="2020-03-18T15:01:22.000Z">
+<meta property="article:modified_time" content="2020-03-18T16:38:09.540Z">
+<meta property="article:author" content="Zs">
+<meta property="article:tag" content="MATLAB">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/images/step.png">
+
+<link rel="canonical" href="http://yoursite.com/2020/03/18/%E4%B8%93%E9%A2%98%E4%B8%89-MATLAB%E7%A8%8B%E5%BA%8F%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true
+  };
+</script>
+
+  <title>专题三:MATLAB程序流程控制 | Zs's blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Zs's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="搜索..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/18/%E4%B8%93%E9%A2%98%E4%B8%89-MATLAB%E7%A8%8B%E5%BA%8F%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Zs">
+      <meta itemprop="description" content="我要月亮奔我而来">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Zs's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          专题三:MATLAB程序流程控制
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-03-18 23:01:22" itemprop="dateCreated datePublished" datetime="2020-03-18T23:01:22+08:00">2020-03-18</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-03-19 00:38:09" itemprop="dateModified" datetime="2020-03-19T00:38:09+08:00">2020-03-19</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/MATLAB%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index">
+                    <span itemprop="name">MATLAB学习</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2020/03/18/%E4%B8%93%E9%A2%98%E4%B8%89-MATLAB%E7%A8%8B%E5%BA%8F%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6/" class="post-meta-item leancloud_visitors" data-flag-title="专题三:MATLAB程序流程控制" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2020/03/18/%E4%B8%93%E9%A2%98%E4%B8%89-MATLAB%E7%A8%8B%E5%BA%8F%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/03/18/%E4%B8%93%E9%A2%98%E4%B8%89-MATLAB%E7%A8%8B%E5%BA%8F%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>2.1k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>4 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="3-1-顺序结构程序"><a href="#3-1-顺序结构程序" class="headerlink" title="3.1 顺序结构程序"></a>3.1 顺序结构程序</h2><h3 id="程序设计的基本步骤"><a href="#程序设计的基本步骤" class="headerlink" title="程序设计的基本步骤"></a>程序设计的基本步骤</h3><p><img src="/images/step.png" alt="step"></p>
+<h3 id="程序"><a href="#程序" class="headerlink" title="程序"></a>程序</h3><ul>
+<li>在matlab中程序文件扩展名为<strong>.m</strong> ，因此程序文件又叫 <strong>M文件</strong>。</li>
+<li>程序文件分<strong>两种</strong><ul>
+<li><strong>脚本文件</strong>：是可以在命令行窗口直接执行的文件，也叫命令文件。</li>
+<li><strong>函数文件</strong>：定义一个函数，以函数调用方式来调用，不能单独执行。</li>
+</ul>
+</li>
+</ul>
+<h3 id="文件的建立"><a href="#文件的建立" class="headerlink" title="文件的建立"></a>文件的建立</h3><ul>
+<li>可以在主页点击新建脚本，即可创建脚本文件，并且打开MATLAB编辑器。</li>
+<li>在命令行窗口写 <code>edit test</code> 即可在当前文件下创建 <strong>test</strong> 脚本文件。</li>
+</ul>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">利用脚本文件求两矩阵乘积</span><br><span class="line">脚本文件f1.m</span><br><span class="line">A=[<span class="number">1</span>:<span class="number">3</span>;<span class="number">4</span>:<span class="number">6</span>];</span><br><span class="line">B=[<span class="number">1</span>,<span class="number">2</span>;<span class="number">3</span>,<span class="number">4</span>;<span class="number">5</span>,<span class="number">6</span>];</span><br><span class="line">C=A*B;</span><br><span class="line">在命令行窗口运行脚本文件</span><br><span class="line">&gt;&gt; f1</span><br><span class="line"></span><br><span class="line">C =</span><br><span class="line"></span><br><span class="line">    <span class="number">22</span>    <span class="number">28</span></span><br><span class="line">    <span class="number">49</span>    <span class="number">64</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">利用函数文件求两矩阵乘积</span><br><span class="line">函数文件f1.m</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">C</span>=<span class="title">f2</span><span class="params">(A,B)</span></span></span><br><span class="line">C=A*B;</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line">&gt;&gt; C=f1(A,B)</span><br><span class="line"></span><br><span class="line">C =</span><br><span class="line"></span><br><span class="line">    <span class="number">22</span>    <span class="number">28</span></span><br><span class="line">    <span class="number">49</span>    <span class="number">64</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="顺序结构"><a href="#顺序结构" class="headerlink" title="顺序结构"></a>顺序结构</h3><ul>
+<li>数据的输入 ： <code>A=input(提示信息，参数选项)</code> ，输入时会将提示信息打印出来，后面的参数选项用于限定输入数据的类型等。</li>
+<li>数据的输出： <code>disp(输出项)</code> </li>
+<li>程序的暂停： <code>pause(延迟秒数)</code> ，<strong>如果延迟秒数省略，那么就会一直暂停直到用户下次动作</strong>。如果程序运行中要强行暂停可以通过 <strong>Ctrl+C</strong> 实现。</li>
+</ul>
+<h3 id="例程"><a href="#例程" class="headerlink" title="例程"></a>例程</h3><p>通过脚本文件和函数文件求一个向量的四舍五入向量。</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">脚本</span><br><span class="line">A=[<span class="number">1.2</span>,<span class="number">3.4</span>,<span class="number">4.7</span>,<span class="number">0.5</span>];</span><br><span class="line">B=<span class="built_in">round</span>(A);</span><br><span class="line"><span class="built_in">disp</span>(B)</span><br><span class="line">函数</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">B</span>=<span class="title">f2</span><span class="params">(A)</span></span></span><br><span class="line">B=<span class="built_in">round</span>(A);</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p>求两点之间距离以及黄金分割点坐标（其中点坐标通过复数形式输入）。</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">a=input(<span class="string">'a='</span>);</span><br><span class="line">b=input(<span class="string">'b='</span>);</span><br><span class="line">c=a+<span class="number">0.618</span>*(b-a);</span><br><span class="line">s=<span class="built_in">abs</span>(b-a);</span><br><span class="line"><span class="built_in">disp</span>(s)</span><br><span class="line"><span class="built_in">disp</span>(c)</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="3-2-用if语句实现选择结构"><a href="#3-2-用if语句实现选择结构" class="headerlink" title="3.2 用if语句实现选择结构"></a>3.2 用if语句实现选择结构</h2><h3 id="单分支if语句"><a href="#单分支if语句" class="headerlink" title="单分支if语句"></a>单分支if语句</h3><p>​    <strong>如果成立执行语句组，如果不成立则跳出if，语句格式如下：</strong></p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> 条件(关系运算或逻辑运算)</span><br><span class="line">   语句组</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="双分支if语句"><a href="#双分支if语句" class="headerlink" title="双分支if语句"></a>双分支if语句</h3><p>​    <strong>如果成立执行语句组1，不成立执行语句组2，然后跳出if，语句格式如下：</strong></p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> 条件(关系运算或逻辑运算)</span><br><span class="line">   语句组<span class="number">1</span></span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">   语句组<span class="number">2</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="多分支if语句"><a href="#多分支if语句" class="headerlink" title="多分支if语句"></a>多分支if语句</h3><p>​    <strong>根据上述双分支的类推，依次判断条件1~n，成立则执行对应语句组，然后跳出if，不成立则往下寻找，语句格式如下：</strong></p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> 条件<span class="number">1</span></span><br><span class="line">   语句组<span class="number">1</span></span><br><span class="line"><span class="keyword">elseif</span> 条件<span class="number">2</span></span><br><span class="line">   语句组<span class="number">2</span></span><br><span class="line"><span class="keyword">elseif</span> 条件<span class="number">3</span></span><br><span class="line">   语句组<span class="number">3</span></span><br><span class="line">···</span><br><span class="line"><span class="keyword">elseif</span> 条件n<span class="number">-1</span></span><br><span class="line">   语句组n<span class="number">-1</span></span><br><span class="line"><span class="keyword">else</span> 语句组n</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="条件成立的判断"><a href="#条件成立的判断" class="headerlink" title="条件成立的判断"></a>条件成立的判断</h3><ul>
+<li>当条件结果为标量，非零表示真，零表示假。</li>
+<li>当条件为矩阵，如果<strong>矩阵非空且不包含零元素</strong>，则条件成立，否则不成立。</li>
+</ul>
+<hr>
+<h2 id="3-3-用switch语句实现选择结构"><a href="#3-3-用switch语句实现选择结构" class="headerlink" title="3.3 用switch语句实现选择结构"></a>3.3 用switch语句实现选择结构</h2><h3 id="switch语句的基本格式"><a href="#switch语句的基本格式" class="headerlink" title="switch语句的基本格式"></a>switch语句的基本格式</h3><p>​    表示在C++里面就不喜欢用switch，感觉太麻烦了。这个和多分支if有点像吧，只是他的区别在于首先给出一个表达式，在下方每一个语句组对应着一个结果表，如果结果表对应着表达式的值，就执行当前语句组，<strong>执行完之后跳出switch语句，这个和C++的有所区别。</strong>此外，如果都不满足的话，我们还可以加入一个条件<strong>otherwise</strong>，顾名思义，如果上述结果都不满足，就执行这个otherwise下对应的语句，switch的语句格式如下：</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">switch</span> 表达式</span><br><span class="line">  <span class="keyword">case</span> 结果表<span class="number">1</span></span><br><span class="line">     语句组<span class="number">1</span></span><br><span class="line">  <span class="keyword">case</span> 结果表<span class="number">2</span></span><br><span class="line">     语句组<span class="number">2</span></span><br><span class="line">···</span><br><span class="line">  <span class="keyword">case</span> 结果表n</span><br><span class="line">     语句组n</span><br><span class="line">  <span class="keyword">otherwise</span></span><br><span class="line">     语句组k</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="switch的使用规则"><a href="#switch的使用规则" class="headerlink" title="switch的使用规则"></a>switch的使用规则</h3><ul>
+<li>case结果表为switch表达式的取值，<strong>当取值有多个时，我们可以用单元数据表示</strong>。将这多个结果用大括号<code>{}</code>括起来，如果表达式值满足其中一个，就执行相应语句组。</li>
+</ul>
+<hr>
+<h2 id="用for语句实现循环结构"><a href="#用for语句实现循环结构" class="headerlink" title="用for语句实现循环结构"></a>用for语句实现循环结构</h2><h3 id="常用的for语句"><a href="#常用的for语句" class="headerlink" title="常用的for语句"></a>常用的for语句</h3><figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>语句格式：</span><br><span class="line"><span class="keyword">for</span> 循环变量=表达式<span class="number">1</span>:表达式<span class="number">2</span>:表达式<span class="number">3</span></span><br><span class="line">    循环体语句</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>我们可以发现循环变量后面对应的是一个冒号表达式，分别是起始，步长，终止。</li>
+<li>循环执行时，先求出冒号表达式对应的行向量，然后依次遍历行向量中的每一个元素，执行循环体语句。</li>
+<li>for语句针对向量每一个元素执行一次循环体，有几个元素执行几次，当冒号表达式对应的向量为空向量，则一次也不执行。</li>
+<li>当退出循环后，循环变量值为行向量组中的最后一个元素。</li>
+</ul>
+<h3 id="更一般的for语句"><a href="#更一般的for语句" class="headerlink" title="更一般的for语句"></a>更一般的for语句</h3><figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> 循环变量=矩阵表达式</span><br><span class="line">	循环体语句</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>更一般的for语句循环遍历后对应的是矩阵表达式，执行过程中将矩阵的各列元素，赋值给循环变量，这时候，循环变量为一个列向量，而不是上述常用for语句中的标量，可以发现，常用的for语句是一般格式下的特例。<strong>循环的次数为矩阵的列数。</strong></li>
+</ul>
+<h3 id="例程-1"><a href="#例程-1" class="headerlink" title="例程"></a>例程</h3><p>计算圆周率 $\pi$</p>
+<ul>
+<li>利用循环求无穷级数展开求 $\pi$</li>
+</ul>
+<p>$$<br>1-\frac{1}{3}+\frac{1}{5}-\frac{1}{7}+\cdots+(-1)^{n+1}\frac{1}{2n-1} =\frac{\pi}{4}<br>$$</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">y=<span class="number">0</span>;</span><br><span class="line">g=<span class="number">-1</span>;</span><br><span class="line">n=input(<span class="string">'n='</span>);</span><br><span class="line"><span class="keyword">for</span> <span class="built_in">i</span>=<span class="number">1</span>:n</span><br><span class="line">	g=-g;</span><br><span class="line">	y=y+g*<span class="number">1</span>/(<span class="number">2</span>*<span class="built_in">i</span><span class="number">-1</span>);</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"><span class="built_in">disp</span>(<span class="number">4</span>*y)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>利用矩阵求和求无穷级数展开求 $\pi$ </li>
+</ul>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">n=input(<span class="string">'n='</span>);</span><br><span class="line">x=<span class="number">1</span>:<span class="number">2</span>:(<span class="number">2</span>*n<span class="number">-1</span>);</span><br><span class="line">y=(<span class="number">-1</span>).^(<span class="number">2</span>:n+<span class="number">1</span>)./x;</span><br><span class="line"><span class="built_in">disp</span>(sum(y)*<span class="number">4</span>)</span><br></pre></td></tr></table></figure>
+
+<hr>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/MATLAB/" rel="tag"># MATLAB</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/03/15/%E4%B8%93%E9%A2%98%E4%BA%8C-MATLAB%E7%9F%A9%E9%98%B5%E5%A4%84%E7%90%86/" rel="prev" title="专题二:MATLAB矩阵处理">
+      <i class="fa fa-chevron-left"></i> 专题二:MATLAB矩阵处理
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1-顺序结构程序"><span class="nav-number">1.</span> <span class="nav-text">3.1 顺序结构程序</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#程序设计的基本步骤"><span class="nav-number">1.1.</span> <span class="nav-text">程序设计的基本步骤</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#程序"><span class="nav-number">1.2.</span> <span class="nav-text">程序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文件的建立"><span class="nav-number">1.3.</span> <span class="nav-text">文件的建立</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#顺序结构"><span class="nav-number">1.4.</span> <span class="nav-text">顺序结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#例程"><span class="nav-number">1.5.</span> <span class="nav-text">例程</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2-用if语句实现选择结构"><span class="nav-number">2.</span> <span class="nav-text">3.2 用if语句实现选择结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#单分支if语句"><span class="nav-number">2.1.</span> <span class="nav-text">单分支if语句</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#双分支if语句"><span class="nav-number">2.2.</span> <span class="nav-text">双分支if语句</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多分支if语句"><span class="nav-number">2.3.</span> <span class="nav-text">多分支if语句</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#条件成立的判断"><span class="nav-number">2.4.</span> <span class="nav-text">条件成立的判断</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-3-用switch语句实现选择结构"><span class="nav-number">3.</span> <span class="nav-text">3.3 用switch语句实现选择结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#switch语句的基本格式"><span class="nav-number">3.1.</span> <span class="nav-text">switch语句的基本格式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#switch的使用规则"><span class="nav-number">3.2.</span> <span class="nav-text">switch的使用规则</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#用for语句实现循环结构"><span class="nav-number">4.</span> <span class="nav-text">用for语句实现循环结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#常用的for语句"><span class="nav-number">4.1.</span> <span class="nav-text">常用的for语句</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#更一般的for语句"><span class="nav-number">4.2.</span> <span class="nav-text">更一般的for语句</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#例程-1"><span class="nav-number">4.3.</span> <span class="nav-text">例程</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Zs"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">Zs</p>
+  <div class="site-description" itemprop="description">我要月亮奔我而来</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">39</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/zzsqwq" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;zzsqwq" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:2459958352@qq.com" title="E-Mail → mailto:2459958352@qq.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://wpa.qq.com/msgrd?v=3&uin=2459958352&site=qq&menu=yes" title="QQ → http:&#x2F;&#x2F;wpa.qq.com&#x2F;msgrd?v&#x3D;3&amp;uin&#x3D;2459958352&amp;site&#x3D;qq&amp;menu&#x3D;yes" rel="noopener" target="_blank"><i class="fa fa-fw fa-qq"></i>QQ</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title">
+      <i class="fa fa-fw fa-link"></i>
+      Friends
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="http://jjhqwq.top/" title="http:&#x2F;&#x2F;jjhqwq.top" rel="noopener" target="_blank">JJHQAQ</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://phoenix-zh.cn/" title="http:&#x2F;&#x2F;phoenix-zh.cn&#x2F;" rel="noopener" target="_blank">phoenix-zh</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Zs</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    <span title="站点总字数">160k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">4:27</span>
+</div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+<script>
+if (document.querySelectorAll('pre.mermaid').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js', () => {
+    mermaid.initialize({
+      theme: 'forest',
+      logLevel: 3,
+      flowchart: { curve: 'linear' },
+      gantt: { axisFormat: '%m/%d/%Y' },
+      sequence: { actorMargin: 50 }
+    });
+  }, window.mermaid);
+}
+</script>
+
+
+  
+
+  
+      
+<script type="text/x-mathjax-config">
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') {
+          next = next.nextSibling;
+        }
+        if (next && next.nodeName.toLowerCase() === 'br') {
+          next.parentNode.removeChild(next);
+        }
+      }
+    });
+  });
+
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
+      if (element.nodeName.toLowerCase() == 'li') {
+        element = element.parentNode;
+      }
+      element.classList.add('has-jax');
+    }
+  });
+</script>
+<script>
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML', () => {
+    MathJax.Hub.Typeset();
+  }, window.MathJax);
+</script>
+
+    
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el: '#valine-comments',
+      verify: false,
+      notify: false,
+      appId: 'a6dkHdYV1RplevIGxxoeKFD8-gzGzoHsz',
+      appKey: '9qrp8uHTJbPa70VspRUiFQML',
+      placeholder: "Please leave your email address above to ensure I can contact you!",
+      avatar: 'identicon',
+      meta: guest,
+      pageSize: '10' || 10,
+      visitor: true,
+      lang: '' || 'zh-cn',
+      path: location.pathname,
+      recordIP: true,
+      serverURLs: ''
+    });
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>
