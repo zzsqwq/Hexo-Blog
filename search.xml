@@ -3,7 +3,7 @@
   <entry>
     <title>专题四:MATLAB绘图</title>
     <url>/2020/03/23/%E4%B8%93%E9%A2%98%E5%9B%9B-MATLAB%E7%BB%98%E5%9B%BE/</url>
-    <content><![CDATA[<h2 id="4-1-二维曲线"><a href="#4-1-二维曲线" class="headerlink" title="4.1 二维曲线"></a>4.1 二维曲线</h2><h3 id="plot函数"><a href="#plot函数" class="headerlink" title="plot函数"></a>plot函数</h3><ul>
+    <content><![CDATA[<h2 id="4-1-二维曲线"><a href="#4-1-二维曲线" class="headerlink" title="4.1 二维曲线"></a>4.1 二维曲线</h2><h3 id="plot函数"><a href="#plot函数" class="headerlink" title="plot函数"></a><span id="jump">plot函数</span></h3><ul>
 <li><strong>基本用法</strong>：<code>plot(x,y)</code> ，x和y分别代表横纵坐标，plot函数会将各个点连接起来，形成线，x和y一般为长度相等的向量。</li>
 <li><strong>最简单的调用格式</strong>：<code>plot(x)</code><ul>
 <li><strong>当x为实向量时</strong>，则以该元素下表为横坐标，元素的值为纵坐标绘制曲线。</li>
@@ -27,7 +27,7 @@
 </ul>
 </li>
 </ul>
-<h3 id="fplot函数"><a href="#fplot函数" class="headerlink" title="fplot函数"></a>fplot函数</h3><p>​    可根据参数函数的变化特性自适应地设置采样间隔，当函数值变化缓慢，采样间隔大，当变化快的时候，采样间隔小。</p>
+<h3 id="fplot函数"><a href="#fplot函数" class="headerlink" title="fplot函数"></a><span id="jump2">fplot函数</span></h3><p>​    可根据参数函数的变化特性自适应地设置采样间隔，当函数值变化缓慢，采样间隔大，当变化快的时候，采样间隔小。</p>
 <ul>
 <li><p><strong>基本用法</strong>：<code>fplot(f,lims,选项)</code> ，参数分别函数（一般采用函数句柄表示），lims为x轴的取值范围，采用二元向量  <code>[xmin,xmax]</code> 来表示，默认值为 <code>[-5,5]</code> 。选项参数与plot函数相同。</p>
 </li>
@@ -47,6 +47,8 @@
 
 <p><img src="/images/plot2.png" alt="plot2"></p>
 <hr>
+<br>
+
 <h2 id="4-2-绘制图形的辅助操作"><a href="#4-2-绘制图形的辅助操作" class="headerlink" title="4.2 绘制图形的辅助操作"></a>4.2 绘制图形的辅助操作</h2><h3 id="添加图形标注"><a href="#添加图形标注" class="headerlink" title="添加图形标注"></a>添加图形标注</h3><ul>
 <li><p><strong>title函数</strong>：用于给图形添加标题说明</p>
 <ul>
@@ -121,6 +123,8 @@
 
 <p><img src="/images/plot4.png" alt="plot4"></p>
 <hr>
+<br>
+
 <h2 id="4-3-其他形式的二维曲线"><a href="#4-3-其他形式的二维曲线" class="headerlink" title="4.3 其他形式的二维曲线"></a>4.3 其他形式的二维曲线</h2><h3 id="其他坐标系下的二维曲线图"><a href="#其他坐标系下的二维曲线图" class="headerlink" title="其他坐标系下的二维曲线图"></a>其他坐标系下的二维曲线图</h3><ul>
 <li><p><strong>对数坐标图</strong></p>
 <ul>
@@ -217,7 +221,80 @@
 </ul>
 </li>
 </ul>
+<h3 id="例程-2"><a href="#例程-2" class="headerlink" title="例程"></a>例程</h3><ul>
+<li>某次考试成绩优秀，良好，中等，及格，不及格人数分别为：7、13，23，9，4，用扇形统计图作成绩统计。</li>
+</ul>
+<figure class="highlight matlab"><table><tr><td class="code"><pre><span class="line">score = [<span class="number">7</span>,<span class="number">13</span>,<span class="number">23</span>,<span class="number">9</span>,<span class="number">4</span>];</span><br><span class="line">tag = [<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>];</span><br><span class="line">pie(score,tag);</span><br><span class="line"><span class="built_in">legend</span>(<span class="string">"Excellent"</span>,<span class="string">"Good"</span>,<span class="string">"Middle"</span>,<span class="string">"Qualified"</span>,<span class="string">"Bad"</span>,<span class="string">'Location'</span>,<span class="string">'eastoutside'</span>);</span><br><span class="line"><span class="comment">%上方legend中的location是用于指定图例出现位置的，如果不指定，会与统计图重合</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>不加location参数</p>
+</blockquote>
+<p><img src="/images/pie.png" alt="pie"></p>
+<blockquote>
+<p>加入location参数</p>
+</blockquote>
+<p><img src="/images/pie2.png" alt="pie2"></p>
 <hr>
+<br>
+
+<h2 id="4-4-三维曲线"><a href="#4-4-三维曲线" class="headerlink" title="4.4 三维曲线"></a>4.4 三维曲线</h2><h3 id="plot3函数：绘制三维曲线最常用的函数。"><a href="#plot3函数：绘制三维曲线最常用的函数。" class="headerlink" title="plot3函数：绘制三维曲线最常用的函数。"></a>plot3函数：绘制三维曲线最常用的函数。</h3><ul>
+<li><p><strong>基本用法</strong>：<code>plot3(x,y,z)</code> 其中三个参数分别为坐标对，一般为等长向量，plot3函数用直线将所有点连起来。</p>
+</li>
+<li><p><strong>变化形式</strong>：</p>
+<ul>
+<li><p>当<code>plot(x,y,z)</code> 当x，y，z为同型矩阵，则绘制多条曲线，曲线条数等于矩阵列数。</p>
+</li>
+<li><p>当x，y，z中有向量也有矩阵的时候，向量的长度应与矩阵相符，如果是行向量，那么行向量的长度应与矩阵列数相同，如果是列向量，那么列向量的长度应与矩阵行数相同。</p>
+</li>
+<li><p>也可以用多组向量对来绘制多组曲线，<code>plot(x1,y1,z1,x2,y2,z2···,xn,yn,zn)</code> ；</p>
+</li>
+</ul>
+</li>
+<li><p><strong>含选项的plot3函数</strong>：<code>plot(x,y,z,选项)</code> 选项与功能与<a href="#jump">plot函数</a>类似。</p>
+</li>
+</ul>
+<h3 id="fplot3函数"><a href="#fplot3函数" class="headerlink" title="fplot3函数"></a>fplot3函数</h3><ul>
+<li><strong>基本用法</strong>：与<a href="#jump2">fplot函数</a>类似</li>
+</ul>
+<hr>
+<br>
+
+<h2 id="4-5-三维曲面"><a href="#4-5-三维曲面" class="headerlink" title="4.5 三维曲面"></a>4.5 三维曲面</h2><h3 id="生成平面网格数据"><a href="#生成平面网格数据" class="headerlink" title="生成平面网格数据"></a>生成平面网格数据</h3><ul>
+<li><strong>meshgrid</strong> 函数：调用格式 <code>[X,Y]=meshgrid(x,y)</code> ，其中x，y为向量，X，Y为存储网格坐标系横纵坐标的矩阵。如果只填一个 <strong>x</strong> ，那么就相当于 <strong>x=y</strong> 。</li>
+</ul>
+<h3 id="绘制三维曲面的函数"><a href="#绘制三维曲面的函数" class="headerlink" title="绘制三维曲面的函数"></a>绘制三维曲面的函数</h3><ul>
+<li><p><strong>mesh</strong> 函数 &amp; <strong>surf</strong> 函数</p>
+<ul>
+<li><p><strong>基本调用格式</strong>：<code>mesh(x,y,z,c) &amp; surf(x,y,z,c)</code>，两者可以用来绘制三维曲面，其中<strong>x，y</strong>为网格坐标矩阵，<strong>z</strong> 是网格点上的高度矩阵，<strong>c</strong> 用于指定在不同高度下的曲面颜色。如果 <strong>c</strong> 缺省，则默认 <strong>c=z</strong> ，也就是说颜色正比于高度。</p>
+</li>
+<li><p><strong>其他调用格式</strong>： <code>mesh(z,c) &amp; surf(z,c)</code> 这样的话就用z矩阵的<strong>列，行</strong>坐标代表<strong>x，y</strong>的值，z的值代表高度，c的意义与上面相同。</p>
+</li>
+<li><p><strong>其他花里胡哨的</strong> ：</p>
+<ul>
+<li>带等高线的三维网格曲面函数 <code>meshc</code> 和 带底座的三维网格曲面函数<code>meshz</code> ，用法与 <strong>mesh</strong> 函数相同。前者带等高线，后者带底座（就是说下面是实体的）。</li>
+<li>带等高线的曲面函数 <code>surfc</code> 和具有光照效果的曲面函数 <code>surfl</code> 。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="标准三维曲面"><a href="#标准三维曲面" class="headerlink" title="标准三维曲面"></a>标准三维曲面</h3><ul>
+<li><strong>sphere</strong> 函数：生成三维球面对应坐标。格式<code>[x,y,z]=sphere(n)</code> ，这将产生x，y，z三个(n+1)阶的方阵，通过这三个方针结合绘制三维曲面的函数 (<strong>surf</strong>或者<strong>mesh</strong>)，可以绘制出圆心在圆点，半径为一的单位球面。如果不加输出参数<strong>x,y,z</strong>，则直接绘制球面。n的值代表<strong>圆滑程度</strong>，默认为<strong>20</strong>.</li>
+<li><strong>cylinder</strong> 函数：生成三维柱面对应坐标。格式为 <code>[x,y,z]=cylinder(R,n)</code> R为一个向量，存放柱面各个等间隔高度上的半径，n表示圆柱圆周上的间隔点个数，默认为20。如果R为标量，则生成一个柱面。</li>
+</ul>
+<h3 id="fsurf和fmesh函数"><a href="#fsurf和fmesh函数" class="headerlink" title="fsurf和fmesh函数"></a>fsurf和fmesh函数</h3><p>​    用于绘制参数方程表示的函数，并且有两个变参。调用格式为 <code>fsurf(funx,funy,funz,uvlims)</code>，其中前三个通常为函数句柄形式给出的函数，<strong>uvlims</strong> 表示前三个函数自变量取值范围，用四元向量组来进行描述，形如<code>[umin,umax,vmin,vmax]</code>，默认值为<code>[-5,5,-5,5]</code> 。</p>
+<h3 id="例程-3"><a href="#例程-3" class="headerlink" title="例程"></a>例程</h3><ul>
+<li>绘制螺旋曲面。</li>
+</ul>
+<figure class="highlight matlab"><table><tr><td class="code"><pre><span class="line">funx = @(u,v) u.*<span class="built_in">sin</span>(v);</span><br><span class="line">funy = @(u,v) -u.*<span class="built_in">cos</span>(v);</span><br><span class="line">funz = @(u,v) v;</span><br><span class="line">fsurf(funx,funy,funz,[<span class="number">-5</span> <span class="number">5</span> <span class="number">-5</span> <span class="number">-2</span>])</span><br><span class="line"><span class="built_in">hold</span> on</span><br><span class="line">fmesh(funx,funy,funz,[<span class="number">-5</span> <span class="number">5</span> <span class="number">-2</span> <span class="number">2</span>])</span><br><span class="line"><span class="built_in">hold</span> off</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/luoxuan.png" alt="luoxuan"></p>
+<ul>
+<li>绘制函数$z=(x-1)^2+(y-2)^2-1$ 的曲面图，分别用带等高线的mesh函数，带底座的mesh函数，带等高线的surf函数，带光照效果的surf函数绘制。$x\in[0,2],y\in[1,3]$</li>
+</ul>
+<figure class="highlight matlab"><table><tr><td class="code"><pre><span class="line">[x,y]=<span class="built_in">meshgrid</span>(<span class="number">0</span>:<span class="number">0.1</span>:<span class="number">2</span>,<span class="number">1</span>:<span class="number">0.1</span>:<span class="number">3</span>);</span><br><span class="line">z=(x<span class="number">-1</span>).^<span class="number">2</span>+(y<span class="number">-2</span>).^<span class="number">2</span><span class="number">-1</span>;</span><br><span class="line">subplot(<span class="number">2</span>,<span class="number">2</span>,<span class="number">1</span>);</span><br><span class="line">meshc(x,y,z);title(<span class="string">'meshc(x,y,z)'</span>)</span><br><span class="line">subplot(<span class="number">2</span>,<span class="number">2</span>,<span class="number">2</span>);</span><br><span class="line">meshz(x,y,z);title(<span class="string">'meshz(x,y,z)'</span>)</span><br><span class="line">subplot(<span class="number">2</span>,<span class="number">2</span>,<span class="number">3</span>);</span><br><span class="line">surfc(x,y,z);title(<span class="string">'surfc(x,y,z)'</span>)</span><br><span class="line">subplot(<span class="number">2</span>,<span class="number">2</span>,<span class="number">4</span>);</span><br><span class="line">surfl(x,y,z); title(<span class="string">'surfl(x,y,z)'</span>)</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/mesh.png" alt="mesh"></p>
 ]]></content>
       <categories>
         <category>MATLAB学习</category>
