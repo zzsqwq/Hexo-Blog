@@ -55,8 +55,10 @@
 <meta property="og:description" content="4.1 二维曲线plot函数 基本用法：plot(x,y) ，x和y分别代表横纵坐标，plot函数会将各个点连接起来，形成线，x和y一般为长度相等的向量。 最简单的调用格式：plot(x) 当x为实向量时，则以该元素下表为横坐标，元素的值为纵坐标绘制曲线。 当x为复向量时，则以实部和虚部分别为横纵坐标绘制曲线。">
 <meta property="og:image" content="http://yoursite.com/images/plot1.png">
 <meta property="og:image" content="http://yoursite.com/images/plot2.png">
+<meta property="og:image" content="http://yoursite.com/images/plot3.png">
+<meta property="og:image" content="http://yoursite.com/images/plot4.png">
 <meta property="article:published_time" content="2020-03-23T15:18:59.000Z">
-<meta property="article:modified_time" content="2020-03-23T16:50:46.762Z">
+<meta property="article:modified_time" content="2020-03-24T06:17:10.412Z">
 <meta property="article:author" content="Zs">
 <meta property="article:tag" content="MATLAB">
 <meta name="twitter:card" content="summary">
@@ -234,7 +236,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-03-24 00:50:46" itemprop="dateModified" datetime="2020-03-24T00:50:46+08:00">2020-03-24</time>
+                <time title="修改时间：2020-03-24 14:17:10" itemprop="dateModified" datetime="2020-03-24T14:17:10+08:00">2020-03-24</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -275,14 +277,14 @@
                 <i class="fa fa-file-word-o"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>1.3k</span>
+              <span>4.5k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="fa fa-clock-o"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>2 分钟</span>
+              <span>7 分钟</span>
             </span>
 
         </div>
@@ -334,9 +336,181 @@
 <ul>
 <li>利用fplot函数绘制  $y=sin{\frac{1}{x}}$  在区间 $[0,0.2]$ 的图像。</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fplot(@x sin(1.&#x2F;x),[0,0.2])</span><br></pre></td></tr></table></figure>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fplot(@x <span class="built_in">sin</span>(<span class="number">1.</span>/x),[<span class="number">0</span>,<span class="number">0.2</span>])</span><br></pre></td></tr></table></figure>
 
 <p><img src="/images/plot2.png" alt="plot2"></p>
+<hr>
+<h2 id="4-2-绘制图形的辅助操作"><a href="#4-2-绘制图形的辅助操作" class="headerlink" title="4.2 绘制图形的辅助操作"></a>4.2 绘制图形的辅助操作</h2><h3 id="添加图形标注"><a href="#添加图形标注" class="headerlink" title="添加图形标注"></a>添加图形标注</h3><ul>
+<li><p><strong>title函数</strong>：用于给图形添加标题说明</p>
+<ul>
+<li><strong>基本用法</strong>：<code>title(&#39;图形标题&#39;)</code> ，如果是有多行，就用逗号分隔，大括号<code>{}</code>括起来。</li>
+<li><strong>LaTeX排版</strong>：可在在图形标题中使用LaTeX格式控制符，要用LaTeX时将其控制字符用大括号<code>{}</code>括起来。</li>
+<li><strong>控制字体</strong>：用 <code>&quot;\bf&quot;</code> ,<code>&quot;\it&quot;</code>，<code>&quot;\rm&quot;</code> 分别控制字体加粗，斜体以及正体。</li>
+<li><strong>设置title函数属性</strong> ： <code>title(图形标题，属性名，属性值)</code> 其中属性名和属性值对应成对出现。<ul>
+<li><strong>Color属性</strong>：用于设置图形标题文本的颜色，缺省时为黑色。</li>
+<li><strong>FontSize属性</strong> ：用于设置标题文字字号，缺省时为11。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>xlable和ylable函数</strong>：给x轴和y轴添加说明</p>
+<ul>
+<li><strong>基本用法</strong>： <code>xlable(x轴说明)</code> ，<code>ylable(y轴说明)</code> ，同样还有 zlable等。</li>
+</ul>
+</li>
+<li><p><strong>text函数和gtext函数</strong>：给特定位置说明</p>
+<ul>
+<li><strong>基本用法</strong>：<ul>
+<li><code>text(x,y,说明)</code>，x、y参数用来指明说明的位置，<strong>后面的说明和title函数类似</strong>。</li>
+<li><code>gtext(说明)</code>  这里没有坐标指定位置，通过鼠标的点击来指定位置。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>legend函数</strong>：用于给图形添加图例</p>
+<ul>
+<li><strong>基本用法</strong>：<code>legend(图例1，图例2,···)</code> 其中图例顺序要与plot函数中参数顺序相对应，<strong>图例的说明方式与tiele函数标题说明类似</strong>。</li>
+</ul>
+</li>
+</ul>
+<h3 id="坐标控制"><a href="#坐标控制" class="headerlink" title="坐标控制"></a>坐标控制</h3><ul>
+<li><p><strong>axis函数</strong>：用于设置坐标轴的范围</p>
+<ul>
+<li><p><strong>基本用法</strong>：<code>axis([xmin,xmax,ymin,ymax,zmin,zmax])</code> ，分别代表了x，y，z轴范围。</p>
+</li>
+<li><p><strong>其他用法</strong>：通过在axis函数下面加语句来实现控制其他格式。</p>
+<ul>
+<li><strong>axis equal</strong>：横纵坐标刻度等长。</li>
+<li><strong>axis square</strong>：采用正方形坐标系（默认为矩形）。</li>
+<li><strong>axis auto</strong>：使用默认设置。</li>
+<li><strong>axis off/on</strong>：不显示/显示坐标轴。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>给坐标系加网格和边框</strong></p>
+<ul>
+<li><strong>添加网格</strong>：通过 <code>grid on/off</code> 控制显示和不显示网格线，而直接用 <code>grid</code> 用于切换两种形式，如果是带网格则切换为不带，反之亦然。如果不添加语句，则默认不带。</li>
+<li><strong>添加边框</strong>：通过 <code>box on/off</code> 控制显示不显示边框，用法与 <strong>grid</strong> 类似，如果不添加语句，则默认带网格。</li>
+</ul>
+</li>
+</ul>
+<h3 id="图形保持"><a href="#图形保持" class="headerlink" title="图形保持"></a>图形保持</h3><p>​    一般情况下绘图命令每执行一次，图形界面就刷新一次，去掉原有图形，绘制新图形，如果要保留原有图形，可使用图形保持命令。通过<code>hold on\off</code> 来控制是否保留，通过 <code>hold</code> 切换保留和不保留两种选择。</p>
+<h3 id="图形窗口分割"><a href="#图形窗口分割" class="headerlink" title="图形窗口分割"></a>图形窗口分割</h3><ul>
+<li><strong>子图</strong>：同一图形窗口中的不同坐标系下的图形称为子图。</li>
+<li><strong>subplot函数</strong> ：<code>subplot(m,n,p)</code>  意思是将图形窗口分成 $m\times n$ 个子图区域，当前绘制的是第p个子图，区号按行编号。我们在一个图形窗口内，绘制不同的图可以采用不同的分割。</li>
+</ul>
+<h3 id="例程-1"><a href="#例程-1" class="headerlink" title="例程"></a>例程</h3><ul>
+<li><p>绘制 $sinx$ 、$sin2x$ 、$sin(\frac{x}{2})$  的图像，并添加相应的图形标注。</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">x=<span class="built_in">linspace</span>(<span class="number">0</span>,<span class="number">6</span>*<span class="built_in">pi</span>,<span class="number">100</span>);</span><br><span class="line">y=[<span class="built_in">sin</span>(x);<span class="built_in">sin</span>(<span class="number">2</span>*x);<span class="built_in">sin</span>(x./<span class="number">2</span>)];</span><br><span class="line"><span class="built_in">plot</span>(x,y);</span><br><span class="line">axis([<span class="number">0</span>,<span class="number">6</span>*<span class="built_in">pi</span>,<span class="number">-1.1</span>,<span class="number">1.1</span>]);</span><br><span class="line">title(<span class="string">'不同频率正弦函数曲线'</span>);</span><br><span class="line">xlabel(<span class="string">'X-axis'</span>);</span><br><span class="line">ylabel(<span class="string">'Y-axis'</span>);</span><br><span class="line">text(<span class="number">2.5</span>,<span class="built_in">sin</span>(<span class="number">2.5</span>),<span class="string">'sin(x)'</span>);</span><br><span class="line">text(<span class="number">1.5</span>,<span class="built_in">sin</span>(<span class="number">3</span>),<span class="string">'sin(2*x)'</span>);</span><br><span class="line">text(<span class="number">5.5</span>,<span class="built_in">sin</span>(<span class="number">0.5</span>*<span class="number">5.5</span>),<span class="string">'sin(x/2)'</span>);</span><br><span class="line"><span class="built_in">legend</span>(<span class="string">'sin(x)'</span>,<span class="string">'sin(2x)'</span>,<span class="string">'sin(x/2)'</span>);</span><br><span class="line">grid on</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p><img src="/images/plot3.png" alt="plot3"></p>
+<ul>
+<li>利用子图函数在不同区域绘出不同图形。</li>
+</ul>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">x=<span class="built_in">linspace</span>(<span class="number">0</span>,<span class="number">2</span>*<span class="built_in">pi</span>,<span class="number">100</span>);</span><br><span class="line">subplot(<span class="number">2</span>,<span class="number">2</span>,<span class="number">1</span>);</span><br><span class="line"><span class="built_in">plot</span>(x,<span class="built_in">sin</span>(x));</span><br><span class="line">title(<span class="string">'sin(x)'</span>);</span><br><span class="line">axis([<span class="number">0</span>,<span class="number">2</span>*<span class="built_in">pi</span>,<span class="number">-1</span>,<span class="number">1</span>]);</span><br><span class="line">subplot(<span class="number">2</span>,<span class="number">1</span>,<span class="number">2</span>);</span><br><span class="line"><span class="built_in">plot</span>(x,<span class="built_in">cos</span>(x));</span><br><span class="line">title(<span class="string">'cos(x)'</span>);</span><br><span class="line">axis([<span class="number">0</span>,<span class="number">2</span>*<span class="built_in">pi</span>,<span class="number">-1</span>,<span class="number">1</span>]);</span><br><span class="line">subplot(<span class="number">4</span>,<span class="number">4</span>,<span class="number">3</span>);</span><br><span class="line"><span class="built_in">plot</span>(x,<span class="built_in">tan</span>(x));</span><br><span class="line">title(<span class="string">'tan(x)'</span>);</span><br><span class="line">subplot(<span class="number">4</span>,<span class="number">4</span>,<span class="number">8</span>);</span><br><span class="line"><span class="built_in">plot</span>(x,<span class="built_in">cot</span>(x));</span><br><span class="line">title(<span class="string">'cot(x)'</span>);</span><br><span class="line">axis([<span class="number">0</span>,<span class="number">2</span>*<span class="built_in">pi</span>,<span class="number">-35</span>,<span class="number">35</span>]);</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/plot4.png" alt="plot4"></p>
+<hr>
+<h2 id="4-3-其他形式的二维曲线"><a href="#4-3-其他形式的二维曲线" class="headerlink" title="4.3 其他形式的二维曲线"></a>4.3 其他形式的二维曲线</h2><h3 id="其他坐标系下的二维曲线图"><a href="#其他坐标系下的二维曲线图" class="headerlink" title="其他坐标系下的二维曲线图"></a>其他坐标系下的二维曲线图</h3><ul>
+<li><p><strong>对数坐标图</strong></p>
+<ul>
+<li><strong>semilogx</strong> 函数：调用形式与plot函数类似，<code>semilogx(x,y,选项)</code>为其中一种调用格式，其他的可参考plot函数，此函数绘图采用半对数坐标，x轴采用常用对数刻度，y轴为线性刻度。</li>
+<li><strong>semilogy</strong> 函数：调用形式与plot函数类似，<code>semilogy(x,y,选项)</code>为其中一种调用格式，其他的可参考plot函数，此函数绘图采用半对数坐标，y轴采用常用对数刻度，x轴为线性刻度。</li>
+<li><strong>loglog</strong> 函数：调用函数与上述类似，x和y都为常用对数刻度。</li>
+</ul>
+</li>
+<li><p><strong>极坐标图</strong></p>
+<ul>
+<li>基本调用格式：<code>polar(theta,rho,选项)</code> <strong>theta</strong>为极角，<strong>rho</strong> 为极径，选项与plot函数类似。</li>
+</ul>
+</li>
+</ul>
+<h3 id="统计图"><a href="#统计图" class="headerlink" title="统计图"></a>统计图</h3><ul>
+<li><p><strong>条形类图形</strong></p>
+<ul>
+<li><p><strong>条形图</strong></p>
+<ul>
+<li><p><strong>bar</strong> 函数：绘制二维垂直条形图</p>
+<ul>
+<li>调用格式为<code>bar(y,style)</code> ：y如果为向量，则以每个元素值作为每一个柱的高度，元素下标代表横坐标。如果y为矩阵，则以每一行作为一组，以行号作为组号绘图。后方的 <strong>style</strong> 有 <code>&quot;grouped&quot;</code> 和<code>&quot;stacked&quot;</code> 两种模式，分别为簇状分组和堆积分组。默认为簇状分组。</li>
+<li>调用格式为<code>bar(x,y,style)</code> ：其中x存储横坐标，y为矩阵，存储每一个横坐标对应的数据，y的行数必须与x的长度相对应。</li>
+</ul>
+</li>
+<li><p><strong>barh</strong> 函数：绘制二维水平条形图。调用格式与<strong>bar</strong>函数相同。</p>
+</li>
+</ul>
+</li>
+<li><p><strong>直方图</strong></p>
+<ul>
+<li><p><strong>hist</strong> 函数：绘制直角坐标系下的直方图。</p>
+<ul>
+<li>调用格式为 <code>hist(y)</code> ，y为向量，绘图时将 $[miny,maxy]$ 区间等分成十组，并求出每个区间内对应元素的个数，然后绘出直方图。</li>
+<li>调用格式为<code>hist(y,x)</code>，如果x为标量，则将y区间分成x个区间，如果x为向量，则向量中的每一个数指定分组的中心值，元素的个数为指定分成的组数，x缺省默认均分十组。</li>
+</ul>
+</li>
+<li><p><strong>rose</strong> 函数：用于绘制极坐标系下的直方图。</p>
+<ul>
+<li>调用格式为 <code>rose(theta,x)</code> 其中参数 <strong>theta</strong> 用于确定每一数据与圆点的角度，如果x为标量，则x代表均分组数，缺省默认为20。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>面积类图形</strong></p>
+<ul>
+<li><strong>扇形图/饼图</strong><ul>
+<li><strong>pie</strong> 函数：调用格式为 <code>pie(x,explode)</code> 其中参数x为待统计的数据，通常为向量，其中每一个数据在整体中占用的比例在扇形图中表示出来，后续的 <strong>explode</strong> 为每个x对应的分离参数，如果非0，则将其分离出来。<strong>explode</strong> 缺省则饼图为一个整体。</li>
+</ul>
+</li>
+<li><strong>面积图</strong><ul>
+<li><strong>area</strong> 函数：与plot函数类似，下方与坐标轴围成的区域进行填充。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>散点类图形</strong></p>
+<ul>
+<li><strong>散点图</strong><ul>
+<li><strong>scatter</strong> 函数：<code>scatter(x,y,选项,&#39;filled&#39;)</code> ，其中x和y通常为同等大小向量，代表了一定数量的点。选项与plot函数类似，用于限制颜色，线型，以及数据点标记，如果采用数据点标记，则可以用 <strong>‘filled’</strong> 参数来填充数据点，如果缺省，则标记数据点为空心。</li>
+</ul>
+</li>
+<li><strong>阶梯图</strong><ul>
+<li><strong>stairs</strong> 函数：使用方法与上述 <strong>scatter</strong> 函数类似。</li>
+</ul>
+</li>
+<li><strong>杆图</strong><ul>
+<li><strong>stem</strong> 函数： 使用方法与上述 <strong>scatter</strong> 函数类似。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>矢量类图形</strong></p>
+<ul>
+<li><p><strong>箭头图</strong></p>
+<ul>
+<li><p><strong>quiver</strong> 函数：常用此绘制磁力线，矢量。调用格式为<code>quiver(x,y,u,v)</code> 其中 <strong>(x,y)</strong> 为矢量起</p>
+<p>点，<strong>(u,v)</strong> 为矢量终点，如果x，y省略，则均匀取若干个点作为起点。</p>
+</li>
+</ul>
+</li>
+<li><p><strong>罗盘图</strong></p>
+<ul>
+<li><strong>compasser *<em>函数：与 *</em>plot</strong> 函数类似。</li>
+</ul>
+</li>
+<li><p><strong>羽毛图</strong></p>
+<ul>
+<li><strong>feather</strong> 函数：与 <strong>plot</strong> 函数类似。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
 
     </div>
 
@@ -419,7 +593,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#4-1-二维曲线"><span class="nav-number">1.</span> <span class="nav-text">4.1 二维曲线</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#plot函数"><span class="nav-number">1.1.</span> <span class="nav-text">plot函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#fplot函数"><span class="nav-number">1.2.</span> <span class="nav-text">fplot函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#例程"><span class="nav-number">1.3.</span> <span class="nav-text">例程</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#4-1-二维曲线"><span class="nav-number">1.</span> <span class="nav-text">4.1 二维曲线</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#plot函数"><span class="nav-number">1.1.</span> <span class="nav-text">plot函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#fplot函数"><span class="nav-number">1.2.</span> <span class="nav-text">fplot函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#例程"><span class="nav-number">1.3.</span> <span class="nav-text">例程</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-2-绘制图形的辅助操作"><span class="nav-number">2.</span> <span class="nav-text">4.2 绘制图形的辅助操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#添加图形标注"><span class="nav-number">2.1.</span> <span class="nav-text">添加图形标注</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#坐标控制"><span class="nav-number">2.2.</span> <span class="nav-text">坐标控制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#图形保持"><span class="nav-number">2.3.</span> <span class="nav-text">图形保持</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#图形窗口分割"><span class="nav-number">2.4.</span> <span class="nav-text">图形窗口分割</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#例程-1"><span class="nav-number">2.5.</span> <span class="nav-text">例程</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-3-其他形式的二维曲线"><span class="nav-number">3.</span> <span class="nav-text">4.3 其他形式的二维曲线</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#其他坐标系下的二维曲线图"><span class="nav-number">3.1.</span> <span class="nav-text">其他坐标系下的二维曲线图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#统计图"><span class="nav-number">3.2.</span> <span class="nav-text">统计图</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -511,12 +685,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="站点总字数">88k</span>
+    <span title="站点总字数">91k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">2:27</span>
+    <span title="站点阅读时长">2:32</span>
 </div>
 
         
