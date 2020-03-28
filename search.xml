@@ -207,14 +207,15 @@
 </ul>
 </li>
 <li><p><strong>罗盘图</strong></p>
-</li>
+<ul>
+<li><strong>compasser</strong>函数：与 <a href="#jump"><strong>plot</strong> 函数</a>类似。</li>
 </ul>
-</li>
-<li><p><strong>compasser</strong>函数：与 <a href="#jump"><strong>plot</strong> 函数</a>类似。</p>
 </li>
 <li><p><strong>羽毛图</strong></p>
 <ul>
 <li><strong>feather</strong> 函数：与 <a href="#jump"><strong>plot</strong> 函数</a>类似。</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
