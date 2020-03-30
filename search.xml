@@ -3,9 +3,7 @@
   <entry>
     <title>软件组考核第一周学习报告</title>
     <url>/2020/03/30/%E8%BD%AF%E4%BB%B6%E7%BB%84%E8%80%83%E6%A0%B8%E7%AC%AC%E4%B8%80%E5%91%A8%E5%AD%A6%E4%B9%A0%E6%8A%A5%E5%91%8A/</url>
-    <content><![CDATA[<h2 id="Linux系统常见命令"><a href="#Linux系统常见命令" class="headerlink" title="Linux系统常见命令"></a>Linux系统常见命令</h2><ul>
-<li><p>基本操作</p>
-<ul>
+    <content><![CDATA[<h2 id="Linux系统常见命令"><a href="#Linux系统常见命令" class="headerlink" title="Linux系统常见命令"></a>Linux系统常见命令</h2><h3 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h3><ul>
 <li><p><strong>cd (Change Directory)</strong>命令：跳转目录</p>
 <ul>
 <li><strong>cd path</strong> ： path为路径，进入相应目录</li>
@@ -16,11 +14,15 @@
 </ul>
 <p><img src="/images/first/image-20200330164354765.png" alt="image-20200330164354765"></p>
 </li>
+</ul>
+<a id="more"></a>
+
+<ul>
 <li><p><strong>ls (List)</strong> 命令：列出当前目录文件</p>
 <ul>
 <li><p><strong>ls</strong> ： 显示当前目录文件</p>
 </li>
-<li><p>*<em>ls -a *</em>：显示全部的文件及文件夹，包括隐藏的文件和文件夹。</p>
+<li><p><strong>ls -a</strong>：显示全部的文件及文件夹，包括隐藏的文件和文件夹。</p>
 </li>
 <li><p><strong>ls -l</strong>  ： 显示较全的文件信息，包括权限，用户，用户组。</p>
 </li>
@@ -66,7 +68,7 @@
 </li>
 <li><p><strong>cat</strong> 命令：打开指定文件， 并显示其中内容在终端，并且可以将其复制到一个另文件中。如果cat后面加多个文件名，那么就会打开多个文件。</p>
 </li>
-<li><p>*<em>tar *</em> 命令：压缩或解压命令。<code>tar [参数] 打包文件名 要打包的各个文件</code> 。</p>
+<li><p><strong>tar</strong> 命令：压缩或解压命令。<code>tar [参数] 打包文件名 要打包的各个文件</code> 。</p>
 <p>参数表：</p>
 <table>
 <thead>
@@ -96,29 +98,25 @@
 <td>解开档案文件</td>
 </tr>
 </tbody></table>
-<p>打包实例： <code>tar -cvf 文件名 要打包的文件</code>  解压实例：<code>tar -xvf 压缩包名</code></p>
-</li>
-</ul>
+<p>&nbsp;&nbsp;&nbsp;打包实例： <code>tar -cvf 文件名 要打包的文件</code>  解压实例：<code>tar -xvf 压缩包名</code></p>
 </li>
 </ul>
 <p><img src="/images/first/image-20200330164654339.png" alt="image-20200330164654339"></p>
-<ul>
-<li><p>不同的查找方式</p>
-<ul>
+<h3 id="不同的查找方式"><a href="#不同的查找方式" class="headerlink" title="不同的查找方式"></a>不同的查找方式</h3><ul>
 <li><p><strong>find</strong> ：使用方法为<code>find &lt;指定目录&gt;&lt;指定条件&gt;&lt;指定动作&gt;</code> ，如何find后面不加任何参数，那么就默认搜索当前目录及其子目录，并显示在屏幕上。</p>
 <ul>
 <li><p>&lt;指定目录&gt;：用于指定要搜索的目录，默认为当前所在目录。</p>
 </li>
 <li><p>&lt;指定条件&gt;：指定所要搜索文件的特征。</p>
 <ul>
-<li>-name ：按文件名查找</li>
-<li>-perm：按文件权限查找</li>
-<li>-depth：查找时先在当前目录查找，然后查找其他子目录。</li>
-<li>-prune：不在当前指定路径查找。如果同时指定-depth，则此选项被忽略。</li>
-<li>-user/-nouser：按照文件属主查找/查找无效属主文件</li>
-<li>-group/-nogroup：按照文件属组查找/查找无效属组文件</li>
-<li>-newer file1 !file2：查找更改时间比file1新比file2旧的文件。</li>
-<li>-type：查找某一类型文件，b：块设备文件，d：目录，c：字符设备文件，P：管道文件，l：符号链接文件，f：普通文件。</li>
+<li><strong>-name</strong> ：按文件名查找</li>
+<li><strong>-perm</strong>：按文件权限查找</li>
+<li><strong>-depth</strong>：查找时先在当前目录查找，然后查找其他子目录。</li>
+<li><strong>-prune</strong>：不在当前指定路径查找。如果同时指定-depth，则此选项被忽略。</li>
+<li><strong>-user/-nouser</strong>：按照文件属主查找/查找无效属主文件</li>
+<li><strong>-group/-nogroup</strong>：按照文件属组查找/查找无效属组文件</li>
+<li><strong>-newer file1 !file2</strong>：查找更改时间比file1新比file2旧的文件。</li>
+<li><strong>-type</strong>：查找某一类型文件，b：块设备文件，d：目录，c：字符设备文件，P：管道文件，l：符号链接文件，f：普通文件。</li>
 </ul>
 <p><img src="/images/first/image-20200330164709797.png" alt="image-20200330164709797"></p>
 <p><img src="/images/first/image-20200330164721033.png" alt="image-20200330164721033"></p>
@@ -126,29 +124,30 @@
 </ul>
 </li>
 <li><p><strong>locate</strong> ：等价于 <code>find -name</code> ，但是速度要快，因为locate在一个本地数据库中存放了所有本地文件信息，每天自动更新，我们查找之前需要通过 <code>updatedb</code> 手动更新其中内容，不然可能会导致新改动的文件查找不到。</p>
-<p><img src="./images/first/image-20200330164733755.png" alt="image-20200330164733755"></p>
+<p><img src="/images/first/image-20200330164733755.png" alt="image-20200330164733755"></p>
 </li>
 <li><p><strong>whereis</strong> ：whereis可以用于程序名的搜索，可以通过参数 <strong>-s，-m，-s</strong> 分别搜索二进制文件，man说明文件，和源代码文件。如果省略参数，则返回所有信息。不过这个也是从本地数据库里面进行搜索。</p>
 </li>
 <li><p><strong>which</strong> ：只能用于寻找可执行文件，并通过path变量寻找。</p>
+<p><strong>关于查找方式的总结，find命令非常强大，搜索全盘，而且可以配合多种参数进行各种各样的搜索。</strong><br><strong>而locate能做到搜索的更快，因为一种特殊的搜索位置，但是功能要略逊于find。whereis和which都是对于指定类型的搜索，专精某一方面。</strong></p>
 </li>
 </ul>
-<p><strong>关于查找方式的总结，find命令非常强大，搜索全盘，而且可以配合多种参数进行各种各样的搜索。而locate能做到搜索的更快，因为一种特殊的搜索位置，但是功能要略逊于find。whereis和which都是对于指定类型的搜索，专精某一方面。</strong></p>
-</li>
-<li><p>软链接和硬链接</p>
-<p>首先我了解到，linux文件系统中，每一个文件都会有一个编号，称为索引节点号inode。也就是i节点。</p>
-<p>链接呢，我的感觉就是，建立一个源文件和链接文件的映射，两个之间会有一定的关系存在。</p>
-<p><strong>创建链接</strong>的方式为 <code>ln 源文件 目标文件</code> ，默认为硬链接，软链接为 <code>ln -s 源文件 目标文件</code> 。</p>
-<p><strong>对于软链接</strong>，很像快捷方式，可以跨文件系统（也就是说可以存在于不同的文件系统中），而且他有一个单独的inode，然后通过软连接可以打开源文件。</p>
-<p><strong>对于硬链接</strong>，就像是整了一个毛一样的东西出来，很像备份吧，而且两者名字可不同，他们的inode是同一个，只是把<strong>inode link count</strong> 域增加了1，也就是多了加了一个索引项，因为他们是一毛一样的东西，那么就肯定不能跨文件系统了，因为你这个东西在这个文件系统里面是代表这个东西，在另一个里面就不一定是了，会产生错误。</p>
-<p>关于他们的几点其他区别如下</p>
+<h3 id="软链接和硬链接"><a href="#软链接和硬链接" class="headerlink" title="软链接和硬链接"></a>软链接和硬链接</h3><p>​    &nbsp;&nbsp;&nbsp;首先我了解到，linux文件系统中，每一个文件都会有一个编号，称为索引节点号inode。也就是i节点。</p>
+<p>​    &nbsp;&nbsp;&nbsp;链接呢，我的感觉就是，建立一个源文件和链接文件的映射，两个之间会有一定的关系存在。</p>
+<p>​    &nbsp;&nbsp;&nbsp;<strong>创建链接</strong>的方式为 <code>ln 源文件 目标文件</code> ，默认为硬链接，软链接为 <code>ln -s 源文件 目标文件</code> 。</p>
+<p>​    &nbsp;&nbsp;&nbsp;<strong>对于软链接</strong>，很像快捷方式，可以跨文件系统（也就是说可以存在于不同的文件系统中），而且他有一个单独的inode，然后通过软连接可以打开源文件。</p>
+<p>​    &nbsp;&nbsp;&nbsp;<strong>对于硬链接</strong>，就像是整了一个毛一样的东西出来，很像备份吧，而且两者名字可不同，他们的inode是同一个，只是把<strong>inode link count</strong> 域增加了1，也就是多了加了一个索引项，因为他们是一毛一样的东西，那么就肯定不能跨文件系统了，因为你这个东西在这个文件系统里面是代表这个东西，在另一个里面就不一定是了，会产生错误。</p>
+<p>​    关于他们的几点其他区别如下</p>
 <ul>
-<li>软链接可以对一个不存在的文件名进行链接，如果用编辑器打开这个目标文件，那么会默认创建一个名为filename的文件，而硬链接肯定不行了，因为你文件不存在，他也就没有inode，无从创建链接。</li>
-<li>软链接可以跨文件系统，硬链接不行。</li>
-<li>软链接可以链接目录，硬链接不行。百度了解到，因为硬链接和源文件用的一个inode，用硬链接链接可以会形成循环依赖，导致系统死机。</li>
-<li>硬链接在源文件删除后依然可以访问，因为它具有源文件的inode，而软链接在源文件删除后无法对源文件进行访问，因为inode没有了，索引不到了。</li>
-<li>我们对硬链接文件中的内容进行修改也会影响到源文件，因为他们是同一个文件。当然软链接也可以，因为他就是相当于打开了源文件。</li>
-</ul>
+<li><p>软链接可以对一个不存在的文件名进行链接，如果用编辑器打开这个目标文件，那么会默认创建一个名为filename的文件，而硬链接肯定不行了，因为你文件不存在，他也就没有inode，无从创建链接。</p>
+</li>
+<li><p>软链接可以跨文件系统，硬链接不行。</p>
+</li>
+<li><p>软链接可以链接目录，硬链接不行。百度了解到，因为硬链接和源文件用的一个inode，用硬链接链接可以会形成循环依赖，导致系统死机。</p>
+</li>
+<li><p>硬链接在源文件删除后依然可以访问，因为它具有源文件的inode，而软链接在源文件删除后无法对源文件进行访问，因为inode没有了，索引不到了。</p>
+</li>
+<li><p>我们对硬链接文件中的内容进行修改也会影响到源文件，因为他们是同一个文件。当然软链接也可以，因为他就是相当于打开了源文件。</p>
 </li>
 <li><p>其他常见操作</p>
 <ul>
