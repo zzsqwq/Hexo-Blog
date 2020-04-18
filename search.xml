@@ -13,6 +13,10 @@
 <li><p><strong>PyPy</strong></p>
 <p>它的目标是执行速度。PyPy采用<a href="http://en.wikipedia.org/wiki/Just-in-time_compilation">JIT技术</a>，对Python代码进行动态编译（注意不是解释），所以可以显著提高Python代码的执行速度。他与CPython略有不同。</p>
 </li>
+</ol>
+<a id="more"></a>
+
+<ol>
 <li><p><strong>Jython</strong></p>
 <p>这是运行在Java平台上的Python解释器，可以直接把Python代码编译成Java字节码执行。</p>
 </li>
