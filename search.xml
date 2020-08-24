@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>排位二和排位三记录</title>
+    <title>排位赛三和四记录</title>
     <url>/2020/08/19/%E6%8E%92%E4%BD%8D%E8%B5%9B%E4%B8%89%E5%92%8C%E5%9B%9B%E8%AE%B0%E5%BD%95/</url>
     <content><![CDATA[<h1 id="Day-3"><a href="#Day-3" class="headerlink" title="Day 3"></a>Day 3</h1><h2 id="A-黑妹的游戏Ⅰ"><a href="#A-黑妹的游戏Ⅰ" class="headerlink" title="A. 黑妹的游戏Ⅰ"></a>A. <a href="https://ac.nowcoder.com/acm/contest/6956/A">黑妹的游戏Ⅰ</a></h2><h3 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h3><p>​    &nbsp;&nbsp;&nbsp;给出三个不同的初始数字$a,b,c$，黑妹每次选择两个不同的数字，计算出差的绝对值后如果黑板上没有就写在黑板上。问黑妹最多能添加多少个数字。</p>
 <a id="more"></a>
